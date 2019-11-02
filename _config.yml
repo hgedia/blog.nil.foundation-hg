@@ -61,7 +61,11 @@ contact:
 toc:
   - title: Home
     url: https://nil.foundation
-  - title: Blog
-    url: https://blog.nil.foundation
+  - title: About
+    url: https://nil.foundation/#about
   - title: Projects
     url: https://nil.foundation/#projects
+  - title: Partners
+    url: https://nil.foundation/#partners
+  - title: Contact
+    url: https://nil.foundation/#contact
