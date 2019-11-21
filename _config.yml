@@ -1,5 +1,5 @@
 # Site Info
-title: <tt>=nil;</tt> Foundation Blog
+title: "<span style='font-family:Menlo, Courier, monospace'>=nil;</span> Foundation Blog"
 tagline: ''
 description: ''
 baseurl: ''
@@ -58,7 +58,7 @@ contact:
      #
 # Navigation (2nd level links supported)
 
-toc:
+navbar:
   - title: Home
     url: https://beta.nil.foundation
   - title: About
