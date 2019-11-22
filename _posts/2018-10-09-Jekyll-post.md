@@ -1,8 +1,8 @@
 ---
-title: Nil Foundation Establishment
+title: =nil; Foundation
 layout: post
 date: 2018-04-01
-description: Nil Foundation Establishment
+description: What is =nil; Foundation?
 author: Mikhail Komarov
 ---
 
