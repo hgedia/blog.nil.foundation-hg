@@ -1,9 +1,9 @@
 ---
-title: Jekyll post
+title: Nil Foundation Establishment
 layout: post
-date: 2018-10-09
-description: A complete post.
-author: Github
+date: 2018-04-01
+description: Nil Foundation Establishment
+author: Mikhail Komarov
 ---
 
 Text can be **bold**, _italic_, ~~strikethrough~~ or `keyword`
