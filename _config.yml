@@ -60,12 +60,12 @@ contact:
 
 navbar:
   - title: Home
-    url: https://beta.nil.foundation
+    url: https://nil.foundation
   - title: About
-    url: https://beta.nil.foundation/#about
+    url: https://nil.foundation/#about
   - title: Projects
-    url: https://beta.nil.foundation/#projects
+    url: https://nil.foundation/#projects
   - title: Partners
-    url: https://beta.nil.foundation/#partners
+    url: https://nil.foundation/#partners
   - title: Contact
-    url: https://beta.nil.foundation/#contact
+    url: https://nil.foundation/#contact
