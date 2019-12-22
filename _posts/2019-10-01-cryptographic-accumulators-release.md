@@ -1,7 +1,7 @@
 ---
-title: Crypto3.Passhash Release
+title: Crypto3.Accumulators Release
 layout: post
-date: 2019-08-01
-description: Cryptography suite password hashing module release.
+date: 2019-10-01
+description: Cryptography suite cryptographic accumulators module release.
 author: Mikhail Komarov
 ---
