@@ -25,6 +25,7 @@ pre {
         -webkit-transition: all .3s;
         -moz-transition: all .3s;
         transition: all .3s;
+        padding: 10px 0;
     }
 
     .navbar.fixed-top.navbar-shrink {
@@ -33,11 +34,16 @@ pre {
 
     .navbar.fixed-top.navbar-shrink .navbar-brand {
         font-size: 1.5em;
+        padding: 15px;
     }
 }
 
 .navbar {
     font-weight: 300;
+}
+
+.navbar .container {
+    margin: 0px 55px 0px 55px;
 }
 
 .navbar a:focus {
