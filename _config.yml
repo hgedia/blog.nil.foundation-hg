@@ -16,8 +16,8 @@ author: Mikhail Komarov
 bio: 
   
 contact:
-    #   - title: Linkedin
-    # link:  https://www.linkedin.com/in/your_id
+   - title: Linkedin
+     link:  https://www.linkedin.com/company/nil-foundation
 
    - title: Github
      link:  https://github.com/nilfoundation
@@ -28,8 +28,8 @@ contact:
    - title: Twitter
      link:  https://twitter.com/nil_foundation
 
-     #   - title: Gmail
-     #     link:  mailto:yourmail@abc.com
+   - title: Gmail
+     link:  mailto:nemo@nil.foundation
   
      #skills:
      #   - title: C
