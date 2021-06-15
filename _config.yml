@@ -8,6 +8,7 @@ url: https://blog.nil.foundation
 # Site configurations
 plugins:
   - jekyll-paginate
+  - jekyll-feed
 markdown: kramdown
 
 # About/contact
