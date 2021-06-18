@@ -131,7 +131,8 @@ pre {
 }
 
 .bs-component {
-    position: relative
+    position: relative;
+    font-size: 1rem
 }
 
 .bs-component+.bs-component {
@@ -161,6 +162,14 @@ pre {
     display: inline-block;
     width: 220px;
     margin: 20px
+}
+
+.bs-component h2 {
+    font-size: 2rem
+}
+
+.bs-component h3 {
+    font-size: 1rem
 }
 
 #source-button {

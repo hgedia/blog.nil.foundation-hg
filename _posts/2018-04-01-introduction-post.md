@@ -6,6 +6,8 @@ description: What is =nil; Foundation?
 author: Mikhail Komarov
 ---
 
+## What is =nil; Foundation?
+
 [=nil; Foundation](https://nil.foundation) is a non-profit organization
 established in April of 2018 to facilitate cryptography and databases research 
 and development.
