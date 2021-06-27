@@ -4,6 +4,7 @@ layout: post
 date: 2020-06-26
 description: Initial Boost.Crypto3 release.
 author: Mikhail Komarov, Nikita Kaskov
+tags: boost crypto3 cryptography cpp
 ---
 
 So, what should cryptography for Boost (and probably STL some years after) look like?”

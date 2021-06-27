@@ -4,6 +4,7 @@ layout: post
 date: 2018-04-01
 description: What is =nil; Foundation?
 author: Mikhail Komarov
+tags: about foundation
 ---
 
 ## What is =nil; Foundation?
@@ -17,19 +18,20 @@ and development.
 Foundation supports projects which are established by the Foundation itself and
 ones established by third-parties as well.
 
-Initial set of projects supported by the Foundation contains 
-[=nil; Crypto3 Cryptography Suite](https://crypto3.nil.foundation/projects/crypto3) 
-created by Foundation's internal [=nil; Crypto3](https://crypto3.nil.foundation)
-team and [=nil; Database Management System](https://dbms.nil.foundation) created
-by Foundation's internal [=nil; Database](https://database.nil.foundation) team.
+Initial set of projects supported by the Foundation contains:
+* [=nil; Crypto3 Cryptography Suite](https://crypto3.nil.foundation/projects/crypto3) 
+created by Foundation's [=nil; Crypto3](https://crypto3.nil.foundation) cryptography 
+team
+* [=nil; Database Management System](https://dbms.nil.foundation) created
+by Foundation's [=nil; Database](https://database.nil.foundation) team.
 
 ### =nil; Crypto3 Cryptography Suite
 
 Cryptography suite project was established to provide architecturally elegant
 and efficient modern cryptography primitives implementation along with more
 tranditional constructions implemented in the same way. Crypto3 suite eventually 
-became the foundation for all cryptography research and development projects,
-reducing risks of 
+became the foundation for all cryptography research and development within the
+Foundation, reducing security risks of misimplementation or a design flaw.
 
 ## =nil; Foundation Teams
 
