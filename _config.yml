@@ -3,7 +3,7 @@ title: "<span style='font-family:Menlo, Courier, monospace'>=nil;</span> Foundat
 tagline: ''
 description: ''
 baseurl: ''
-url: 'https://blog.nil.foundation'
+url: https://blog.nil.foundation
 
 # Site configurations
 plugins:
