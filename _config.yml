@@ -3,7 +3,7 @@ title: "<span style='font-family:Menlo, Courier, monospace'>=nil;</span> Foundat
 tagline: ''
 description: ''
 baseurl: ''
-url: https://blog.nil.foundation
+url: 'https://blog.nil.foundation'
 
 # Site configurations
 plugins:
@@ -140,3 +140,6 @@ autopages:
     slugify:
       mode: 'default'   # :tag is slugified.
       case: true
+
+staticman_url: https://nil-test-staticman.herokuapp.com/v2/entry/blogservitor/
+blog.nil.foundation/master/comments

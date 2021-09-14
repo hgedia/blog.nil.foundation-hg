@@ -3,64 +3,71 @@
     {% include head.html %}
     <body>
         {% include header.html %}
-        <div class="container">
-
-            <div class="page-header">
-                <div class="row">
-                    <div class="col-lg-8 col-md-7 col-sm-6">
-                        <h3>{{ page.title }}</h3>
-
+        <div class="container d-flex flex-column align-items-center">
+            <div class="pb-4 pt-4 w-100">
+                <h2>{{ page.title }}</h2>
+            </div>
+            <div class="row w-100 no-gutters justify-content-center">
+                <div class="col-12 col-md-10">
+                    <div class="d-flex flex-column align-items-start">
                         {% if page.description %}
-                        <p class="lead">{{ page.description }}</p>
+                        <div class="d-flex justify-content-center">
+                            <p class="lead lead-blog">{{ page.description }}</p>
+                        </div>
                         {% endif %}
-                        <p class="lead">Written by {{ page.author }} on {{ page.date | date_to_string }}</p>
+                        <div class="d-flex justify-content-start">
+                            <p class="lead lead-blog">Written by {{ page.author }} on {{ page.date | date_to_string }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
-
-
-            <!-- Containers
-                ================================================== -->
-
-
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="page-header">
-                        </div>
-                        <div class="bs-component">
-                            <div class="jumbotron">		
-                                <p class="lead">{{ content }}</p>
-                            </div>
+            <div class="row w-100 no-gutters justify-content-center">
+                <div class="col-12 col-md-10">
+                    <div class="bs-component">
+                        <div class="jumbotron">
+                            <p class="lead">{{ content }}</p>
                         </div>
                     </div>
                 </div>
-                <!--<div class="row">
-                    <div class="col-lg-12">
-                    <div class="page-header">
-                    </div>
+            </div>
+            {% if page.comments == true %}
+            <div class="row w-100 no-gutters justify-content-center">
+                <div class="col-12 col-md-10">
                     <div class="bs-component">
-                    <div class="jumbotron">
-                    <form method="POST" action="https://api.staticman.net/v3/entry/github/eduardoboucas/staticman/gh-pages/comments">
-                    <input name="options[redirect]" type="hidden" value="https://my-site.com">
-                    <input name="options[slug]" type="hidden" value="{{ page.slug }}">
-                    <label><input name="fields[name]"
-                    type="text">Name</label><br>
-                    <label><input name="fields[email]"
-                    type="email">E-mail</label><br>
-                    <label><textarea
-                    name="fields[message]"></textarea>Message</label><br>
-
-                    <button type="submit">Go!</button>
-                    </form>
+                        <div class="jumbotron mt-12" id="comments">
+                            {% include comments.html %}
+                        </div>
                     </div>
+                </div>
+            </div>
+            {% endif %}
+            {% include footer.html post="post" %}
+        </div>  
+        <div
+            class="modal"
+            id="modal"
+            tabindex="-1"
+            role="dialog"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div id="success-message" class="flex-column">
+                            <h5>Your comment was successfully submitted!</h5>
+                            <p>It will be published after moderation.</p>
+                        </div>
+                        <div id="error-message" class="flex-column">
+                            <p>An error occured during adding your comment!</p>
+                        </div>
                     </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" onclick="hideModal()">Ok</button>
                     </div>
-                    </div>-->
-
-
-                    {% include footer.html %}
-
-        </div>
+                </div>
+            </div>
+        </div> 
+        <script src="{{site.baseurl}}/assets/js/form.js"></script>
         <script src="{{site.baseurl}}/assets/js/jquery.min.js"></script>
         <script src="{{site.baseurl}}/assets/js/bootstrap.min.js"></script>
     </body>
