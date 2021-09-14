@@ -130,14 +130,6 @@ pre {
     width: 100%
 }
 
-/*custom*/
-.bs-component-blog {
-    position: relative;
-    font-size: 1rem;
-    display: flex;
-    justify-content: center;
-}
-
 .bs-component {
     position: relative;
     font-size: 1rem;
