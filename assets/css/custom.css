@@ -132,7 +132,7 @@ pre {
 
 .bs-component {
     position: relative;
-    font-size: 1rem
+    font-size: 1rem;
 }
 
 .bs-component+.bs-component {
@@ -143,19 +143,6 @@ pre {
     margin-bottom: 1rem
 }
 
-.bs-component .modal {
-    position: relative;
-    top: auto;
-    right: auto;
-    left: auto;
-    bottom: auto;
-    z-index: 1;
-    display: block
-}
-
-.bs-component .modal-dialog {
-    width: 90%
-}
 
 .bs-component .popover {
     position: relative;
@@ -259,7 +246,7 @@ pre {
 
 .section-preview .preview {
     margin-bottom: 4em;
-    background-color: #eaf1f1
+    background-color: #eaf1f1;
 }
 
 .section-preview .preview img {
@@ -346,4 +333,28 @@ pre {
 .ml-auto .dropdown-menu {
     left: auto !important;
     right: 0px;
+}
+
+/* add comments */
+.form-control {
+    background: #343434;
+    transition: 0.2s;
+    color: #907F8F;
+}
+label {
+    width: 80%;
+    transition: 0.2s;
+}
+label:focus-within {
+    color: #ffffff;
+}
+.form-control::selection {
+    background: #907F8F;
+}
+::selection {
+	background: #343434;
+}
+input::placeholder, textarea::placeholder {
+    font-size: 100%;
+    color: #907F8F;
 }

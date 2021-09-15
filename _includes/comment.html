@@ -1,0 +1,58 @@
+{%- capture article_class %}js-comment comment{% if include.name == site.author.name %} admin{% endif %}{% if include.is_reply %} child{% endif %}{% endcapture %}
+{% assign comment_id = include.uid | prepend: 'comment-' %}
+<div id="{{ comment_id }}" class="{{ article_class }} pt-3 pb-2" uid="{{ include.uid }}">
+
+  <div class="comment__author">
+    {% if include.name == site.author.name %} 
+    <span class="comment__admin_tag">Author</span>
+    {% endif %}
+    {{- include.name | strip_html }}
+    <span class="comment__date">
+      {%- if include.date -%}
+        •
+        <a
+          href="#{{ comment_id}}"
+          title="Permalink to this comment"
+          onclick="correctPermalink()"
+        >
+        {{- include.date | date:"%B %eth, %Y %H:%M" -}}
+        </a>
+      {%- endif -%}
+    </span>
+  </div>
+
+  <div
+    class="comment__body"
+    style="overflow-wrap:break-word;word-break: break-word;hyphens: auto;"
+  >
+    {{ include.message | strip_html | markdownify }}
+  </div>
+
+{% if include.is_reply %}
+</div>
+{% else %}
+    <!-- <div class="comment__meta pl-4">
+      <a
+        rel="nofollow"
+        href="#{{ comment_id }}"
+        style="text-decoration:none;"
+        onclick="return moveForm('{{ comment_id }}', 'respond', '{{ page.slug }}', '{{ include.uid }}')"
+      >
+        ↪&#xFE0E; Reply to {{ include.name }}
+      </a>
+    </div> -->
+  </div>
+
+  {%- capture this_uid %}{{ include.uid }}{% endcapture %}
+  {%- assign replies = site.data.comments[page.slug] | where_exp: 'item', 'item.replying_to_uid == this_uid' %}
+  {%- assign replies_date = replies | sort: 'date' %}
+  {% for reply in replies_date %}
+    {%- assign name        = reply.name -%}
+    {%- assign date        = reply.date -%}
+    {%- assign message     = reply.message -%}
+    {%- assign uid         = reply._id -%}
+    {% include comment.html is_reply=true uid=uid email=email name=name url=url date=date message=message %}
+  {% endfor %}
+
+  <div class="dropdown-divider"></div>
+{% endif %}
