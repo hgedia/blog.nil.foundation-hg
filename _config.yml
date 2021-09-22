@@ -141,4 +141,4 @@ autopages:
       mode: 'default'   # :tag is slugified.
       case: true
 
-staticman_url: https://nil-test-staticman.herokuapp.com/v2/entry/blogservitor/blog.nil.foundation/master/comments
+staticman_url: https://nil-test-staticman.herokuapp.com/v2/entry/NilFoundation/blog.nil.foundation/master/comments
