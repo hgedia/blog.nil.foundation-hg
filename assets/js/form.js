@@ -47,16 +47,21 @@ async function processForm () {
     body = body + `${key}=` + encodeURIComponent(FD.get(key)) + '&'
   };
   body = body.slice(0, -1);
-  
+
   const XHR = new XMLHttpRequest();
   XHR.addEventListener( "load", function(event) {
-    inputs.forEach(input => input.value = '');
-    setProcessingRequest(false);
-    showModal('success')
+    if (XHR.status != 200) {
+      setProcessingRequest(false);
+      showModal('error');
+    } else {
+      inputs.forEach(input => input.value = '');
+      setProcessingRequest(false);
+      showModal('success');
+    }
   });
   XHR.addEventListener( "error", function(event) {
     setProcessingRequest(false);
-    showModal('error')
+    showModal('error');
   });
   XHR.open("POST", "{{ site.staticman_url }}", true);
   XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
