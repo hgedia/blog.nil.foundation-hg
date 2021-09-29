@@ -1,6 +1,4 @@
-<form
-  id="form"
->
+<form id="form">
   <input
     type="hidden"
     name="options[origin]"
@@ -15,17 +13,14 @@
     type="hidden"
     id="comment-parent"
     name="fields[replying_to_uid]"
-    value=""
-  >
+    value="">
   <input
     name="options[slug]"
     type="hidden"
-    value="{{ page.slug }}"
-  >
+    value="{{ page.slug }}">
   <div class="mb-2 text-center">
     <h5>Add new comment<small>
-      <a
-        rel="nofollow"
+      <a rel="nofollow"
         id="cancel-comment-reply-link"
         href="{{ page.url | absolute_url }}#respond"
         style="display:none;">
@@ -33,38 +28,33 @@
       </a>
     </small></h5>
   </div>
-  <div class="d-flex justify-content-center">
+  <div class="d-flex col justify-content-center">
     <label>
         Name <small>(required)</small>
-        <input
-          name="fields[name]"
+        <input name="fields[name]"
           class="form-control"
           id="name"
           type="text"
           placeholder="Enter your name."
-          autocomplete="off"
-        >
+          autocomplete="off">
     </label>
   </div>
-  <div class="d-flex justify-content-center">
+  <div class="d-flex col justify-content-center">
     <label>
         Message <small>(required)</small>
-        <textarea
-          name="fields[message]"
+        <textarea name="fields[message]"
           class="form-control"
           id="message"
           placeholder="Leave your comment here (markdown accepted)."
-          style="resize:none; height: 100px;"
-        ></textarea>
+          style="resize:none; height: 100px;"></textarea>
     </label>
   </div>
   <div class="d-flex justify-content-center">
     <button
       id="sbtBtn"
-      class="btn btn-secondary mt-2"
+      class="btn btn-success mt-2"
       type="submit"
-      style="width:150px"
-    >
+      style="width:150px">
       <div id="spinner-show" class="d-none">
         <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
         Loading...

@@ -8,7 +8,7 @@
                 <h2>{{ page.title }}</h2>
             </div>
             <div class="row w-100 no-gutters justify-content-center">
-                <div class="col-12 col-md-10">
+                <div class="col-12">
                     <div class="d-flex flex-column align-items-start">
                         {% if page.description %}
                         <div class="d-flex justify-content-center">
@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="row w-100 no-gutters justify-content-center">
-                <div class="col-12 col-md-10">
+                <div class="col-12">
                     <div class="bs-component">
                         <div class="jumbotron">
                             <p class="lead">{{ content }}</p>
@@ -32,7 +32,7 @@
             </div>
             {% if page.comments == true %}
             <div class="row w-100 no-gutters justify-content-center">
-                <div class="col-12 col-md-10">
+                <div class="col-12">
                     <div class="bs-component">
                         <div class="jumbotron mt-12" id="comments">
                             {% include comments.html %}
@@ -43,13 +43,11 @@
             {% endif %}
             {% include footer.html post="post" %}
         </div>  
-        <div
-            class="modal"
-            id="modal"
-            tabindex="-1"
-            role="dialog"
-            aria-hidden="true"
-        >
+        <div class="modal"
+             id="modal"
+             tabindex="-1"
+             role="dialog"
+             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
                 <div class="modal-content">
                     <div class="modal-body">
