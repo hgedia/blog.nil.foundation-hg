@@ -9,9 +9,10 @@ const
   submitButton = document.querySelector('#sbtBtn'),
   spinner = document.getElementById('spinner-show'),
   normalBtn = document.getElementById('spinner-hidden'),
+  comments = document.getElementById('comments'),
   inputs = document.querySelectorAll('.form-control'),
-  errorMessage = document.getElementById('error-message'),
-  successMessage = document.getElementById('success-message');
+  errorMessage = document.getElementById('alert-danger'),
+  successMessage = document.getElementById('alert-success');
 
 let processingRequest = false;
 
@@ -78,21 +79,15 @@ function correctPermalink () {
 
 /** Shows success message */
 function showModal (state) {
-  modal.style.display = 'block';
   switch (state) {
     case 'success':
-      successMessage.style.display = 'flex';
-      errorMessage.style.display = 'none';
+          successMessage.alert();
       break;
     case 'error':
-      successMessage.style.display = 'none';
-      errorMessage.style.display = 'flex';
+          errorMessage.alert();
       break;
     default: break;
   }
-  setTimeout(() => {
-    hideModal()
-  }, 5000);
 }
 
 /** Hides modal wth successful message. */
