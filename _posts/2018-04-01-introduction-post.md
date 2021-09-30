@@ -19,7 +19,7 @@ Foundation supports projects which are established by the Foundation itself and
 ones established by third-parties as well.
 
 Initial set of projects supported by the Foundation contains:
-* [=nil; Crypto3 Cryptography Suite](https://crypto3.nil.foundation/projects/crypto3) 
+* [=nil; Crypto3 Cryptography Suite](https://github.com/nilfoundation/crypto3) 
 created by Foundation's [=nil; Crypto3](https://crypto3.nil.foundation) cryptography 
 team
 
