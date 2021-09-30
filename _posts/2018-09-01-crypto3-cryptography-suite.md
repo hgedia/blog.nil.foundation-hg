@@ -5,7 +5,7 @@ date: 2018-09-01
 description: Cryptography suite introduction. Rationale.
 author: Mikhail Komarov
 tags: crypto3 cryptography cpp
-comments: true
+comments: false
 ---
 
 # =nil; Foundation Cryptography Library (libcrypto3)
