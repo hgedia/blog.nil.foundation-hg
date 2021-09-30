@@ -44,4 +44,4 @@ cryptography-dedicated [=nil; Crypto3](https://crypto3.nil.foundation) team was
 established. It's interests vary from applied compexity-theory research and 
 cryptography schemes constructions and implementations development to
 cryptography and protocol security audits. More on that can be noticed at
-https://crypto3.nil.foundation/
+https://crypto3.nil.foundation/.
