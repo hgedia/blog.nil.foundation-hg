@@ -1,7 +1,7 @@
 ---
 title: =nil; Foundation
 layout: post
-date: 2018-04-01
+date: 2021-09-30
 description: What is =nil; Foundation?
 author: Mikhail Komarov
 tags: about foundation
