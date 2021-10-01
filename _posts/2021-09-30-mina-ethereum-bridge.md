@@ -10,7 +10,7 @@ comments: false
 
 ## Introduction
 
-Back in April of 2021 Mina Foundation together with Ethereum Foundation announced the request for proposals for the design and implementation of a mechanism to verify and the Pickles SNARK on Ethereum: [https://minaprotocol.com/announcements/mina-foundation-and-ethereum-foundation-launch-joint-rfp](https://minaprotocol.com/announcements/mina-foundation-and-ethereum-foundation-launch-joint-rfp).
+Back in April of 2021 Mina Foundation together with Ethereum Foundation announced the request for proposals for the design and implementation of a mechanism to verify and the Pickles SNARK on Ethereum: [https://minaprotocol.com/announcements/mina-foundation-and-ethereum-foundation-launch-joint-rfp](https://minaprotocol.com/announcements/mina-foundation-and-ethereum-foundation-launch-joint-rfp). Finally, after a rigorious selection process =nil; Foundation's =nil; Crypto3 team was awarded with an opportunity to facilitate such a project.
 
 So this is the first within the series of blog posts covering some aspects of such a bridge implementation.
 
