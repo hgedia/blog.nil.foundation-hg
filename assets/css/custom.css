@@ -358,3 +358,7 @@ input::placeholder, textarea::placeholder {
     font-size: 100%;
     color: #907F8F;
 }
+blockquote {
+    border-left: 5px solid #725C70;
+    padding-left: 40px;
+}
