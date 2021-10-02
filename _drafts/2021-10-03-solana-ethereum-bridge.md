@@ -2,9 +2,9 @@
 title: =nil; Foundation's Mina-Ethereum Bridge.
 layout: post
 date: 2021-09-30
-description: Full in-EVM Mina state verification made possible by Pickles SNARK (and some more SNARKs).
+description: Solana light client EVM-based state verification.
 author: Mikhail Komarov
-tags: crypto3 cryptography mina
+tags: crypto3 cryptography solana 
 comments: false
 ---
 
@@ -30,7 +30,7 @@ on the EVM).
 
 >   In particular. The Pickles SNARK verifier as used in Mina has several components:
 >   1. Computing several hash values from the data of the proof. This involves using 
->       the Poseidon hash function with 63 full rounds both over $F_p$ and $F_q$ with 
+>       the Poseidon hash function with 63 full rounds both over Fp and Fq with 
 >       round constants and MDS matrix specified 
 >       [here for Fp](https://github.com/o1-labs/marlin/blob/master/oracle/src/pasta/fp.rs) 
 >       and [here for Fq](https://github.com/o1-labs/marlin/blob/master/oracle/src/pasta/fq.rs).
