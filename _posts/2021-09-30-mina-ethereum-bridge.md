@@ -89,7 +89,7 @@ But then, suddenly, even 5m gas turned out to be too expensive (thank you, 2021!
 ## Let me guess - you decided to make it cheaper, right?
 
 Exactly. STARK-based auxiliary proof verification turned out to be too expensive 
-for the task. So we've started looking for different SNARKs to be used within 
+for the task. So we started looking for a different SNARK to be used within 
 the auxiliary proof.
 
 After a brief discussion, Rank-1 Constraint System-based SNARKs were crossed
@@ -98,7 +98,8 @@ and very promising (e.g. Spartan), which would've brought a nice feature of abse
 of necessity to trust any set of actors to generate the proof for the Ethereum 
 submittance. Imagine if you would be required to trust a group of people who did 
 trusted setup so anyone capable of generating Mina state proof rely on them? 
-Too much trust for that.
+Too much trust for that. That is why SNARK transparency was a non-optional
+requirement.
 
 > How much would've R1CS systems usage cost roughly? Well, let us calculate that. 
 >
