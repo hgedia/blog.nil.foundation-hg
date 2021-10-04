@@ -1,8 +1,8 @@
 ---
-title: =nil; Foundation's Mina-Ethereum Bridge.
+title: =nil; Foundation's in-EVM Full Mina State Verification.
 layout: post
 date: 2021-09-30
-description: Full in-EVM Mina state verification made possible by Pickles SNARK (and some more SNARKs).
+description: Paving the way to Ethereum-Mina bridge by full Mina state in-EVM verification made possible by Pickles SNARK (and some more SNARKs).
 author: Mikhail Komarov
 tags: crypto3 cryptography mina
 comments: false
