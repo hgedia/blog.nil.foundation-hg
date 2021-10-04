@@ -15,18 +15,16 @@ Back in April of 2021 Mina Foundation together with Ethereum Foundation announce
 So this is the first within the series of blog posts covering some aspects of such a bridge implementation.
 
 ## So what? 
+
 Since the whole Mina Protocol state (except archive nodes) can be and is packed within the single Pickles SNARK proof (remember - 22kb only) ([https://medium.com/minaprotocol/meet-pickles-snark-enabling-smart-contract-on-coda-protocol-7ede3b54c250](https://medium.com/minaprotocol/meet-pickles-snark-enabling-smart-contract-on-coda-protocol-7ede3b54c250)), this means it is possible to put the whole Mina Protocol state right onto Ethereum. Moreover, this means for the whole Mina Protocol state is in-EVM verifiable within a reasonable gas cost.
 
 ## Aaaand?
-Full Mina Protocol state in-EVM verification means it is possible to bring everything what happens inside Mina to Ethereum, including financial applications, provable computations and many more. 
+
+A full Mina Protocol state in-EVM verification means it will be possible to bring everything that happens inside of the Mina chain to Ethereum, including financial applications, provable computations, and much more.
 
 ## Okay. How in particular?
 
-Unfortunately it turned out that direct verification of Pickles SNARK on the 
-EVM appears to be too costly. But! It seemed to be possible to design a system 
-that may perform some preprocessing on the Pickles SNARK (e.g., by computing a 
-STARK that verifies the Pickles SNARK which itself may be efficiently verified 
-on the EVM).
+Unfortunately it turned out that direct verification of Pickles SNARK on the EVM appears to be too costly. But! It seemed to be possible to design a system that may perform some preprocessing on the Pickles SNARK (e.g., by computing a STARK that verifies the Pickles SNARK which itself may be efficiently verified on the EVM).
 
 >   In particular. The Pickles SNARK verifier as used in Mina has several components:
 >   1. Computing several hash values from the data of the proof. This involves using 
@@ -51,14 +49,7 @@ So, this was exactly the approach taken.
 
 ## Auxiliary STARK-based proof.
 
-The threshold cost of Mina state verification was set to be 5m gas. Direct
-Pickles proof verification would've taken much more. The [RFP by Ethereum
-Foundation and Mina Foundation](https://hackmd.io/u_2Ygx8XS5Ss1aObgOFjkA?view%23Definitions) 
-suggested an approach which would result in submitting to EVM an additional 
-STARK proof of a successful Pickles SNARK proof part verification, which could 
-be considered as a valid in-EVM confirmation of everything what happened inside 
-Mina. Such an approach - submitting proof of successfull proof verification - 
-seemed to be fitting into 5m gas. Future was clear and bright.
+The threshold cost of Mina state verification was set to be 5m gas. Direct Pickles proof verification would've taken much more. The [RFP by Ethereum Foundation and Mina Foundation](https://hackmd.io/u_2Ygx8XS5Ss1aObgOFjkA?view%23Definitions) suggested an approach which would result in submitting to EVM an additional STARK proof of a successful Pickles SNARK proof part verification, which could be considered as a valid in-EVM confirmation of everything what happened inside Mina. Such an approach - submitting proof of successfull proof verification - seemed to be fitting into 5m gas. Future was clear and bright.
 
 > We even suggested the following basic circuit for the STARK-based auxiliary proof.
 > 
@@ -88,18 +79,9 @@ But then, suddenly, even 5m gas turned out to be too expensive (thank you, 2021!
 
 ## Let me guess - you decided to make it cheaper, right?
 
-Exactly. STARK-based auxiliary proof verification turned out to be too expensive 
-for the task. So we started looking for a different SNARK to be used within 
-the auxiliary proof.
+Exactly. STARK-based auxiliary proof verification turned out to be too expensive for the task as well. So we started looking for a different SNARK to be used within the auxiliary proof.
 
-After a brief discussion, Rank-1 Constraint System-based SNARKs were crossed
-out as too costy ones as well. Even considering some of them were transparent
-and very promising (e.g. Spartan), which would've brought a nice feature of absence 
-of necessity to trust any set of actors to generate the proof for the Ethereum 
-submittance. Imagine if you would be required to trust a group of people who did 
-trusted setup so anyone capable of generating Mina state proof rely on them? 
-Too much trust for that. That is why SNARK transparency was a non-optional
-requirement.
+After a brief discussion, Rank-1 Constraint System-based SNARKs were crossed out as too costy ones as well. Even considering some of them were transparent and very promising (e.g. Spartan), which would've brought a nice feature of absence of necessity to trust any set of actors to generate the proof for the Ethereum submittance. Imagine if you would be required to trust a group of people who did trusted setup so anyone capable of generating Mina state proof rely on them? Too much trust for that. That is why SNARK transparency was a non-optional requirement.
 
 > How much would've R1CS systems usage cost roughly? Well, let us calculate that. 
 >
@@ -143,8 +125,8 @@ scheme) trusted setup is required.
 ## So how to keep the bridge trustless along with keeping it cheap?
 
 To figure out a custom SNARK for the auxiliary proof. That is how. 
-Well, not a really custom one (let us not exaggerate things), but an experimental 
-proof scheme.
+Well, not a really custom one (let us not exaggerate things), but a novel proof 
+scheme.
 
 In particular, RedShift-alike approach was selected (PLONK-based syntax over FRI
 commitment scheme). FRI commitment scheme brings transparency to auxiliary SNARK 
@@ -195,6 +177,6 @@ This also resulted in much better costs: $3594270$ gas for a single verificaton.
 
 ## Sold. When?
 
-The first milestone on the way is to introduce a very particular and well-optimized auxiliary proof circuit design to dot the i's and cross the t's (along with reducing the verification cost even more). This is expected to be done in Q4 2021 (Nov 2021 most probably). The production version is supposed to be launched 'till the end of Q1 2022.
+The first milestone on the way is to introduce a very particular and well-optimized auxiliary proof circuit design to dot the i's and cross the t's (along with reducing the verification cost even more). This is expected to be done in Q4 2021 (Nov 2021 most probably). The production version is supposed to be launched around the end of Q1 2022.
 
 Such a particular design will result in one more blog post with a descibtion. We will keep you updated!
