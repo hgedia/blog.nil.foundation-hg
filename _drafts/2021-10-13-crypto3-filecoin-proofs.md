@@ -8,4 +8,4 @@ author: Mikhail Komarov
 
 ## Introduction
 
-Filecoin's September of 2020 was enlightned by its 
+Filecoin's September of 2020 was enlightned by the cluster launch

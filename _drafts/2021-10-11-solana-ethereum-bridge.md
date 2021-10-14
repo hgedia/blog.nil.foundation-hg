@@ -210,9 +210,32 @@ inversion over finite field ($\approx30000$ gas). Keccak256 costs 30 gas.
 > * $n_{rows} =  669\,667\,657$
 > * verification gas costs: $2\,014\,200$
 
-So. The answer is $2\,014\,200$ gas roughly and pessimistically.
+So. The answer is $2\,014\,200$ gas per state proof verification roughly and 
+pessimistically.
 
-## When?
+## Can we do that cheaper?
 
-The detailed design description along with some prototypes are supposed to be ready in Q4 2021.  
-Production-ready implementation is supposed to be done 'till the end of Q1 2022.
+Well, there is a thing to try, yes. To decrease the size of the proof and 
+verification costs, it is possible to add one more proof layer. 
+RedShift proof can be verified by another RedShift instance. 
+For circuits of a significant size (as the one described above), additional wrapping the original proof into the "proof of correct proof of knowledge" decreases verification costs. 
+
+> Poseidon hash function generates $\approx1000$ gates ([https://hackmd.io/@7dpNYqjKQGeYC7wMlPxHtQ/BJpNmNW0L](https://hackmd.io/@7dpNYqjKQGeYC7wMlPxHtQ/BJpNmNW0L)).
+> For $n_{rows} = 669\,667\,657$, $\approx4560$ hash verification is required that is the lead cost of the verification circuit. 
+> Thus, for $n_2 - n_1 = 1000$ and $32000$ signatures verification: 
+> * $n_{rows} =  4\,560\,000$
+> * verification gas costs: $1\,580\,970$
+>
+> With such a trick applied, proof size results in $\approx100$KB.
+>
+> Note that verification costs grow logarithmicaly with $n_2 - n_1$ value. 
+
+## Okay. Any problems with the mechanism? 
+
+Yes. There are some. When using a bridge built upon such a state proof verification mechanism, one should be aware that the first version of the mechanism described is supposed to prove the state of the latest optimistically-confirmed replication packet the "light-client" received. That means, in case Solana cluster fails to confirm its optimistically-selected replication packet as a "final" one, state proof sequence will require re-generation. This means whatever optimistically confirmed data was rejected in Solana cluster, will be rejected in the same time within the in-EVM proof sequence.
+
+So. Be careful.
+
+## Got it. When?
+
+The detailed design description along with some prototypes are supposed to be ready in Q4 2021. Production-ready implementation is supposed to be done 'till the end of Q1 2022.
