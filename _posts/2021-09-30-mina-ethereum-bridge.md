@@ -75,7 +75,7 @@ The threshold cost of Mina state verification was set to be 5m gas. Direct Pickl
 
 But then, suddenly, even 5m gas turned out to be too expensive (thank you, 2021!).
 
-## Making this cheaper.
+## Making things cheaper.
 
 STARK-based auxiliary proof verification turned out to be too expensive for the task as well. So we started looking for a different SNARK to be used within the auxiliary proof.
 
