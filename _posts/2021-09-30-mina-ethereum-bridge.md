@@ -18,8 +18,6 @@ So this is the first within the series of blog posts covering some aspects of su
 
 Since the whole Mina Protocol state (except archive nodes) can be and is packed within the single Pickles SNARK proof (remember - 22kb only) ([https://medium.com/minaprotocol/meet-pickles-snark-enabling-smart-contract-on-coda-protocol-7ede3b54c250](https://medium.com/minaprotocol/meet-pickles-snark-enabling-smart-contract-on-coda-protocol-7ede3b54c250)), this means it is possible to put the whole Mina Protocol state right onto Ethereum. Moreover, this means for the whole Mina Protocol state is in-EVM verifiable within a reasonable gas cost.
 
-## Aaaand?
-
 A full Mina Protocol state in-EVM verification means it will be possible to bring everything that happens inside of the Mina chain to Ethereum, including financial applications, provable computations, and much more.
 
 ## Okay. How in particular?
@@ -77,9 +75,9 @@ The threshold cost of Mina state verification was set to be 5m gas. Direct Pickl
 
 But then, suddenly, even 5m gas turned out to be too expensive (thank you, 2021!).
 
-## Let me guess - you decided to make it cheaper, right?
+## Making this cheaper.
 
-Exactly. STARK-based auxiliary proof verification turned out to be too expensive for the task as well. So we started looking for a different SNARK to be used within the auxiliary proof.
+STARK-based auxiliary proof verification turned out to be too expensive for the task as well. So we started looking for a different SNARK to be used within the auxiliary proof.
 
 After a brief discussion, Rank-1 Constraint System-based SNARKs were crossed out as too costy ones as well. Even considering some of them were transparent and very promising (e.g. Spartan), which would've brought a nice feature of absence of necessity to trust any set of actors to generate the proof for the Ethereum submittance. Imagine if you would be required to trust a group of people who did trusted setup so anyone capable of generating Mina state proof rely on them? Too much trust for that. That is why SNARK transparency was a non-optional requirement.
 

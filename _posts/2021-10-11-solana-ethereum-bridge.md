@@ -13,7 +13,7 @@ comments: false
 This is the first within the series of blog posts covering some aspects of 
 tokenless zero-knowledge proof system-based in-EVM [Solana "light client"](https://docs.solana.com/proposals/simple-payment-and-state-verification#light-clients) state verification.
 
-Solana's September 2021 was enlightned by the launch of the second version of 
+Solana's September 2021 was enlightened by the launch of the second version of 
 [Ethereum-Solana bridge](https://wormholebridge.com/).
 A bridge of a proven architecture (a set of so-called "stakers" maintaining a 
 relay cluster consistent), backed by a solid team with enough value "locked" within the
@@ -23,17 +23,17 @@ value locked at all to achieve trustless bridging? Do we really need any so-call
 
 The answer is NO.
 
-## Emm. What? But all the cool kids are doing that!
+## Emm. What?
 
-Yes. Those cool kids usually do that to make cross-cluster data transmissions 
+Yes. Those bridges usually do that to make cross-cluster data transmissions 
 trustful, to make someone responsible for that to be able to whip them in case 
 something goes wrong. Such an approach makes such an architecture at least reliable 
 enough for everything not to fall apart right after the first data transmit from 
 cluster A (e.g. Solana) comes into the cluster B (e.g. Ethereum).
 
-But what if we remove such a data trustfullness requirement? What if we make the
+But what if we remove such a data trustfulness requirement? What if we make the
 data generated from cluster A (e.g. Solana) in-EVM verifiable so it could be 
-either proven valid, either rejected at all?
+either proven valid, or rejected at all?
 
 ## How is that?
 
@@ -43,27 +43,25 @@ Zero-Knowledge tricks. Yeah.
 
 Yes. Most of the currently existing ones. They do that to ensure a data-source 
 cluster state proof is generated correctly, by someone trustful, and submitted 
-often enough to the receipient cluster. "Often enough" requirement raises from
+often enough to the recipient cluster. "Often enough" requirement raises from
 the proof generation complexity - it means proof generating relay cluster members 
 are required to have some hardware of a good performance (often with top-grade 
 GPUs or even FPGAs) to be able to produce such state proofs. And such a hardware 
-needs to be payed for. So this leads to the necessity to incentivize proofs 
+needs to be paid for. So this leads to the necessity to incentivize proofs 
 generating members.
 
 There also surely are in-EVM state proof verification costs, which traditional 
-approach supposes to be payed by this set of incentivized members.
+approach supposed to be paid by this set of incentivized members.
 
 So, here we go. Expensive proof generation and verification along with state 
 proof consistency maintenance necessity leads to the incentivization.
 
-## Aaah. I got it. Making things cheaper again?
-
-Yup. Making Solana state proof generation and verification less 
+Making Solana state proof generation and verification less 
 complex (and therefore cheaper) paves the way to removing the necessity of having 
 a group of proof generating servers, so it removes the need to incentivize them, 
 so it removes the need for a so-called "token".
 
-## Okay. How in particular would you cheapen things up?
+## Okay. How in particular?
 
 1. Solana state which is being made in-EVM-verifiable is a ["light
 client"](https://docs.solana.com/proposals/simple-payment-and-state-verification#light-clients) 
@@ -90,7 +88,7 @@ usual R1CS-based ones, PLONK-based schemes provide [up to 5x constraints/gates r
 >
 > The best verification complexity for PLONK-based schemes known out there is a 
 > constant-time complexity with Kate commitment scheme. The problem about it is 
-> that it does not result in a transparent SNARK, which means it requires 
+> that it does not result in a transparent SNARK, which means it requires a
 > trusted setup procedure. This makes the whole proof verification idea crooked. 
 
 > Better solution with transparent properties is provided by RedShift
@@ -147,20 +145,20 @@ Sounds like a usecase for a recursive SNARK, you say? Well, something like that.
 There are considerations regarding that as well.
 
 The best way to prove that the validator set from some Solana epoch is derived and
-consistent with the previous one, is "anchor" transactions. It is the trahsaction 
+consistent with the previous one, is "anchor" transactions. It is the transaction 
 that checks the validator's account state. The prover needs to send such 
 transactions periodically at the end of epochs. It allows decreasing the 
 number of blocks between the last known account state and the new epoch.
 
-> But, in case such transaction type will not be introduced in Solana, there is
+> But, in case such a transaction type will not be introduced in Solana, there is
 > one more way.
 > Let $E_1$, $E_2$ are two consecutive epochs. $E_1$ is confirmed on the Ethereum side and $E_2$ is not.
 > 
 > To prove the validator set $S_2$ of $E_2$, the prover does the following:
 > 1. for $i$ from ${v_1, ..., v_m} = S$:
->     1. Show the inclusion proof of the last stacke-change transaction to $v_i$ (no later than the end of $E_1$).
->     2. Show that the there wasn't any stake update since the last delegate transaction $tx_{last}$.
->        That means verifying all transactions between $tx_{last}$ and the beggining of $E_2$.
+>     1. Show the inclusion proof of the last stake-change transaction to $v_i$ (no later than the end of $E_1$).
+>     2. Show that there wasn't any stake update since the last delegate transaction $tx_{last}$.
+>        That means verifying all transactions between $tx_{last}$ and the beginning of $E_2$.
 > 
 > Such an approach provides additional overhead to the prover.
 > The proof of correct validator set will be simplified after implementation of the "Simple Payment and State Verification (https://docs.solana.com/proposals/simple-payment-and-state-verification) proposal.
@@ -192,11 +190,7 @@ SHA2-512 can be computed under PLONK within $\approx20000$ gates.
 
 ### Overall Costs
 
-The main verifier's costs are Merkle proof verification ($\log^2n + 2 \cdot \log 2 n)$) 
-and low-degree testing ($\log n$), where $n$ is commited polynomial's degree 
-($n = \text{rows} \cdot (\text{wires} + 1)$).
-For simplicity, only lead costs are considered for low degree tests that is two 
-inversion over finite field ($\approx30000$ gas). Keccak256 costs 30 gas. 
+The main verifier's costs are Merkle proof verification ($\log^2n + 2 \cdot \log 2 n)$) and low-degree testing ($\log n$), where $n$ is commited polynomial's degree ($n = \text{rows} \cdot (\text{wires} + 1)$). For simplicity, only lead costs are considered for low degree tests that is two inversion over finite field ($\approx30000$ gas). Keccak256 costs 30 gas. 
 
 > In particular:
 > 
@@ -215,12 +209,9 @@ pessimistically.
 
 ## Can we do that cheaper?
 
-Well, there is a thing to try, yes. To decrease the size of the proof and 
-verification costs, it is possible to add one more proof layer. 
-RedShift proof can be verified by another RedShift instance. 
-For circuits of a significant size (as the one described above), additional wrapping the original proof into the "proof of correct proof of knowledge" decreases verification costs. 
+Well, there is a thing to try, yes. To decrease the size of the proof and verification costs, it is possible to add one more proof layer. RedShift proof can be verified by another RedShift instance. For circuits of a significant size (as the one described above), additional wrapping the original proof into the "proof of correct proof of knowledge" decreases verification costs. 
 
-> Poseidon hash function generates $\approx1000$ gates ([https://hackmd.io/@7dpNYqjKQGeYC7wMlPxHtQ/BJpNmNW0L](https://hackmd.io/@7dpNYqjKQGeYC7wMlPxHtQ/BJpNmNW0L)).
+> Poseidon hash function generates $\approx1000$ gates.
 > For $n_{rows} = 669\,667\,657$, $\approx4560$ hash verification is required that is the lead cost of the verification circuit. 
 > Thus, for $n_2 - n_1 = 1000$ and $32000$ signatures verification: 
 > * $n_{rows} =  4\,560\,000$
@@ -234,7 +225,9 @@ For circuits of a significant size (as the one described above), additional wrap
 
 Yes. There are some. When using a bridge built upon such a state proof verification mechanism, one should be aware that the first version of the mechanism described is supposed to prove the state of the latest optimistically-confirmed replication packet the "light-client" received. That means, in case Solana cluster fails to confirm its optimistically-selected replication packet as a "final" one, state proof sequence will require re-generation. This means whatever optimistically confirmed data was rejected in Solana cluster, will be rejected in the same time within the in-EVM proof sequence.
 
-So. Be careful.
+Such an issue is induced by Solana architecture. It supposes the latest replication packet received by the "light client" to be an "optimistically confirmed" one, and in case proof generation process results with the wrong proof as the result, this would be a Solana's "light client" by-design "issue".
+
+### So. Be careful.
 
 ## Got it. When?
 
