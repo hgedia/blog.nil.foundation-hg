@@ -1,7 +1,7 @@
 ---
 title: =nil; Foundation's In-EVM Solana State Verification.
 layout: post
-date: 2021-10-11
+date: 2021-10-14
 description: Paving the way to Solana-Ethereum zk-bridge.
 author: Mikhail Komarov, Ilya Shirobokov, Alisa Cherniaeva
 tags: crypto3 cryptography solana 
