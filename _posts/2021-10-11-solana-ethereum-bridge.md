@@ -37,7 +37,7 @@ either proven valid, or rejected at all?
 
 ## How is that?
 
-[SNARK](https://www.youtube.com/watch?v=VUN35BC11Qw) tricks. Yeah.
+SNARK tricks. Yeah.
 
 ## But all of the Zero-Knowledge bridges require "tokens" as well.
 
