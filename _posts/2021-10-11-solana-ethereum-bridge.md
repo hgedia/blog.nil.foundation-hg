@@ -21,7 +21,7 @@ relay cluster to consider it reliable. But is it really required to have any
 value locked at all to achieve trustless bridging? Do we really need any so-called 
 "tokens" for the bridging to be possible?
 
-The answer is NO.
+The answer is No.
 
 ## Emm. What?
 
@@ -37,7 +37,7 @@ either proven valid, or rejected at all?
 
 ## How is that?
 
-Zero-Knowledge tricks. Yeah.
+SNARK tricks. Yeah.
 
 ## But all of the Zero-Knowledge bridges require "tokens" as well.
 
@@ -64,12 +64,11 @@ so it removes the need for a so-called "token".
 ## Okay. How in particular?
 
 1. Solana state which is being made in-EVM-verifiable is a ["light
-client"](https://docs.solana.com/proposals/simple-payment-and-state-verification#light-clients) 
-state. A "light client" provides a level of security greater than trusting a 
+client"](https://docs.solana.com/proposals/simple-payment-and-state-verification#light-clients) state. A "light client" provides a level of security greater than trusting a 
 remote validator, without requiring the light client to spend a lot of resources 
 verifying the ledger. It also provides a state much smaller, containing
 validator votes, their stakes and transaction inclusion proofs (more precise
-description of a "light-client" data structure is present in here: https://docs.solana.com/proposals/simple-payment-and-state-verification#light-clients). This means there is no need to verify the whole 
+description of a "light-client" data structure is present in [here](https://docs.solana.com/proposals/simple-payment-and-state-verification#light-clients)). This means there is no need to verify the whole 
 Solana database, but just a crucial piece of it. This already reduces the circuit
 size greatly. This reduces the proof generation and verification time.
 
@@ -82,7 +81,7 @@ usual R1CS-based ones, PLONK-based schemes provide [up to 5x constraints/gates r
 > Though, the amount of constraints is not the only factor affecting the resulting
 > provable data size. Commitment scheme is what defines the actual size of the
 > data after its conversion to the set of constraints is completed. It also
-> affects the proof generation and verification computations complexity, and that
+> affects the proof generation and verification computations complexity. That
 > means the balance between proof generation time and proof verification time has
 > to be found.
 >
@@ -92,11 +91,10 @@ usual R1CS-based ones, PLONK-based schemes provide [up to 5x constraints/gates r
 > trusted setup procedure. This makes the whole proof verification idea crooked. 
 
 > Better solution with transparent properties is provided by RedShift
-> construction, which adjusts the FRI commitment scheme to PLONK-syntaxed schemes 
-> usage, introducing the LPC commitment scheme, and allows to verify the proof in 
+> construction, which adjusts the FRI commitment (the ones that are used in STARKs) scheme to PLONK-syntaxed schemes. 
+> RedShift introduces the LPC commitment scheme, and allows to verify the proof in 
 > less than $21 \times log2(n)$ time and generate the proof in less than 
 > $54(n + a)log2(n + a)$ time depending on the amount of PLONK rows.
-
 
 Such proof generation/verification cheapening measures lead to anyone wanting to
 put some data batch through the bridge can generate Solana state proof
@@ -108,7 +106,7 @@ for the in-EVM proof submission and verification mechanism.
 
 ## Which requirements?
 
-Since the set of trusted parties generating and submitting the Solana's "light
+Since the set of parties generating and submitting the Solana's "light
 client" state proof to EVM-enabled cluster from time to time is not supposed to 
 be present within the architecture described, there is a need for a way to keep 
 track of such a sequence of proofs, stored inside Ethereum, to be a valid one,
@@ -119,21 +117,20 @@ So the requirements introduced make the in-EVM verificator to check if the state
 proof is derived from the previous one, which is derived from a previous one,
 which is derived from a previous one and so on.
 
-Sounds like a usecase for a recursive SNARK, you say? Well, something like that.
+
 
 > In particular, the state proof sequence maintenance mechanism is defined as
 > follows: 
 > Let $B_{n_1}$ is the last state confirmed on Ethereum.
 > The prover wants to confirm a new $B_{n_2}$ state. 
-> Denote by $H_{B}$ the hash of a state $B$.
+> Denote by $H_{B}$ the bank hash of a state $B$.
 > The proving statement contains (but not bounded by) the following points:
 >
 >  1. Show that the validator set is correct.  
 >  2. Show that the $B_{n_1}$ corresponds to the last confirmed state on Ethereum.  
->  3. for $i$ from the interval $[n_1 + 1, n_2 - 1]$:  
+>  3. for $i$ from the interval $[n_1 + 1, n_2 + 31]$:  
 >      1. Show that $B_{i}$ contains $H_{B_{i - 1}}$ as a hash of the previous state.  
->  4. for $i$ from the interval $[n_2, n_2 + 32]$:  
->      1. Show that $B_{i}$ contains $H_{B_{i - 1}}$ as a hash of the previous state.  
+>   4. for $i = n_32$:  
 >      2. Show that there are enough valid signatures from the current validator set for $B_{i}$.  
 >  5. Build a Merkle Tree $T_{n_1, n_2}$ from the set $\{H_{B_{n_1}}, ..., H_{B_{n_2}}\}$.  
 >
@@ -144,8 +141,10 @@ Sounds like a usecase for a recursive SNARK, you say? Well, something like that.
 
 There are considerations regarding that as well.
 
+First of all, the accepted [proposal](https://docs.solana.com/proposals/simple-payment-and-state-verification) "Simple Payment and State Verification" provides a pretty straightforward way to verify validator set correctness. However, it hasn't been implemented yet. What can we do right now? 
+
 The best way to prove that the validator set from some Solana epoch is derived and
-consistent with the previous one, is "anchor" transactions. It is the transaction 
+consistent with the previous one is "anchor" transactions. It is the transaction 
 that checks the validator's account state. The prover needs to send such 
 transactions periodically at the end of epochs. It allows decreasing the 
 number of blocks between the last known account state and the new epoch.
@@ -161,7 +160,7 @@ number of blocks between the last known account state and the new epoch.
 >        That means verifying all transactions between $tx_{last}$ and the beginning of $E_2$.
 > 
 > Such an approach provides additional overhead to the prover.
-> The proof of correct validator set will be simplified after implementation of the "Simple Payment and State Verification (https://docs.solana.com/proposals/simple-payment-and-state-verification) proposal.
+> The proof of correct validator set will be simplified after implementation of the "Simple Payment and State Verification" (https://docs.solana.com/proposals/simple-payment-and-state-verification) proposal.
 
 ## Okay, how much for a single bridged transaction?
 
@@ -185,7 +184,7 @@ SHA2-512 can be computed under PLONK within $\approx20000$ gates.
 > According to the state sequence maintenance algorithm, there are 
 > $n_{rows-2} = 2 \cdot (n_2 - n_1) \cdot H_{sha256} + \log(n_2 - n_1) \cdot H_{sha256} $ 
 > additional rows for hash chain and Merkle tree calculations. 
-> For simplicity, we use SHA256 hash function for $T_{n_1, n_2}$ but it can be 
+> For simplicity of calculations, we use SHA256 hash function for $T_{n_1, n_2}$ but it can be 
 > changed to Poseidon. 
 
 ### Overall Costs
@@ -214,6 +213,7 @@ Well, there is a thing to try, yes. To decrease the size of the proof and verifi
 > Poseidon hash function generates $\approx1000$ gates.
 > For $n_{rows} = 669\,667\,657$, $\approx4560$ hash verification is required that is the lead cost of the verification circuit. 
 > Thus, for $n_2 - n_1 = 1000$ and $32000$ signatures verification: 
+>
 > * $n_{rows} =  4\,560\,000$
 > * verification gas costs: $1\,580\,970$
 >
