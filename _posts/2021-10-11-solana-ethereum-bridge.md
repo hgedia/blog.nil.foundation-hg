@@ -1,5 +1,5 @@
 ---
-title: =nil; Foundation's In-EVM Solana State Verification.
+title: =nil; Foundation's In-EVM Solana Light-Client State Verification.
 layout: post
 date: 2021-10-14
 description: Paving the way to Solana-Ethereum zk-bridge.
@@ -227,7 +227,9 @@ Yes. There are some. When using a bridge built upon such a state proof verificat
 
 Such an issue is induced by Solana architecture. It supposes the latest replication packet received by the "light client" to be an "optimistically confirmed" one, and in case proof generation process results with the wrong proof as the result, this would be a Solana's "light client" by-design "issue".
 
-### So. Be careful.
+The second protocol version will introduce adjustments regarding this issue.
+
+### But for now, be careful.
 
 ## Got it. When?
 
