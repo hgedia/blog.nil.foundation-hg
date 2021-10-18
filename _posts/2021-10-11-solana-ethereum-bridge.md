@@ -227,10 +227,10 @@ Yes. There are some. When using a bridge built upon such a state proof verificat
 
 Such an issue is induced by Solana architecture. It supposes the latest replication packet received by the "light client" to be an "optimistically confirmed" one, and in case proof generation process results with the wrong proof as the result, this would be a Solana's "light client" by-design "issue".
 
-The second protocol version will introduce adjustments regarding this issue.
+The second protocol version will introduce adjustments to handle this.
 
 ### But for now, be careful.
 
 ## Got it. When?
 
-The detailed design description along with some prototypes are supposed to be ready in Q4 2021. Production-ready implementation is supposed to be done 'till the end of Q1 2022.
+The detailed design description along with some prototypes are supposed to be ready in Q4 2021. Production-ready implementation is supposed to be done 'till the end of Q1 2022. Stay tuned!
