@@ -2,7 +2,7 @@
 title: =nil; Foundation's In-EVM Solana Light-Client State Verification.
 layout: post
 date: 2021-10-14
-description: Paving the way to Solana-Ethereum zk-bridge.
+excerpt: Paving the way to Solana-Ethereum zk-bridge.
 author: Mikhail Komarov, Ilya Shirobokov, Alisa Cherniaeva
 tags: crypto3 cryptography solana 
 comments: false

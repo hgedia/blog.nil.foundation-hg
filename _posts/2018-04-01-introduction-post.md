@@ -2,7 +2,7 @@
 title: =nil; Foundation
 layout: post
 date: 2021-09-30
-description: What is =nil; Foundation?
+excerpt: What is =nil; Foundation?
 author: Mikhail Komarov
 tags: about foundation
 comments: false
