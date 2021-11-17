@@ -17,7 +17,7 @@ The answer is No.
 
 ## Oh. You're going to pitch some "Secret Sauce" of yours now?
 
-Something like that. Not a "Secret Sauce", but just a tool of ours.
+Well, not a "Secret Sauce", but just a tool of ours.
 
 So, can I start?
 

@@ -11,14 +11,14 @@ comments: false
 ## Introduction
 
 This is the second post within the series of Solana-Ethereum bridge-dedicated blog posts of ours. 
-The first one is in [here](https://blog.nil.foundation/2021/10/11/solana-ethereum-bridge.html).
+The first one is in [here](https://blog.nil.foundation/2021/10/14/solana-ethereum-bridge.html).
 
-## Hi! I'm 5yo and I eat glue. Explain to me how would this bridge of yours work?
+## Hi! I'm 5yo and I eat glue. Explain to me how this bridge of yours works?
 
 Hello, fellow glue eater! ELI5 is not something we do usually but this time we
 will try. So lets get to it.
 
-First thing first. The project we do is not the brigde itself in terms of how
+First thing first. The project we do is not the bridge itself in terms of how
 people commonly think of bridges. It is a core to the bridge (first completely
 trustless bridge, by the way). A Solana's 'Light-Client' state verification protocol. 
 So you wouldn't be able to "transfer tokens" out of the box, but applications 
@@ -33,7 +33,7 @@ in its core.
 
 1. Retrieving Solana's 'Light-Client' state.
 2. Generating a state proof.
-3. Putting it to Ethereum (or any other EVM-enabled clsuter) for it to check the
+3. Putting it to Ethereum (or any other EVM-enabled cluster) for it to check the
    newly generated state proof validity.
 4. Ethereum accepts the state proof and marks it as a valid one (without storing
    it internally).
@@ -41,10 +41,10 @@ in its core.
 First step would require Solana's RPC endpoint to be available, but it shouldn't
 be a trusted one. Any would work. Even a public one.
 
-Second step. Proof generation. From engineering point of view, you can think of
+Second step. Proof generation. From an engineering point of view, you can think of
 this process as of a one-way compression preserving internal data structure
-knowledge. In fact, ceratinly, it is more than that (and the compression is
-actually the wrong word for it), but, well, we're doing ELI5 blog post, right?
+knowledge. In fact, certainly, it is more than that (and the compression is
+actually the wrong word for it), but, well, we're doing an ELI5 blog post, right?
 
 This step would require any device which can process basic arithmetics. A
 laptop? Yes. A phone? Yes. Web browser? Yes.
@@ -59,10 +59,10 @@ one. But all this gets handled by in-EVM logic, so from the application
 developer's point of view, the only thing which is required is to submit the
 proof to some Ethereum RPC endpoint (works from a browser as well).
 
-Forth step. This step actually does what just've been described. On this stage
+Fourth step. This step actually does what just've been described. On this stage
 the only thing a user or an application developer can do is to relax and wait
-things to happen. A web browser could be useful for that as well. Helps to pass
-the time, those several seconds, while verification is being performed.
+for things to happen. A web browser could be useful for that as well. Helps to 
+pass the time, those several seconds, while verification is being performed.
 
 After these 4 steps we have a valid representation of Solana's 'Light-Client'
 state on Ethereum.
@@ -73,14 +73,14 @@ Because, according to the process described above, the only thing you need to
 bridge two clusters is a web browser. No "relays", no "tokens", no "validators", 
 nothing. Just a web browser.
 
-We're even (secretly) proud how redundant and obsolete this makes those bulky 
+We're even (secretly) proud of how redundant and obsolete this makes those bulky 
 "relay"-based bridges look like (Wormhole, anyone?).
 
 ## Yeah yeah, don't be so proud. It is not done yet.
 
 Fair enough.
 
-## What about applications examples?
+## What about application examples?
 
 Let us consider the most trivial one. "Token bridge". What would it require?
 
@@ -89,7 +89,7 @@ about earlier:
 
 1. Retrieving Solana's 'Light-Client' state.
 2. Generating a state proof.
-3. Putting it to Ethereum (or any other EVM-enabled clsuter) for it to check the
+3. Putting it to Ethereum (or any other EVM-enabled cluster) for it to check the
    newly generated state proof validity.
 4. Ethereum accepts the state proof and marks it as a valid one (without storing
    it internally).
@@ -100,7 +100,7 @@ first "lock" the "asset" bridged.
 Then, since Solana's 'Light-Client' state is supposed to contain the information
 about current cluster members only (people call them "validators", ugh), it is 
 required to retrieve the particular transaction you are trying to bridge and
-generate an additional proof for it. Since single Solana's transaction is
+generate an additional proof for it. Since a single Solana's transaction is
 limited by 1023 bytes, this shouldn't create any troubles with proof generation.
 
 In-EVM side of the application is supposed to check the validity of the transaction 
@@ -123,7 +123,7 @@ putting those quotes everywhere after it as well.
 
 There is a work-in-progress demo version at
 [https://verify.solana.nil.foundation](https://verify.solana.nil.foundation). 
-It allows to get a general feeling of those 4 core steps. They are supposed to 
+It allows you to get a general feeling of those 4 core steps. They are supposed to 
 be done automatically in actual applications, but for now they matter.
 
 In case you're in for deep technical details, you can consider reading the paper
