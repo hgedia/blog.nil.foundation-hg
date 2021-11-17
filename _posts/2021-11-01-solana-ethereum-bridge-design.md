@@ -103,7 +103,7 @@ required to retrieve the particular transaction you are trying to bridge and
 generate an additional proof for it. Since a single Solana's transaction is
 limited by 1023 bytes, this shouldn't create any troubles with proof generation.
 
-In-EVM side of the application is supposed to check the validity of the transaction 
+The In-EVM side of the application is supposed to check the validity of the transaction 
 (if it actually exists on Solana's side) by comparing it with Solana's Merkle 
 hashes submitted and proved on Ethereum side by the state proof validation process.
 

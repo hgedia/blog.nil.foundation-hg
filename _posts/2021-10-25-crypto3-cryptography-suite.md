@@ -37,13 +37,13 @@ That is why we decided to wrap this approach into the framework based on the cry
 
 ## Which is?
 
-Crypto3 C++ Cryptography Suite (https://github.com/nilfoundation/crypto3)
+Crypto3 C++ Cryptography Suite ([https://github.com/nilfoundation/crypto3](https://github.com/nilfoundation/crypto3))
 
 ## Another one? Srsly? In C++? Why?
 
 Yeah. Back then, in April of 2018, there were few more or less complex and complete and proven classic cryptography suites libraries for in C (OpenSSL, libsoduim, libtomcrypt) or C++ (Botan, libcryptopp, libsoduim C++ bindings, OpenSSL C++ bindings) and some early-stage Rust-based developments, which everyone was building their signatures and hashes on top of.
-More sophisticated ones included suites like libsnark (https://github.com/scipr-labs/libsnark), 
-5GenCrypto (https://github.com/5GenCrypto), and ZCash-related developments (https://github.com/zcash), which were far from what we needed. Also none of cryptography suites mentioned contained threshold signature/encryption schemes (you will get why we need it later), zero-knowledge proof systems, homomorphic signatures/encryption and verifiable delay functions and lots of other things all at once.
+More sophisticated ones included suites like libsnark ([https://github.com/scipr-labs/libsnark](https://github.com/scipr-labs/libsnark)), 
+5GenCrypto ([https://github.com/5GenCrypto](https://github.com/5GenCrypto)), and ZCash-related developments ([https://github.com/zcash](https://github.com/zcash)), which were far from what we needed. Also none of cryptography suites mentioned contained threshold signature/encryption schemes (you will get why we need it later), zero-knowledge proof systems, homomorphic signatures/encryption and verifiable delay functions and lots of other things all at once.
 
 ## But why don't you just patch/fork existing libraries?
 
