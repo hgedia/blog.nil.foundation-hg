@@ -2,7 +2,7 @@
 title: =nil; Crypto3 Cryptography Suite.
 layout: post
 date: 2021-10-25
-description: Cryptography Suite for zk-Rollups, zk-Bridges and much more.
+excerpt: Cryptography Suite for zk-Rollups, zk-Bridges and much more.
 author: Mikhail Komarov
 tags: crypto3 cryptography cpp
 comments: false
