@@ -19,29 +19,30 @@ in-EVM state proof verification of ours would work.
 ## Didn't you post such a description already?
 
 Not really. What we do is not the bridge itself, but a core mechanism, a crucial 
-component to it. Mina state verification on Ethereum. This will not bring the
-bridge functionality out of the box, but with proper applications on top of it, 
-this can be used to build such a functionality.
+component to achieving such a bridging. Mina state verification on Ethereum. This 
+will not bring the bridge functionality out of the box, but with proper applications 
+on top of it, this can be used to build such a functionality.
 
 ## Which applications?
 
 Yeah. That is what I was about to tell.
 
-Let us consider a hypothetical Mina-Ethereum bridging application based on a 
-state proof verification mechanism. What would it consist of?
+Let us consider a hypothetical Mina-Ethereum bridge based on a state proof 
+verification mechanism. What would it consist of?
 
-Well, first of all, we gotta make sure that whatever happens in Mina can be
-proved to be valid on Ethereum. This can be done as follows:
+Well, first of all, we gotta make sure that whatever happens in Mina can be proved 
+to be valid on Ethereum. This can be done as follows:
 
 1. Retrieve Mina state proof.
 2. Put it onto Ethereum.
 3. Ethereum checks if the state proof is valid.
 4. Ethereum accepts and stores the proof in case it is valid and rejects otherwise.
 
-Notice that there are no incentivized protocol participants which prove the state proof is valid. 
-As there are no incentives at all. This means it is completely trustless.
+Notice that there are no incentivized protocol participants which prove the state 
+proof is valid. As there are no incentives at all. This means it is completely 
+trustless.
 
-## Why is it so? 
+## Why is it so?
 
 Mina's state proof is self-validatable. Even in case a non-valid proof gets 
 generated and submitted to Ethereum side, it will simply not pass the verification.
@@ -54,9 +55,10 @@ are good to go for free (in terms of paying the verification cost).
 
 ## The most trivial application case. WMINA.
 
-Now lets consider the most trivial case this can be used for. WMINA.
+Now lets consider the most trivial case this can be used for. 
+Wrapped Mina on Ethereum. Or, how they usually call this kind of things - WMINA.
 
-This would require to implement the in-EVM logic, which would issue WMINA according 
+This would require implementing the in-EVM logic, which would issue WMINA according 
 to the amount which was transferred on Mina side and that was verified to be true by
 state proof verification mechanism.
 
@@ -72,29 +74,35 @@ So the overall workflow now looks like this:
 
 ## What about something less trivial?
 
-This can actually be generalized to proving various computations done with
-SNAPPs on the Mina side on Ethereum. The overall process is still going to be the
+This can actually be generalized to proving various computations, done with
+Snapps on the Mina side, on Ethereum. The overall process is still going to be the
 same, the only thing which should be different is what in particular the in-EVM 
 part does.
 
-Proving that a particular trade order was filled on Uniswap with Mina without
+Proving that a particular trade order was filled on Uniswap with Mina without 
 revealing the actual trade? Yes.
 
-Proving the location with Mina with some transfer happening on Ethereum
-afterwards? Yes.
+Proving the location with Mina with some transfer happening on Ethereum afterward? 
+Yes.
 
-Proving the identity with Mina and using it as a second factor to the 
-Ethereum-based action authorization? Yes.
+Proving the identity with Mina and using it as a second factor to the Ethereum-based 
+action authorization? Yes.
 
 Lots of things can be brought in here. You name it.
 
 ## Who is going to submit those proofs to Ethereum?
 
-A user who is willing to use the bridge. Since Mina state proof can be 
+Any user or dapp which is about to the bridge. Since Mina state proof can be 
 self-verified, there is no need to keep any set of trusted protocol participants 
 to submit those proofs periodically. And, since the state proof verification is
 pretty cheap as well, there will be no significant overhead in Mina-Ethereum 
 transaction cost.
+
+Important nuance is that it is enough to submit only one valid proof of a particular
+Mina's state to make all the applications using such a state proof verification 
+core to be able to function. So, in the end, only one user (the least lucky one) 
+will pay the verification cost to Ethereum, others will be able to re-use Mina's 
+state proof once verified for free.
 
 ## Alright. Is there anything to try already?
 

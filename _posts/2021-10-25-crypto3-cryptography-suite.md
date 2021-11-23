@@ -47,7 +47,7 @@ More sophisticated ones included suites like libsnark ([https://github.com/scipr
 
 ## But why don't you just patch/fork existing libraries?
 
-Just like that: https://github.com/filecoin-project/bellperson.git, https://github.com/cryptonomex/secp256k1-zkp, https://boringssl.googlesource.com/boringssl/ or https://github.com/libressl-portable/openbsd.git ?
+Just like that: [https://github.com/filecoin-project/bellperson.git](https://github.com/filecoin-project/bellperson.git), [https://github.com/cryptonomex/secp256k1-zkp](https://github.com/cryptonomex/secp256k1-zkp), [https://boringssl.googlesource.com/boringssl/](https://boringssl.googlesource.com/boringssl/) or [https://github.com/libressl-portable/openbsd.git](https://github.com/libressl-portable/openbsd.git) ?
 
 Most of these patches/forks were made for some particular purpose and usually do not meet the requirements of handling enough of schemes and primitives at once. So patching those would result in the same thing - extensive refactoring, which sometimes gets even more complicated than implementing things from scratch.
 

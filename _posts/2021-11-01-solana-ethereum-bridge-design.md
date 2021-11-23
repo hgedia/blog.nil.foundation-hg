@@ -76,7 +76,7 @@ nothing. Just a web browser.
 We're even (secretly) proud of how redundant and obsolete this makes those bulky 
 "relay"-based bridges look like (Wormhole, anyone?).
 
-## Yeah yeah, don't be so proud. It is not done yet.
+## Yeah yeah, don't brag about it. It is not done yet.
 
 Fair enough.
 
