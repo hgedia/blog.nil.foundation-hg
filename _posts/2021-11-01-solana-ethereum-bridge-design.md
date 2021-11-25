@@ -101,7 +101,7 @@ Then, since Solana's 'Light-Client' state is supposed to contain the information
 about current cluster members only (people call them "validators", ugh), it is 
 required to retrieve the particular transaction you are trying to bridge and
 generate an additional proof for it. Since a single Solana's transaction is
-limited by 1023 bytes, this shouldn't create any troubles with proof generation.
+limited by 1232 bytes, this shouldn't create any troubles with proof generation.
 
 The In-EVM side of the application is supposed to check the validity of the transaction 
 (if it actually exists on Solana's side) by comparing it with Solana's Merkle 
@@ -121,7 +121,8 @@ putting those quotes everywhere after it as well.
 
 ## How about trying something out? A demo?
 
-There is a work-in-progress demo version at
+There is a work-in-progress demo version (very drafty one, will post every time 
+there is a major update regarding this demo) at 
 [https://verify.solana.nil.foundation](https://verify.solana.nil.foundation). 
 It allows you to get a general feeling of those 4 core steps. They are supposed to 
 be done automatically in actual applications, but for now they matter.
