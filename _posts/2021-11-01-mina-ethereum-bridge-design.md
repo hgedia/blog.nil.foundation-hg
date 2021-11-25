@@ -92,7 +92,7 @@ Lots of things can be brought in here. You name it.
 
 ## Who is going to submit those proofs to Ethereum?
 
-Any user or dapp which is about to the bridge. Since Mina state proof can be 
+Any user or application which is about to use the bridge. Since Mina state proof can be 
 self-verified, there is no need to keep any set of trusted protocol participants 
 to submit those proofs periodically. And, since the state proof verification is
 pretty cheap as well, there will be no significant overhead in Mina-Ethereum 
