@@ -17,9 +17,8 @@ The answer is No.
 
 ## Oh. You're going to pitch some "Secret Sauce" of yours now?
 
-Well, not a "Secret Sauce", but just a project of ours which backs those bridges.
-First one within a couple mentioned within our [Twitter "About"
-section](https://twitter.com/nil_foundation).
+Well, not a "Secret Sauce", but just a project of ours behind those bridges.
+First one within a couple mentioned within our [Twitter "About" section](https://twitter.com/nil_foundation) ("Home foundation for <span style='font-family:Menlo, Courier, monospace'>=nil;</span> Crypto3 and <span style='font-family:Menlo, Courier, monospace'>=nil;</span> DBMS projects").
 
 So, can I start?
 
@@ -30,10 +29,12 @@ wrapping a heavy proof verification (or some heavy data set verification) into a
 verification of a lighter proof, which proves the successfull verification of the 
 initial heavier proof.
 
-This allows larger datasets to be succesfully verified while the whole construction 
-stays formally secure and correct.
+This allows complicated data structures (in Solana's case it is a "light-client" 
+state, in Mina's case it is a Pickles SNARK proof) to be succesfully verified on 
+EVM by verifying a lighter proof which proves the initial data correct verification. 
+So the whole construction stays formally secure and correct.
 
-Such approach combined with FRI commitment scheme gives the transparency properties, 
+Such approach combined with the LPC commitment scheme gives the transparency properties, 
 which in practice means the absence of a need for a proof system trusted setup, 
 which in its turn makes such bridges completely trustless.
 
@@ -61,21 +62,37 @@ Most of these patches/forks were made for some particular purpose and usually do
 
 ## Fine. A library of your own. What is so special about it?
 
-Well, first of all, its size. Since the April of 2018 we've put pretty much everything you can think of inside of it: VDFs, signature schemes (including threshold ones with various DKGs), zero-knowledge proof systems (R1CS and PLONK-based ones), more traditional cryptography notions (block ciphers, hashes, message authentication codes, key deriveation functions etc). Full list is available in here: [https://crypto3.nil.foundation/projects/crypto3/modules.html](https://crypto3.nil.foundation/projects/crypto3/modules.html).
+Well, first of all, its size. Since the April of 2018 we've put pretty much everything you can think of inside of it: VDFs, signature schemes (including threshold ones with various DKGs), zero-knowledge proof systems (R1CS and PLONK-based ones), more traditional cryptography notions (block ciphers, hashes, message authentication codes, key deriveation functions etc). Full list is available in here: [https://crypto3.nil.foundation/projects/crypto3/modules.html](https://crypto3.nil.foundation/projects/crypto3/modules.html) along with documentation to each module in here: [https://crypto3.nil.foundation/projects/crypto3/pages.html](https://crypto3.nil.foundation/projects/crypto3/pages.html).
 
 ## What for?
 
 Well, all the projects we've accomplished were based on top of it or whatever we did eventually ended up inside of the cryptography suite of ours. Those old Chia Network VDF ([https://www.chia.net/2019/07/18/chia-vdf-competition-round-2-results-and-announcements.en.html](https://www.chia.net/2019/07/18/chia-vdf-competition-round-2-results-and-announcements.en.html)) and ProofOfSpace competitions ([https://github.com/Chia-Network/proofofspaceresults](https://github.com/Chia-Network/proofofspaceresults)) found their place among VDF's implementations within the Crypto3.VDF module of ours: [https://github.com/NilFoundation/crypto3-vdf](https://github.com/NilFoundation/crypto3-vdf) and in particular [https://github.com/NilFoundation/crypto3-vdf/blob/master/include/nil/crypto3/vdf/chia.hpp](https://github.com/NilFoundation/crypto3-vdf/blob/master/include/nil/crypto3/vdf/chia.hpp). Our Filecoin-related effors eventually found their place among the developments based on top of the cryptography suite: [https://github.com/NilFoundation/crypto3-fil-proofs](https://github.com/NilFoundation/crypto3-fil-proofs) (not finished and will probably not be finished, but anyway).
 
-Same thing happened with Mina-Ethereum ([https://blog.nil.foundation/2021/09/30/mina-ethereum-bridge.html](https://blog.nil.foundation/2021/09/30/mina-ethereum-bridge.html)) and Solana-Ethereum ([https://blog.nil.foundation/2021/10/14/solana-ethereum-bridge.html](https://blog.nil.foundation/2021/10/14/solana-ethereum-bridge.html)) zk-bridges projects of ours.
+Same thing happened with Mina-Ethereum ([https://blog.nil.foundation/2021/09/30/mina-ethereum-bridge.html](https://blog.nil.foundation/2021/09/30/mina-ethereum-bridge.html), [https://github.com/nilfoundation/evm-mina-verification.git](https://github.com/nilfoundation/evm-mina-verification.git)) and Solana-Ethereum ([https://blog.nil.foundation/2021/10/14/solana-ethereum-bridge.html](https://blog.nil.foundation/2021/10/14/solana-ethereum-bridge.html), [https://github.com/nilfoundation/evm-solana-verification.git](https://github.com/nilfoundation/evm-solana-verification.git)) zk-bridges projects of ours.
 
 That is what for.
 
 ## Okay. Next question. Who uses C++ in 2021?
 
-Well, to be honest, we consider that simply as a tool. Complicated but reliable, mature and time-proven. No special feelings in here.
+It is just a tool. Complicated but reliable, mature and time-proven. No special feelings in here.
 
-To minimize complexities induced by such a tool usage, we decided to:
+To minimize complexities induced by such a toolchain usage, we decided to:
 - Design the suite architecture from the scratch to keep the API clean out of backward compatibility.
-- Design the API to be very similar to STL (block cipher encryption example: [https://github.com/NilFoundation/boost-crypto3/blob/master/example/encrypt.cpp#L24](https://github.com/NilFoundation/boost-crypto3/blob/master/example/encrypt.cpp#L24). We even had a special Boost-dedicated version, intended to be proposed to Boost and then to standartization commitee (WG21) one day ([https://github.com/nilfoundation/boost-crypto3](https://github.com/nilfoundation/boost-crypto3)).
+- Design the API to be very similar to STL (hashing example: [https://crypto3.nil.foundation/projects/crypto3/df/d2e/hashes_usage_manual.html](https://crypto3.nil.foundation/projects/crypto3/df/d2e/hashes_usage_manual.html). We even had a special Boost-dedicated version, intended to be proposed to Boost and then to standartization commitee (WG21) one day ([https://github.com/nilfoundation/boost-crypto3](https://github.com/nilfoundation/boost-crypto3)), so in case it gets accepted it would be possible to do basic cryptography (we hadn't proposed more advanced modules to the WG21) with STL right out of the box (e.g. encryption like this: [https://github.com/NilFoundation/boost-crypto3/blob/master/example/encrypt.cpp#L24](https://github.com/NilFoundation/boost-crypto3/blob/master/example/encrypt.cpp#L24)).
 - Make it a fool-proof by employing massive amount of compile-time correctness checks. So now it is as close as possible to the state "if it compiles, then it works correctly". Every usage mistake which can be made will be prevented during the compilation.
+- Make it comfortable for prototyping novel schemes/proof systems/hashes/other by keeping the implementation as close to formal constructions.
+
+## How can that be comfortable at all?
+
+Hashes, for example, have their Merkle-Damgard or Sponge constructions defined with explicit reprensentations ([https://github.com/NilFoundation/crypto3-hash/blob/master/include/nil/crypto3/hash/detail/merkle_damgard_construction.hpp#L55](https://github.com/NilFoundation/crypto3-hash/blob/master/include/nil/crypto3/hash/detail/merkle_damgard_construction.hpp#L55), [https://github.com/NilFoundation/crypto3-hash/blob/master/include/nil/crypto3/hash/detail/sponge_construction.hpp#L56](https://github.com/NilFoundation/crypto3-hash/blob/master/include/nil/crypto3/hash/detail/sponge_construction.hpp#L56)), which make it easy to map the implementation to the definition given within the paper or specification. Such representations, though, get elliminated during compilation so they do not affect the performance. So defining a new hash goes down to something similar to "I want a hash, based on Sponge construction with a compressor defined as follows (here goes the definition of a compressor)". Poseidon hash is defined exactly like that: [https://github.com/NilFoundation/crypto3-hash/blob/master/include/nil/crypto3/hash/poseidon.hpp#L53](https://github.com/NilFoundation/crypto3-hash/blob/master/include/nil/crypto3/hash/poseidon.hpp#L53). With, speaking in terms of software architecture, a stateless policy class, simply defining proper types inside.
+
+More on prototyping new hashes can be found on the 
+
+Another example is LPC ([https://github.com/NilFoundation/crypto3-zk/blob/20-plonk-impl/include/nil/crypto3/zk/snark/commitments/list_polynomial_commitment.hpp#L51](https://github.com/NilFoundation/crypto3-zk/blob/20-plonk-impl/include/nil/crypto3/zk/snark/commitments/list_polynomial_commitment.hpp#L51) or FRI [https://github.com/NilFoundation/crypto3-zk/blob/20-plonk-impl/include/nil/crypto3/zk/snark/commitments/fri_commitment.hpp](https://github.com/NilFoundation/crypto3-zk/blob/20-plonk-impl/include/nil/crypto3/zk/snark/commitments/fri_commitment.hpp) commitment schemes which were given the same interface, so changing the commitment scheme within the proof system is as easy as changing the template parameter.
+
+## Alright. Back to bridges. Can this framework on top of suite of yours be reused?
+
+Sure. Any of currently existing bridges repositories ([https://github.com/nilfoundation/evm-mina-verification.git](https://github.com/nilfoundation/evm-mina-verification.git) or [https://github.com/nilfoundation/evm-solana-verification.git](https://github.com/nilfoundation/evm-solana-verification.git)) can be reused for the purpose of creating a new bridge.
+
+All of them consist of several parts:
+1. Proof generator. Usually emplaced in `bin` directory. Uses a circuit definition done with [Crypto3.Blueprint](https://github.com/nilfoundation/crypto3-blueprint.git).

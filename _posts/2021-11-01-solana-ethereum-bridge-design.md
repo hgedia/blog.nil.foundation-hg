@@ -139,6 +139,6 @@ ours: [https://github.com/NilFoundation/evm-solana-verification](https://github.
 Still the same. The design is already in (at least for the most critical parts -
 proof system)([https://github.com/NilFoundation/evm-solana-verification/blob/master/docs/design/main.pdf](https://github.com/NilFoundation/evm-solana-verification/blob/master/docs/design/main.pdf)).
 
-Next step - a proof generation process demo. In browser one surely.
+Next step - a proof generation process demo. In-browser one surely.
 
 Stay tuned!
