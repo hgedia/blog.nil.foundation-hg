@@ -8,7 +8,7 @@ tags: crypto3 cryptography cpp
 comments: false
 ---
 
-## What is that about?
+## What is this about?
 
 This post is a response to the numerous amount of questions we've received about 
 isn't it too much to try to build two pretty complex zk-bridges at the same time.
@@ -78,7 +78,41 @@ It is just a tool. Complicated but reliable, mature and time-proven. No special 
 
 To minimize complexities induced by such a toolchain usage, we decided to:
 - Design the suite architecture from the scratch to keep the API clean out of backward compatibility.
-- Design the API to be very similar to STL (hashing example: [https://crypto3.nil.foundation/projects/crypto3/df/d2e/hashes_usage_manual.html](https://crypto3.nil.foundation/projects/crypto3/df/d2e/hashes_usage_manual.html). We even had a special Boost-dedicated version, intended to be proposed to Boost and then to standartization commitee (WG21) one day ([https://github.com/nilfoundation/boost-crypto3](https://github.com/nilfoundation/boost-crypto3)), so in case it gets accepted it would be possible to do basic cryptography (we hadn't proposed more advanced modules to the WG21) with STL right out of the box (e.g. encryption like this: [https://github.com/NilFoundation/boost-crypto3/blob/master/example/encrypt.cpp#L24](https://github.com/NilFoundation/boost-crypto3/blob/master/example/encrypt.cpp#L24)).
+- Design the API to be very similar to STL (hashing example: [https://crypto3.nil.foundation/projects/crypto3/df/d2e/hashes_usage_manual.html](https://crypto3.nil.foundation/projects/crypto3/df/d2e/hashes_usage_manual.html). We even had a special Boost-dedicated version, intended to be proposed to Boost and then to standartization commitee (WG21) one day ([https://github.com/nilfoundation/boost-crypto3](https://github.com/nilfoundation/boost-crypto3)), so in case it gets accepted it would be possible to do basic cryptography (we hadn't proposed more advanced modules to the WG21) with STL right out of the box.
+  > That is how would an Boost/STL-enabled AES-128 encryption look like:
+  >
+  >     #include <boost/crypto3/block/aes.hpp>
+  >     #include <boost/crypto3/block/algorithm/encrypt.hpp>
+  >     
+  >     #include <string>
+  >     #include <cassert>
+  >     
+  >     using namespace boost::crypto3;
+  >     
+  >     int main() {
+  >         std::string input =
+  >             "\x6b\xc1\xbe\xe2\x2e\x40\x9f\x96"
+  >             "\xe9\x3d\x7e\x11\x73\x93\x17\x2a"
+  >             "\xae\x2d\x8a\x57\x1e\x03\xac\x9c"
+  >             "\x9e\xb7\x6f\xac\x45\xaf\x8e\x51"
+  >             "\x30\xc8\x1c\x46\xa3\x5c\xe4\x11"
+  >             "\xe5\xfb\xc1\x19\x1a\x0a\x52\xef"
+  >             "\xf6\x9f\x24\x45\xdf\x4f\x9b\x17"
+  >             "\xad\x2b\x41\x7b\xe6\x6c\x37\x10";
+  >     
+  >         std::string key =
+  >             "\x2b\x7e\x15\x16\x28\xae\xd2\xa6"
+  >             "\xab\xf7\x15\x88\x09\xcf\x4f\x3c";
+  >     
+  >         std::string out = encrypt<block::aes<128>>(input.begin(), 
+  >                                                    input.end(), 
+  >                                                    key.begin(), 
+  >                                                    key.end());
+  >     
+  >         return (out ==
+  >                "3ad77bb40d7a3660a89ecaf32466ef97f5d3d58503b9699de785895a96fdbaaf"
+  >                "43b1cd7f598ece23881b00e3ed0306887b0c785e27e8ad3f8223207104725dd4");
+  >     }
 - Make it a fool-proof by employing massive amount of compile-time correctness checks. So now it is as close as possible to the state "if it compiles, then it works correctly". Every usage mistake which can be made will be prevented during the compilation.
 - Make it comfortable for prototyping novel schemes/proof systems/hashes/other by keeping the implementation as close to formal constructions.
 
@@ -96,3 +130,5 @@ Sure. Any of currently existing bridges repositories ([https://github.com/nilfou
 
 All of them consist of several parts:
 1. Proof generator. Usually emplaced in `bin` directory. Uses a circuit definition done with [Crypto3.Blueprint](https://github.com/nilfoundation/crypto3-blueprint.git).
+2. Proof verification logic. In-EVM one most often. Sometimes other virtual
+   machies get involved as well.
