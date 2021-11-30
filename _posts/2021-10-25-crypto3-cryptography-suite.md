@@ -129,6 +129,12 @@ Another example is LPC ([https://github.com/NilFoundation/crypto3-zk/blob/20-plo
 Sure. Any of currently existing bridges repositories ([https://github.com/nilfoundation/evm-mina-verification.git](https://github.com/nilfoundation/evm-mina-verification.git) or [https://github.com/nilfoundation/evm-solana-verification.git](https://github.com/nilfoundation/evm-solana-verification.git)) can be reused for the purpose of creating a new bridge.
 
 All of them consist of several parts:
-1. Proof generator. Usually emplaced in `bin` directory. Uses a circuit definition done with [Crypto3.Blueprint](https://github.com/nilfoundation/crypto3-blueprint.git).
-2. Proof verification logic. In-EVM one most often. Sometimes other virtual
-   machies get involved as well.
+1. Wrapping proof generator. Usually emplaced in `bin` directory. Uses RedShift 
+   (or any other) proof system and FRI/LPC commitment scheme (or any other) definitions 
+   from [Crypto3.ZK](https://github.com/nilfoundation/crypto3-zk.git).
+2. Circuit definition done with [Crypto3.Blueprint](https://github.com/nilfoundation/crypto3-blueprint.git).
+3. Proof verification logic. In-EVM one most often. Sometimes other virtual machines get involved as well.
+4. [Crypto3](https://github.com/nilfoudation/crypto3) libraries introduced as
+   submodules in `libs` directory.
+
+## You said "circuit definition library". Don't you have a DSL to make this process more comfortable?
