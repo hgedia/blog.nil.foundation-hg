@@ -12,8 +12,8 @@ comments: false
 
 This post is about <span style='font-family:Menlo, Courier, monospace'>=nil;</span> DBMS - the second part of <span style='font-family:Menlo, Courier, monospace'>=nil;</span> Foundation mentioned within our [Twitter "About" section](https://twitter.com/nil_foundation) ("Home foundation for <span style='font-family:Menlo, Courier, monospace'>=nil;</span> Crypto3 and <span style='font-family:Menlo, Courier, monospace'>=nil;</span> DBMS projects").
 
-**Warning 1:** This post might feel like it is me complaining the grass is not 
-green anymore and to the Sun doesn't shine so bright as it used to do.
+**Warning:** This post might feel like it is me complaining the grass is not 
+green anymore and the Sun doesn't shine so bright as it used to do.
 
 ## Introduction
 
