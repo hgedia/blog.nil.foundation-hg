@@ -1,7 +1,7 @@
 ---
 title: =nil; Database Management System.
 layout: post
-date: 2021-10-25
+date: 2021-12-01
 excerpt: Data management done right.
 author: Mikhail Komarov
 tags: dbms cpp
@@ -12,9 +12,8 @@ comments: false
 
 This post is about <span style='font-family:Menlo, Courier, monospace'>=nil;</span> DBMS - the second part of <span style='font-family:Menlo, Courier, monospace'>=nil;</span> Foundation mentioned within our [Twitter "About" section](https://twitter.com/nil_foundation) ("Home foundation for <span style='font-family:Menlo, Courier, monospace'>=nil;</span> Crypto3 and <span style='font-family:Menlo, Courier, monospace'>=nil;</span> DBMS projects").
 
-**Note:** this post style is deviant from the Q&A style I usually take. Please, 
-don't consider subtitles as questions from the reader side. This is more of a
-monologue/presentation/pitch write-up.
+**Warning 1:** This post might feel like it is me complaining the grass is not 
+green anymore and to the Sun doesn't shine so bright as it used to do.
 
 ## Introduction
 
@@ -55,7 +54,7 @@ Maybe it was when you were browsing you files with your file manager?
 Or, even better, maybe it was when you were writing some `SELECT FROM` or 
 `INSERT INTO` SQL-query? 
 
-## Don't even try to argue. It was.
+## Don't even try to argue. It was exactly back then.
 
 This means the most comfortable way to access the reasonably-sized
 chunk of data is a query language. This usually gets achieved by indexing
@@ -69,8 +68,10 @@ into the node and the data becoming available in the DBMS running nearby.
 Here we go, the query-language read-only (i.e. `SELECT FROM`) access possibility 
 is achieved by multiplying several times the node maintenance cost.
 
-But, how to cheapen such a deployment cost back to what it was before? 
-And what about `INSERT INTO`?
+But, how to cheapen such a deployment cost back to what it was before? Is it
+possible to cheapen it even more by reducing the amount of deployments for large
+bridge proof processors (or any other folks keeping a lot of different protocol 
+nodes up and running)? And what about `INSERT INTO`?
 
 ## Approach
 
@@ -83,5 +84,142 @@ already in play. The one, where people know something about data management.
 
 ## So, what if this whole cryptocurrency industry was not invented by cryptographers, but by those who do database management systems?
 
-Yeah. By someone like Michael Stonebraker (don't you dare to Google the name, you 
-incompetent fucker) or Michael Widenius.
+Yeah. By someone like [Michael Stonebraker](https://en.wikipedia.org/wiki/Michael_Stonebraker) 
+(don't you dare to Google the name, you incompetent fucker) or 
+[Michael Widenius](https://en.wikipedia.org/wiki/Michael_Widenius). 
+How would it look like?
+
+Well, first of all, there would be no such a shitload of newborn bullshit terminology.
+1. "Bl*chain (forget this word, it means nothing within DBMS industry as it always 
+   should've been) Network" would've simply been a "Fault-tolerant full-replica 
+   cluster with authenticated cluster commit log data structure" (or something like 
+   that).
+2. "Mempool" would've been a "Cluster commit log head section".
+3. "Bitcoin", "Ethereum" and all the others would've simply been "Database replication protocols".
+4. "ProofOfShit" consensus algorithms would've been just a "data-driven consensus" 
+   of a different kind.
+5. No "Blocks". Fault-tolerant replicating databases work perfectly with
+   per-transactional replication. 
+
+   > I gotta admit in here that per-transactional replication makes it hard to 
+   > maintain a proper cluster consistency with REALLY distributed cluster nodes. 
+   > But anyway, time goes by, network becomes more broadwalk along with better 
+   > connectivity, than it was back in 2008.
+6. No "Chains". Calling a cluster commit log which is simply handled by a little
+   bit more complicated data structure, than a regular double-linked list (it is
+   in most cases a single-linked list with identifiers being built as Merkle tree 
+   hashes actually) is bullshit. 
+
+   > And, again, I have to admit that cluster commit log data structure differ 
+   > from replication protocol to replication protocol.
+
+Lots of other terms and notions would've never existed or would make much more
+sense.
+
+## Reinventing the wheel? What for?
+
+Really? From the perspective of a DBMS industry it looks exectly vice versa.
+
+> **Boomer Mode: On**  
+> DBMS industry is more than 50 years old, and these crypto-kids are exploring 
+> this world for only about 15 years, and already think they've managed to 
+> invent something new.  
+>
+> Remember, kids, there is nothing new under the sun. You cannot invent things,
+> you can only learn/explore/discover them.  
+> **Boomer Mode: Off**  
+
+Lots of cryptocurrency industry problems would've simply never existed if the 
+proper approach was taken from the very beggining. Let us consider some of them.
+
+## Data Availability
+
+The absence of each cluster's access to each other's cluster data brought to
+life a set of unnecessarily overcomplicated protocols, aiming to provide clusters 
+with each others' data read (the Graph, Celestia, etc) or write access (Polkadot,
+Cosmos, Wormhole, etc).
+
+Database management systems, which are capable of providing read-write inter-database 
+queries, don't have such a problem by design.
+
+## State Size
+
+Bitcoin, Ethereum, Solana, Avalanche and other replication protocols aiming to 
+provide services either to the large amount of people either to high-load
+services are struggling with their state size ([https://www.reddit.com/r/ethereum/comments/qzvsfq/impromptu_technical_ama_on_history_expiry/](https://www.reddit.com/r/ethereum/comments/qzvsfq/impromptu_technical_ama_on_history_expiry/)). 
+For some reason struggling replication protocols are trying to solve this issue 
+by introducing a protocol-level solution ([https://notes.ethereum.org/@vbuterin/data_sharding_roadmap](https://notes.ethereum.org/@vbuterin/data_sharding_roadmap)), while more traditional and established 
+way of solving this issue from the DBMS industry perspective is a state clustering. 
+Sharding the oversized state via 
+[Paxos](https://en.wikipedia.org/wiki/Paxos_(computer_science)) or 
+[Raft](https://en.wikipedia.org/wiki/Raft_(algorithm)) network-based consensus 
+algorithms to several data-storing DBMS slave-nodes.
+
+> Yes, this means there would be a need to introduce a synchronization mechanism 
+> which would allow the sub-clustering. But it is still not a protocol-level 
+> solution, but just a software architecture.  
+
+## Query Language
+
+The struggle, with which this whole conversation was started, is already solved 
+within the DBMS industry for almost 30 years up to now. Structured Query
+Language-alike dialects (for RDBMS) and more custom query languages (for
+so-called "NoSQL" databases) provide extensive access to the reasonably-sized
+data chunks (in case DBMS node operator doesn't get nuts and starts to store
+large byte blobs inside) with a consistency strong enough for 
+[OLAP](https://en.wikipedia.org/wiki/Online_analytical_processing)s.
+
+## Node Deployment Costs
+
+Node deployment and maintenance cost is another struggle this conversation was 
+started from. Currently existing approach, which supposes for every replication 
+protocol to have its own unique implementation reminds me of a situation within 
+the DBMS industry in late 70s. Each protocol node instance, not designed to be 
+ran on the same machine (no matter, virtual or physical) with another's protocol 
+one make whoever wants to run them all to deploy separate pieces of hardware for 
+them.
+
+> Perfect example is an old [Graphene framework](https://github.com/cryptonomex/graphene), 
+> used by Dan Larimer for his Steemit/EOS ventures. It was designed to use OS 
+> shared memory as an in-RAM storage, which made it literally impossible to 
+> coordinate a couple of instances running within the same OS instance because 
+> several node instances were interferring with each other's shared memory 
+> allocations, causing failures.
+>
+> Since, it is impossible to control the tech stack which every replication
+> protocol uses for its implementation, the only way to run several databases
+> using different replication protocols (e.g. Bitcoin and Ethereum and Solana)
+> within the same hardware instance is run them with a DBMS.
+
+## Alright, alright. You're not pitching this for nothing, right? You do have something up your sleeve?
+
+Exactly. <span style='font-family:Menlo, Courier, monospace'>=nil;</span> DBMS
+project of ours ([https://dbms.nil.foundation](https://dbms.nil.foundation)) is 
+a database management system capable of handling fault-tolerant replicating 
+clusters. And when I'm talking about fault-tolerant replicating clusters, I'm 
+talking about existing protocols as well.
+
+## How?
+
+By using an old-good DBMS industry-specific way surely. Implementing a replication
+protocol adapter. Just like they do with MySQL/MariaDB replication protocol, for
+example: [https://github.com/Begun/libslave](https://github.com/Begun/libslave).
+
+Same approach works within <span style='font-family:Menlo, Courier, monospace'>=nil;</span> 
+DBMS as well. By implementing replication protocol adapter of a certain protocol 
+family (Bitcoin, Lightcoin, Bitcoin Cash, Feathercoin and others, for example, 
+are of the same family), <span style='font-family:Menlo, Courier, monospace'>=nil;</span>
+DBMS becomes the full-featured node of each of those clusters. And by running
+several databases with replication protocols, specific to them within a single 
+DBMS node (e.g. Bitcoin and Ethereum and Polkadot), a DBMS instance becomes the 
+full-featured node of each of them using the only piece of hardware (it should
+be a pretty performant one, but still a less performant which would've been
+required for three independent nodes) along with providing each of these
+databases with the same query language, state sharding and data access capabilities.
+
+Funny thing, that some particular replication protocols (like Eth2) being
+considered from the DBMS point of view, will become several databases within the
+DBMS. Ethereum 2.0's shards, for example, should be considered as separate
+databases. One shard - one database. But it does sill fit the architecture well.
+
+## So, in case such approach solves so many problems, maybe it should've been taken from the very beggining?
