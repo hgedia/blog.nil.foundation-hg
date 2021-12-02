@@ -85,8 +85,7 @@ already in play. The one, where people know something about data management.
 ## So, what if this whole cryptocurrency industry was not invented by cryptographers, but by those who do database management systems?
 
 Yeah. By someone like [Michael Stonebraker](https://en.wikipedia.org/wiki/Michael_Stonebraker) 
-(don't you dare to Google the name) or [Michael Widenius](https://en.wikipedia.org/wiki/Michael_Widenius). 
-How would it look like?
+(don't you dare to Google the name) or [Michael Widenius](https://en.wikipedia.org/wiki/Michael_Widenius) (really, are you going to Google this name as well?). How would it look like?
 
 Well, first of all, there would be no such amount of newborn bullshit terminology.
 1. "Bl*chain (forget this word, it means nothing within DBMS industry as it always 
