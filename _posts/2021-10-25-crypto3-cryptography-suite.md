@@ -149,4 +149,4 @@ zk-bridge core solution, the only difference is a circuit.
 
 And, here we go. A reusable framework for completely trustless bridges.
 
-### So, which cluster should be bridged to which next?
+### So, which cluster gets its trustless bridge next?
