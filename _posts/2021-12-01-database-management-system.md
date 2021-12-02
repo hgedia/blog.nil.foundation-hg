@@ -220,4 +220,38 @@ DBMS is not only about managing the data of different databases (of different
 clusters), but about managing the data of different clusters (shards) of a single 
 database as well.
 
+## Alright. You do have something which solves all the problems you've mentioned within the DBMS of yours, right?
+
+Exactly. 
+
+1. **Query Language:** Query language we use is based on a Turing-complete interpreter and is
+   designed as library-level language. Longs story short, this allows to
+   implement an EDSL emulating SQL-alike language over some more general-purpose
+   language (C++, JavaScript, Rust, you name it). Such approach makes it
+   possible to employ all the advantages of a user-selected general-purpose
+   language ecosystem (much larger usually, than any newborn project can offer) 
+   for data management along with SQL-alike language availability for more
+   traditional (and formal) data management. This also means swappable query
+   languages.
+2. **State Size**: Sub-clusterization. Fault-tolerant full-replica cluster with 
+   commit log built with authenticated data structure every member of which 
+   handles its state sharded with Raft is something 
+   <span style='font-family:Menlo, Courier, monospace'>=nil;</span> DBMS does by default.
+3. **Data Availability:** Bitcoin and Ethereum families replication protocol 
+   adapters along with several own replication protocols implementations 
+   (DBMS-based fault-tolerant full-replica cluster, Raft) (with all of the 
+   available for sub-clusterization) are provided by default. More replication
+   protocol adapters are coming.
+
+   Inter-database read/write queries are one more crucial component of data 
+   availability. Providing a user with `SELECT FROM BTC.TABLE1 WHERE ... AND FROM
+   ETH.TABLE4 WHERE ...` along with `INSERT INTO BCH.TABLE2 (SELECT FROM
+   SOL.TABLE1...`-alike queries is a cricual component.
+
+4. **Maintenance Costs:** Swappable storage engines do not allow databases, 
+   clusters of which use replication protocols requiring constant and rapid 
+   state traversals (e.g. Ethereum-alike protocols), to degrade with its replication 
+   and data management performance with using a special-purposed data storage
+   engines, specific for the particular replication protocol.
+
 ### So, in case such approach solves so many problems, maybe it should've been taken from the very beggining?
