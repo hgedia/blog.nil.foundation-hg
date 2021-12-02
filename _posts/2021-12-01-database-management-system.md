@@ -256,4 +256,5 @@ Exactly.
    and data management performance with using a special-purposed data storage
    engines, specific for the particular replication protocol.
 
-### So, in case such approach solves so many problems, maybe it should've been taken from the very beggining?
+
+### So, in case such approach solves so many problems, maybe it should've been taken from the very beginning?
