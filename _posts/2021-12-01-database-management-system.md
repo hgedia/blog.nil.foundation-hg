@@ -12,8 +12,8 @@ comments: false
 
 This post is about <span style='font-family:Menlo, Courier, monospace'>=nil;</span> DBMS - the second part of <span style='font-family:Menlo, Courier, monospace'>=nil;</span> Foundation mentioned within our [Twitter "About" section](https://twitter.com/nil_foundation) ("Home foundation for <span style='font-family:Menlo, Courier, monospace'>=nil;</span> Crypto3 and <span style='font-family:Menlo, Courier, monospace'>=nil;</span> DBMS projects").
 
-**Warning:** This post might feel like it is me complaining the grass is not 
-green anymore and the Sun doesn't shine so bright as it used to do.
+**Warning:** I don't really like to use marketing-purposed names, but this post
+is an explanatory one, so I have no other choice.
 
 ## Introduction
 
@@ -189,6 +189,11 @@ them.
 > protocol uses for its implementation, the only way to run several databases
 > using different replication protocols (e.g. Bitcoin and Ethereum and Solana)
 > within the same hardware instance is run them with a DBMS.
+
+So, having a single DBMS instance running several databases with replication
+protocols specific to each of them makes node maintenance cost cheaper in case
+the amount of hardware necessary to sub-shard the state of each of them is lower
+than the amount of hardware necessary to run each node independently.
 
 ## Alright, alright. You're not pitching this for nothing, right? You do have something up your sleeve?
 
