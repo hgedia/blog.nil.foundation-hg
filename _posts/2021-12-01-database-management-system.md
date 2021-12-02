@@ -103,6 +103,7 @@ Well, first of all, there would be no such amount of newborn bullshit terminolog
    > maintain a proper cluster consistency with REALLY distributed cluster nodes. 
    > But anyway, time goes by, network becomes more broadwalk along with better 
    > connectivity, than it was back in 2008.
+
 6. No "Chains". Calling a cluster commit log which is simply handled by a little
    bit more complicated data structure, than a regular double-linked list (it is
    in most cases a single-linked list with identifiers being built as Merkle tree 
@@ -117,18 +118,9 @@ sense.
 ## Reinventing the wheel? What for?
 
 Really? From the perspective of a DBMS industry it looks exectly vice versa.
-
-> **Boomer Mode: On**  
-> DBMS industry is more than 50 years old, and these crypto-kids are exploring 
-> this world for only about 15 years, and already think they've managed to 
-> invent something new.  
->
-> Remember, kids, there is nothing new under the sun. You cannot invent things,
-> you can only learn/explore/discover them.  
-> **Boomer Mode: Off**  
-
-Lots of cryptocurrency industry problems would've simply never existed if the 
-proper approach was taken from the very beggining. Let us consider some of them.
+Actually, lots of cryptocurrency industry problems would've simply never existed 
+if the proper approach was taken from the very beggining. Let us consider some of 
+them.
 
 ## Data Availability
 
