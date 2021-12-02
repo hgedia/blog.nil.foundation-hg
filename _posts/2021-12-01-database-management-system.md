@@ -188,7 +188,7 @@ than the amount of hardware necessary to run each node independently.
 
 ## Alright, alright. You're not pitching this for nothing, right? You do have something up your sleeve?
 
-Exactly. <span style='font-family:Menlo, Courier, monospace'>=nil;</span> DBMS
+Sure. <span style='font-family:Menlo, Courier, monospace'>=nil;</span> DBMS
 project of ours ([https://dbms.nil.foundation](https://dbms.nil.foundation)) is 
 a database management system capable of handling fault-tolerant replicating 
 clusters. And when I'm talking about fault-tolerant replicating clusters, I'm 
@@ -215,6 +215,9 @@ databases with the same query language, state sharding and data access capabilit
 Funny thing, that some particular replication protocols (like Eth2) being
 considered from the DBMS point of view, will become several databases within the
 DBMS. Ethereum 2.0's shards, for example, should be considered as separate
-databases. One shard - one database. But it does sill fit the architecture well.
+databases. One shard - one database. So <span style='font-family:Menlo, Courier, monospace'>=nil;</span> 
+DBMS is not only about managing the data of different databases (of different 
+clusters), but about managing the data of different clusters (shards) of a single 
+database as well.
 
-## So, in case such approach solves so many problems, maybe it should've been taken from the very beggining?
+### So, in case such approach solves so many problems, maybe it should've been taken from the very beggining?

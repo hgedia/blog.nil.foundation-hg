@@ -127,7 +127,7 @@ More on prototyping new hashes can be found on the [Crypto3.Hash "Implementation
 
 Another example is an [LPC](https://github.com/NilFoundation/crypto3-zk/blob/20-plonk-impl/include/nil/crypto3/zk/snark/commitments/list_polynomial_commitment.hpp#L51) or [FRI](https://github.com/NilFoundation/crypto3-zk/blob/20-plonk-impl/include/nil/crypto3/zk/snark/commitments/fri_commitment.hpp) commitment schemes which were given the same interface, so changing the commitment scheme within the proof system is as easy as changing the template parameter.
 
-## Alright. Back to bridges. Can this framework on top of suite of yours be reused?
+## Alright. Back to bridges. Can this framework on top of the suite of yours be reused?
 
 Sure. Any of currently existing bridges repositories ([https://github.com/nilfoundation/evm-mina-verification.git](https://github.com/nilfoundation/evm-mina-verification.git) or [https://github.com/nilfoundation/evm-solana-verification.git](https://github.com/nilfoundation/evm-solana-verification.git)) can be reused for the purpose of creating a new bridge.
 
@@ -146,3 +146,7 @@ RedShift proof for a circuit, defined with a
 library, which complies with the virtualized verification logic input format,
 defined within the same repository in Solidity files. Same architecture for every
 zk-bridge core solution, the only difference is a circuit.
+
+And, here we go. A reusable framework for completely trustless bridges.
+
+### So, which cluster should be bridged to which next?
