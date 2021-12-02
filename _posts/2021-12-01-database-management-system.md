@@ -85,8 +85,7 @@ already in play. The one, where people know something about data management.
 ## So, what if this whole cryptocurrency industry was not invented by cryptographers, but by those who do database management systems?
 
 Yeah. By someone like [Michael Stonebraker](https://en.wikipedia.org/wiki/Michael_Stonebraker) 
-(don't you dare to Google the name, you incompetent fucker) or 
-[Michael Widenius](https://en.wikipedia.org/wiki/Michael_Widenius). 
+(don't you dare to Google the name) or [Michael Widenius](https://en.wikipedia.org/wiki/Michael_Widenius). 
 How would it look like?
 
 Well, first of all, there would be no such a shitload of newborn bullshit terminology.
@@ -108,7 +107,7 @@ Well, first of all, there would be no such a shitload of newborn bullshit termin
 6. No "Chains". Calling a cluster commit log which is simply handled by a little
    bit more complicated data structure, than a regular double-linked list (it is
    in most cases a single-linked list with identifiers being built as Merkle tree 
-   hashes actually) is bullshit. 
+   hashes actually) a "Chain" is not the best thing to do.
 
    > And, again, I have to admit that cluster commit log data structure differ 
    > from replication protocol to replication protocol.
