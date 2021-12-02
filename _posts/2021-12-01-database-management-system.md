@@ -73,7 +73,7 @@ possible to cheapen it even more by reducing the amount of deployments for large
 bridge proof processors (or any other folks keeping a lot of different protocol 
 nodes up and running)? And what about `INSERT INTO`?
 
-## Approach
+## The Approach
 
 To answer these questions we gotta change the approach applied to the data
 management from what it currently is, to what it is within more mature,
