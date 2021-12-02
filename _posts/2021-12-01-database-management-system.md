@@ -233,10 +233,12 @@ Exactly.
    for data management along with SQL-alike language availability for more
    traditional (and formal) data management. This also means swappable query
    languages.
+
 2. **State Size**: Sub-clusterization. Fault-tolerant full-replica cluster with 
    commit log built with authenticated data structure every member of which 
    handles its state sharded with Raft is something 
    <span style='font-family:Menlo, Courier, monospace'>=nil;</span> DBMS does by default.
+
 3. **Data Availability:** Bitcoin and Ethereum families replication protocol 
    adapters along with several own replication protocols implementations 
    (DBMS-based fault-tolerant full-replica cluster, Raft) (with all of the 
