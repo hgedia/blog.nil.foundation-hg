@@ -267,4 +267,10 @@ using third-party modules results in the need for them to be patched and
 adjusted anyway. So developing a cryptography suite of our own turned out to be
 easier.
 
+## And the bridges?
+
+Bridges and proofs which are being generated for them need the data. And this is
+not the only kind of application which would benefit from full data
+accessibility.
+
 ### So, in case such approach solves so many problems, maybe it should've been taken from the very beginning?
