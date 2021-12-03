@@ -22,7 +22,7 @@ one introduces a perfect and secure way to append the data to the second cluster
 assuming some other data is absoutely and definitely present in the first cluster. 
 Sounds complicated, but this is what literally "zk-bridging" is about. 
 
-But, when it comes to applications, more explicit data from the second cluster 
+But, when it comes to applications, more explicit data from the first cluster 
 is required to be provided (e.g. asset amount which should be issued on the 
 second cluster's - Ethereum - side) for the application to be fully functional. 
 This is required because first cluster's (e.g. Mina, Solana, others) state proof 
@@ -93,9 +93,10 @@ Well, first of all, there would be no such amount of newborn bullshit terminolog
    cluster with authenticated cluster commit log data structure" (or something like 
    that).
 2. "Mempool" would've been a "Cluster commit log head section".
-3. "Bitcoin", "Ethereum" and all the others would've simply been "Database replication protocols".
-4. "ProofOfShit" consensus algorithms would've been just a "data-driven consensus" 
-   of a different kind.
+3. "Bitcoin", "Ethereum" and all the others would've simply been "Database 
+   replication protocols".
+4. "ProofOfShit" consensus algorithms would've been just some different "data-driven consensus" 
+   algorithms family.
 5. No "Blocks". Fault-tolerant replicating databases work perfectly with
    per-transactional replication. 
 
