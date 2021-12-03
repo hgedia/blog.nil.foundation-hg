@@ -88,6 +88,7 @@ Yeah. By someone like [Michael Stonebraker](https://en.wikipedia.org/wiki/Michae
 (don't you dare to Google the name) or [Michael Widenius](https://en.wikipedia.org/wiki/Michael_Widenius) (really, are you going to Google this name as well?). How would it look like?
 
 Well, first of all, there would be no such amount of newborn bullshit terminology.
+
 1. "Bl*chain (forget this word, it means nothing within DBMS industry as it always 
    should've been) Network" would've simply been a "Fault-tolerant full-replica 
    cluster with authenticated cluster commit log data structure" (or something like 
