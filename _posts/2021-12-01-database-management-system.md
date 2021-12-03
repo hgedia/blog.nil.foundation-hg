@@ -258,5 +258,13 @@ Exactly.
    and data management performance with using a special-purposed data storage
    engines, specific for the particular replication protocol.
 
+## Wait a minute. Why do you need your cryptography suite then?
+
+Simple. Replication protocol adapters require lots of very different
+cryptography to be used. Some of them use exotic hashes, some of them use
+zero-knowledge proof systems, others use exotic signatures. Handling them all
+using third-party modules results in the need for them to be patched and
+adjusted anyway. So developing a cryptography suite of our own turned out to be
+easier.
 
 ### So, in case such approach solves so many problems, maybe it should've been taken from the very beginning?
