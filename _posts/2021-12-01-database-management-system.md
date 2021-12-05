@@ -109,7 +109,7 @@ Well, first of all, there would be no such amount of newborn bullshit terminolog
 6. No "Chains". Calling a cluster commit log which is simply handled by a little
    bit more complicated data structure, than a regular double-linked list (it is
    in most cases a single-linked list with identifiers being built as Merkle tree 
-   hashes actually) a "Chain" is not the best thing to do.
+   hashes actually) a "Chain" is ridiculous.
 
    > And, again, I have to admit that cluster commit log data structure differ 
    > from replication protocol to replication protocol.
