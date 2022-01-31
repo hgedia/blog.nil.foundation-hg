@@ -269,8 +269,7 @@ easier.
 
 ## And the bridges?
 
-Bridges and proofs which are being generated for them need the data. And this is
-not the only kind of application which would benefit from full data
-accessibility.
+Oh, bridges are a part of a bigger picture (facilitated by the DBMS surely).
+Stay tuned to figure out!
 
 ### So, in case such approach solves so many problems, maybe it should've been taken from the very beginning?
