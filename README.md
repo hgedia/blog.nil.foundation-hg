@@ -1,12 +1,12 @@
-# Bootblog
-A jekyll blog theme powered by bootstrap,it's minimal and resopnsive & don't forget to give a :star:
+# =nil; Foundation's Blog Website
+[![GitHub Pages Action](https://github.com/NilFoundation/blog.nil.foundation/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/NilFoundation/blog.nil.foundation/actions/workflows/main.yml)
 
 ## Install and Test
 
 1. Download or clone the repo
-   `git clone https://github.com/sharadcodes/bootblog.git`
+   `git clone https://github.com/nilfoundation/blog.nil.foundation.git`
 2. Enter the folder
-   `cd bootblog`
+   `cd blog.nil.foundation`
 3. Start Jekyll server
    `jekyll serve`
 4. Access via
@@ -16,25 +16,4 @@ A jekyll blog theme powered by bootstrap,it's minimal and resopnsive & don't for
 
 ## Demo
 
-- https://www.sharad.cf/bootblog
-
-# Preview
-
-## HOME PAGE
-![Home page](https://github.com/sharadcodes/bootblog/raw/master/screenshots/home.png)
-## BLOG PAGE
-![Blog page](https://github.com/sharadcodes/bootblog/raw/master/screenshots/blog.png)
-## BLOG PAGE IN MOBILE
-![Blog page](https://github.com/sharadcodes/bootblog/raw/master/screenshots/mobile-1.png)
-## POST EXAMPLE IN MOBILE
-![Sampe post](https://github.com/sharadcodes/bootblog/raw/master/screenshots/mobile-2.png)
-## POST EXAMPLE
-![Sampe post](https://github.com/sharadcodes/bootblog/raw/master/screenshots/post.png)
-## PORTFOLIO PAGE
-![Portfolio](https://github.com/sharadcodes/bootblog/raw/master/screenshots/portfolio.png)
-## ABOUT PAGE
-![About](https://github.com/sharadcodes/bootblog/raw/master/screenshots/about.png)
-## 404 Custom page
-![404 page](https://github.com/sharadcodes/bootblog/raw/master/screenshots/404.png)
-## 2nd LEVEL MENU IN NAVIGATION BAR
-![Navbar](https://github.com/sharadcodes/bootblog/raw/master/screenshots/second-level-menu-open.png)
+- https://blog.nil.foundation
