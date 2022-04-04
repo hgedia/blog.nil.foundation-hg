@@ -29,8 +29,8 @@ This is required because first cluster's (e.g. Mina, Solana, others) state proof
 deployed to the second cluster (e.g. Ethereum, Solana, others) only allows to 
 check the explicitly provided afterwards data is correct and IS or WAS present 
 in the source cluster. And such data retrieval still requires for the source 
-cluster node to be running. Even some remote and untrusted one, but it has to 
-be present.
+cluster node to be up and running. Even some remote and untrusted one, but it has 
+to be present.
 
 Regular solution to that is to get all the necessary nodes up and running. But
 wouldn't it mean extreme deployment and API development and maintenance expenses 
@@ -47,7 +47,7 @@ would mean something.
 
 Such data retrieval issues also often lead to the feeling that the data is
 hidden somewhere inside the node implementation instance and it is extremely
-hard to retrieve it.
+hard to retrieve it. And when one finally retrieves it, it cannot be trusted.
 
 **Now, try to answer me.** When was the last time when you hadn't had such a feeling?
 Maybe it was when you were browsing you files with your file manager? 
@@ -57,7 +57,7 @@ Or, even better, maybe it was when you were writing some `SELECT FROM` or
 ## Don't even try to argue. It was exactly back then.
 
 This means the most comfortable way to access the reasonably-sized
-chunk of data is a query language. This usually gets achieved by indexing
+chunk of structured data is a query language. This usually gets achieved by indexing
 solutions which in most cases turn out to be a node deploy along with some DBMS
 (PostgreSQL, MySQL/MariaDB, others) deployed nearby, having a synchronizing
 service instance. This leads to at least three services deployed, a
@@ -161,7 +161,7 @@ data chunks (in case DBMS node operator doesn't get nuts and starts to store
 large byte blobs inside) with a consistency strong enough for 
 [OLAP](https://en.wikipedia.org/wiki/Online_analytical_processing)s.
 
-## Node Deployment Costs
+## Node Maintenance Costs
 
 Node deployment and maintenance cost is another struggle this conversation was 
 started from. Currently existing approach, which supposes for every replication 
@@ -192,9 +192,9 @@ than the amount of hardware necessary to run each node independently.
 
 Sure. <span style='font-family:Menlo, Courier, monospace'>=nil;</span> DBMS
 project of ours ([https://dbms.nil.foundation](https://dbms.nil.foundation)) is 
-a database management system capable of handling fault-tolerant replicating 
-clusters. And when I'm talking about fault-tolerant replicating clusters, I'm 
-talking about existing protocols as well.
+a database management system capable of handling fault-tolerant
+replication-enabled clusters. And when I'm talking about such clusters, I'm 
+talking about existing protocols (e.g. Bitcoin, or Eth, or whatever) as well.
 
 ## How?
 
@@ -214,23 +214,42 @@ be a pretty performant one, but still a less performant which would've been
 required for three independent nodes) along with providing each of these
 databases with the same query language, state sharding and data access capabilities.
 
-Funny thing, that some particular replication protocols (like Eth2) being
-considered from the DBMS point of view, will become several databases within the
-DBMS. Ethereum 2.0's shards, for example, should be considered as separate
-databases. One shard - one database. So <span style='font-family:Menlo, Courier, monospace'>=nil;</span> 
-DBMS is not only about managing the data of different databases (of different 
-clusters), but about managing the data of different clusters (shards) of a single 
-database as well.
+> Funny thing, that some particular replication protocols (like Eth2) being
+> considered from the DBMS point of view, will become several databases within the
+> DBMS. Ethereum 2.0's shards, for example, should be considered as separate
+> databases. One shard - one database. So <span style='font-family:Menlo, Courier, monospace'>=nil;</span> 
+> DBMS is not only about managing the data of different databases (of different 
+> clusters), but about managing the data of different clusters (shards) of a single 
+> database as well.
+
+## There is a nuance in here which should be noted!
+
+Replication protocol is not a term I've just invented just to name some already 
+known mechanism differently just to make it look like it is something new (just
+like a shitload of projects do - e.g. "Sidech\*in" or "Parach\*ain" or any other
+shit). "[Replication protocol](https://dev.mysql.com/doc/dev/mysql-server/latest/page_protocol_replication.html)"
+is a very old and widely known term among database management system industry 
+(I attached the link to the definition example so you wouldn't Google that - 
+Sergey Brin will laugh you *VERY LOUDLY* in case you do) meaning the same as 
+crypto wheel-reinventing industry calls a "[Gossip protocol](https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/p2p-interface.md)".
+
+So, the *NUANCE*. Replication protocol implementation has very little to do with 
+"virtual machine" compatibility. Single replication protocol (some particular one, 
+lets say, Bitcoin) implementation mostly covers all the other same-family protocols,
+compatible on a "Gossip protocol" level (e.g. Bitcoin Cash, Litecoin, others).
+
+Another example is [libp2p](https://libp2p.io) compatibility automatically brings 
+the basis to enable the replication of any other database using such a toolchain.
 
 ## Alright. You do have something which solves all the problems you've mentioned within the DBMS of yours, right?
 
 Exactly. 
 
-1. **Query Language:** Query language we use is based on a Turing-complete interpreter and is
-   designed as library-level language. Longs story short, this allows to
-   implement an EDSL emulating SQL-alike language over some more general-purpose
-   language (C++, JavaScript, Rust, you name it). Such approach makes it
-   possible to employ all the advantages of a user-selected general-purpose
+1. **Query Language:** Query language being used is based on a Turing-complete 
+   interpreter and is designed as library-level language. Long story short, this 
+   allows to implement an EDSL emulating SQL-alike language over some more 
+   general-purpose language (C++, JavaScript, Rust, you name it). Such approach makes 
+   it possible to employ all the advantages of a user-selected general-purpose 
    language ecosystem (much larger usually, than any newborn project can offer) 
    for data management along with SQL-alike language availability for more
    traditional (and formal) data management. This also means swappable query
@@ -241,19 +260,29 @@ Exactly.
    handles its state sharded with Raft is something 
    <span style='font-family:Menlo, Courier, monospace'>=nil;</span> DBMS does by default.
 
-3. **Data Availability:** Bitcoin and Ethereum families replication protocol 
-   adapters along with several own replication protocols implementations 
-   (DBMS-based fault-tolerant full-replica cluster, Raft) (with all of the 
-   available for sub-clusterization) are provided by default. More replication
-   protocol adapters are coming.
+3. **Data Accessibility:** That is right, accessibility, not the "availability"
+   thing. Availability is a read-only property. Accessibility supposes
+   read-write properties. 
+
+   Bitcoin and Ethereum families replication protocol adapters along with several 
+   own replication protocols implementations (DBMS-based fault-tolerant full-replica 
+   cluster, Raft) (with all of the available for sub-clusterization) are provided 
+   by default. More replication protocol adapters are coming.
 
    Inter-database read/write queries are one more crucial component of data 
    availability. Providing a user with `SELECT FROM BTC.TABLE1 WHERE ... AND FROM
    ETH.TABLE4 WHERE ...` along with `INSERT INTO BCH.TABLE2 (SELECT FROM
    SOL.TABLE1...`-alike queries is a cricual component.
 
-4. **Maintenance Costs:** Swappable storage engines do not allow databases, 
-   clusters of which use replication protocols requiring constant and rapid 
+4. **Maintenance Costs:** Processing several databases with the same piece of
+   software makes internal data management tecnhiques consistent, so that 
+   allows to eliminate the reason why several protocol implementations usually
+   do not get launched on top of the same hardware - inconsistent with each other 
+   implementations (obviously no protocol supposes for the other protocol's daemon 
+   to be launched nearby on the same hardware). 
+
+   In the same time, swappable storage engines do not allow databases, clusters 
+   of which use replication protocols requiring constant and rapid 
    state traversals (e.g. Ethereum-alike protocols), to degrade with its replication 
    and data management performance with using a special-purposed data storage
    engines, specific for the particular replication protocol.
@@ -269,7 +298,7 @@ easier.
 
 ## And the bridges?
 
-Oh, bridges are a part of a bigger picture (facilitated by the DBMS surely).
-Stay tuned to figure out!
+Bridges need data accessibility layer. Just like everyone does. So using a
+DBMS-based approach allows to 
 
 ### So, in case such approach solves so many problems, maybe it should've been taken from the very beginning?
