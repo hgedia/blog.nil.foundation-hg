@@ -10,7 +10,7 @@ comments: false
 
 ## What is this about?
 
-This post is about <span style='font-family:Menlo, Courier, monospace'>=nil;</span> DBMS - the second part of <span style='font-family:Menlo, Courier, monospace'>=nil;</span> Foundation mentioned within our [Twitter "About" section](https://twitter.com/nil_foundation) ("Home foundation for <span style='font-family:Menlo, Courier, monospace'>=nil;</span> Crypto3 and <span style='font-family:Menlo, Courier, monospace'>=nil;</span> DBMS projects").
+This post is about <span style='font-family:Menlo, Courier, monospace'>=nil;</span> Database Management System called <span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span> - the second part of <span style='font-family:Menlo, Courier, monospace'>=nil;</span> Foundation mentioned within our [Twitter "About" section](https://twitter.com/nil_foundation) ("Home foundation for <span style='font-family:Menlo, Courier, monospace'>=nil;</span> Crypto3 and <span style='font-family:Menlo, Courier, monospace'>=nil;</span> DBMS projects").
 
 **Warning:** I don't really like to use marketing-purposed names, but this post
 is an explanatory one, so I have no other choice.
@@ -202,11 +202,11 @@ By using an old-good DBMS industry-specific way surely. Implementing a replicati
 protocol adapter. Just like they do with MySQL/MariaDB replication protocol, for
 example: [https://github.com/Begun/libslave](https://github.com/Begun/libslave).
 
-Same approach works within <span style='font-family:Menlo, Courier, monospace'>=nil;</span> 
-DBMS as well. By implementing replication protocol adapter of a certain protocol 
+Same approach works within <span style='font-family:Menlo, Courier, monospace'>=nil; 
+'DROP DATABASE *</span> as well. By implementing replication protocol adapter of a certain protocol 
 family (Bitcoin, Lightcoin, Bitcoin Cash, Feathercoin and others, for example, 
-are of the same family), <span style='font-family:Menlo, Courier, monospace'>=nil;</span>
-DBMS becomes the full-featured node of each of those clusters. And by running
+are of the same family), <span style='font-family:Menlo, Courier, monospace'>=nil;
+'DROP DATABASE *</span> becomes the full-featured node of each of those clusters. And by running
 several databases with replication protocols, specific to them within a single 
 DBMS node (e.g. Bitcoin and Ethereum and Polkadot), a DBMS instance becomes the 
 full-featured node of each of them using the only piece of hardware (it should
@@ -258,7 +258,7 @@ Exactly.
 2. **State Size**: Sub-clusterization. Fault-tolerant full-replica cluster with 
    commit log built with authenticated data structure every member of which 
    handles its state sharded with Raft is something 
-   <span style='font-family:Menlo, Courier, monospace'>=nil;</span> DBMS does by default.
+   <span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span> does by default.
 
 3. **Data Accessibility:** That is right, accessibility, not the "availability"
    thing. Availability is a read-only property. Accessibility supposes
@@ -298,7 +298,9 @@ easier.
 
 ## And the bridges?
 
-Bridges need data accessibility layer. Just like everyone does. So using a
-DBMS-based approach allows to 
+Bridges need data accessibility layer. Not the **availability** (it is a
+read-only thing), but **accessibility** (read-write thing). The connection
+between the <span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span> 
+and our bridge project will be outlined in a dedicated post. Stay tuned!
 
 ### So, in case such approach solves so many problems, maybe it should've been taken from the very beginning?
