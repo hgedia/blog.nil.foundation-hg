@@ -1,5 +1,5 @@
 ---
-title: =nil; Foundation's In-EVM Solana Light-Client State Verification.
+title: =nil; Foundation's in-EVM Solana Light-Client State Verification.
 layout: post
 date: 2021-10-14
 excerpt: Paving the way to Solana-Ethereum zk-bridge.
