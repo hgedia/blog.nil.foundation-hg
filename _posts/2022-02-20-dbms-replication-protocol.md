@@ -204,7 +204,7 @@ box.
 
 Does it gets together in a bigger picture now, huh?
 
-### It does. But these are bridges, and now you're talking about a different application. How is that relevant?
+## It does. But these are bridges, and now you're talking about a different application. How is that relevant?
 
 Pretty easy. State proof in combination with 
 <span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span>'s 
@@ -230,7 +230,7 @@ How in particular?
    database state, which was unpacked correctly from a correct particular
    databases's commit log.
 
-### But how to prevent a DBMS node from giviing out a user a wrong proof?
+## But how to prevent a DBMS node from giviing out a user a wrong proof?
 
 Easy. Since all the nodes of the cluster are <span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span> nodes, which have the access to all the third-party databases data at once, the 
 protocol should require for the output proof to be published and verified by all 
@@ -241,7 +241,7 @@ proof along with the data to user. And that means the reward for a particular
 query has to be scored only when a valid query proof is published and verified
 by all the I/O protocol extension cluster participants.
 
-### And here we go. Trustless data access to various protocols data via the same <span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span> query language.
+## And here we go. Trustless data access to various protocols data via the same <span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span> query language.
 
 ![](/assets/images/2022-02-20-dbms-replication-protocol/case1.png)
 
@@ -271,7 +271,7 @@ protocols data, remember?), allowing users to use the third-party’s cluster da
 they retrieved with the <span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span> 
 query. 
 
-### Here we go. Trustless on-demand bridging for various protocols via the same <span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span> query language.
+## Here we go. Trustless on-demand bridging for various protocols via the same <span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span> query language.
 
 ![](/assets/images/2022-02-20-dbms-replication-protocol/case2.png)
 
@@ -307,7 +307,7 @@ the throughput linearly, depending on the amount of application-specific indeped
 Avalanche deployments. This approach is possible to be applied to any monolithic 
 L1 protocol (Solana, Ethereum, any other one).
 
-### And voila! Trustless pluggable scaling requiring absolutely no changes from client protocols.
+## And voila! Trustless pluggable scaling requiring absolutely no changes from client protocols.
 
 ![](/assets/images/2022-02-20-dbms-replication-protocol/case3.png)
 
