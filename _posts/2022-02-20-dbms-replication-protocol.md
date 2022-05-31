@@ -212,7 +212,7 @@ query proofs can lead to different kind of applications. It all depends on how
 does one apply ones.
 
 So, basically, our bridge projects were just a tryout corner-cases of an
-third-prty cluster integrations into the protocol of ours.
+third-party cluster integrations into the protocol of ours.
 
 Lets consider several use cases using some **incredible innovation, a future of
 blogging** (that is how they shill all that bl\*ckshit, right?) one never 
