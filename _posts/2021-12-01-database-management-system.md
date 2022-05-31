@@ -90,9 +90,9 @@ Yeah. By someone like [Michael Stonebraker](https://en.wikipedia.org/wiki/Michae
 Well, first of all, there would be no such amount of newborn bullshit terminology.
 
 1. "Bl*chain (forget this word, it means nothing within DBMS industry as it always 
-   should've been) Network" would've simply been a "Fault-tolerant full-replica 
-   cluster with authenticated cluster commit log data structure" (or something like 
-   that).
+   should've been) Network" would've simply been a "Fault-tolerant full-replica
+   database cluster with authenticated cluster commit log data structure" 
+   (or something like that).
 2. "Mempool" would've been a "Cluster commit log head section".
 3. "Bitcoin", "Ethereum" and all the others would've simply been "Database 
    replication protocols".
@@ -190,7 +190,7 @@ than the amount of hardware necessary to run each node independently.
 
 ## Alright, alright. You're not pitching this for nothing, right? You do have something up your sleeve?
 
-Sure. <span style='font-family:Menlo, Courier, monospace'>=nil;</span> DBMS
+Sure. <span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span>
 project of ours ([https://dbms.nil.foundation](https://dbms.nil.foundation)) is 
 a database management system capable of handling fault-tolerant
 replication-enabled clusters. And when I'm talking about such clusters, I'm 
@@ -303,4 +303,4 @@ read-only thing), but **accessibility** (read-write thing). The connection
 between the <span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span> 
 and our bridge project will be outlined in a dedicated post. Stay tuned!
 
-### So, in case such approach solves so many problems, maybe it should've been taken from the very beginning?
+## So, in case such approach solves so many problems, maybe it should've been taken from the very beginning?

@@ -156,7 +156,7 @@ pre {
 }
 
 .bs-component h3 {
-    font-size: 1rem
+    font-size: 1.3rem
 }
 
 #source-button {
@@ -361,4 +361,7 @@ input::placeholder, textarea::placeholder {
 blockquote {
     border-left: 5px solid #725C70;
     padding-left: 40px;
+}
+strong {
+    color: #f5f2f1
 }
