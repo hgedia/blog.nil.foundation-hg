@@ -342,9 +342,9 @@ of the DBMS-based approach using very typical, very usual DBMS features such as:
    > other data can and will be removed [https://vitalik.ca/general/2021/12/06/endgame.html](https://vitalik.ca/general/2021/12/06/endgame.html) 
    > and everyone is okay with it.
    >
-   > I was even asked by a well-known fellow very close to Ethereum foundation 
-   > something like "What do you want to store in the database besides 
-   > account-value data? It iS nOt a DaTaBaSe, what do you want?"
+   > I was even asked by a well-known fellow something like "What do you want 
+   > to store in the database besides account-value data? It iS nOt a DaTaBaSe, 
+   > what do you want?"
    >
    > I never spoke to that fellow again since then.
    
