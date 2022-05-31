@@ -215,7 +215,7 @@ So, basically, our bridge projects were just a tryout corner-cases of an
 third-party cluster integrations into the protocol of ours.
 
 Lets consider several use cases using some **incredible innovation, a future of
-blogging** (that is how they shill all that bl\*ckshit, right?) one never 
+blogging** one never 
 seen before in this blog - **PICTURES**.
 
 ## Trustless Data Retrieval
