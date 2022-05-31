@@ -339,7 +339,7 @@ of the DBMS-based approach using very typical, very usual DBMS features such as:
    >
    > It is ridiculous, by the way, how all the database purpose gets reduced to
    > the only only one thing - maintaining the only one key-value index. All the
-   > other data can and will be removed (https://vitalik.ca/general/2021/12/06/endgame.html) 
+   > other data can and will be removed [https://vitalik.ca/general/2021/12/06/endgame.html](https://vitalik.ca/general/2021/12/06/endgame.html) 
    > and everyone is okay with it.
    >
    > I was even asked by a fellow very close to Ethereum foundation something
