@@ -150,8 +150,8 @@ There are several ways to do that:
    > No, thank you.
 
 2. A better way is to make sure no game-theoretic assumptions are being made at
-   all. And that means a user performing some query has to be sure about where 
-   the source of a query data without any need to re-check the data retrieved.
+   all. And that means a user performing some query has to be sure about what  
+   the source of a query data is without any need to re-check the data retrieved.
 
    How do we do that? Let us use whatever we have in disposal. And what we have
    in disposal is <span style='font-family:Menlo, Courier, monospace'>[=nil; 'DROP DATABASE *](https://blog.nil.foundation/2021/12/01/database-management-system.html)</span>. And what a typical DBMS has in 
