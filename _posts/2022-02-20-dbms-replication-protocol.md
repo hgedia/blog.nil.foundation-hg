@@ -342,11 +342,11 @@ of the DBMS-based approach using very typical, very usual DBMS features such as:
    > other data can and will be removed [https://vitalik.ca/general/2021/12/06/endgame.html](https://vitalik.ca/general/2021/12/06/endgame.html) 
    > and everyone is okay with it.
    >
-   > I was even asked by a fellow very close to Ethereum foundation something
-   > like "What do you want to store in the database besides account-value data? 
-   > It iS nOt a DaTaBaSe, what do you want?"
+   > I was even asked by a well-known fellow very close to Ethereum foundation 
+   > something like "What do you want to store in the database besides 
+   > account-value data? It iS nOt a DaTaBaSe, what do you want?"
    >
-   > I never spoke (and never will) to that fellow again. Idiot.
+   > I never spoke to that fellow again since then.
    
    And, guess what? This is possible to be applied to Eth, Solana or whatever through I/O cluster as well.
 
@@ -355,4 +355,4 @@ of the DBMS-based approach using very typical, very usual DBMS features such as:
    OLAP-specific and OLTP-specific database load types require different storage 
    internals than simply using RocksDB for everything.
 
-## So, let's provide anyone with anyone's data in a trustless manner?
+## So, let's provide everyone with everyone's data in a trustless manner?
