@@ -331,7 +331,7 @@ of the DBMS-based approach using very typical, very usual DBMS features such as:
 4. **Independent Deployments**. Can't handle the load? Just get one more
    database cluster up and running and you're good to go. No need for "sharding" 
    or whatever.
-   > Yes, I'm perfectly aware why all that sharding nonsense exists - there is 
+   > Yes, I'm perfectly aware why sharding exists - there is 
    > a need to maintain a consistency of the only one database index which matters 
    > in every protocol's database in this industry - account-value index. We
    > will come to how to remove such a need in future blog posts (yes, there is
