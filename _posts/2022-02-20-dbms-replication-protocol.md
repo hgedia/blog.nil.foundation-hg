@@ -230,7 +230,7 @@ How in particular?
    database state, which was unpacked correctly from a correct particular
    databases's commit log.
 
-## But how to prevent a DBMS node from giviing out a user a wrong proof?
+## But how to prevent a DBMS node from giving out a user a wrong proof?
 
 Easy. Since all the nodes of the cluster are <span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span> nodes, which have the access to all the third-party databases data at once, the 
 protocol should require for the output proof to be published and verified by all 
