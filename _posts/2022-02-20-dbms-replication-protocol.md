@@ -87,8 +87,8 @@ There is a couple of options on how to set this up:
    (aka Infura with SQL).
 
    Guess, what is the problem with that? It is hard to scale (especially nowadays) 
-   given extensive infrastructure which should be managed by the only organization 
-   - some <span style='font-family:Menlo, Courier, monospace'>=nil;</span> 
+   given extensive infrastructure which should be managed by the only 
+   organization - some <span style='font-family:Menlo, Courier, monospace'>=nil;</span> 
    Foundation-related one. We also already have Amazon, Google Cloud, Azure, etc, 
    which are also not reliable data sources — we should not have to trust data 
    providers to behave honestly by providing the correct data.
@@ -344,7 +344,7 @@ of the DBMS-based approach using very typical, very usual DBMS features such as:
    > will come to how to remove such a need in future blog posts (yes, there is
    > such a way). Stay tuned!
    >
-   > It is ridiculous, by the way, how all the database purpose gets reduced to
+   > It is ridiculous, by the way, the way all the database purpose gets reduced to
    > the only only one thing - maintaining the only one key-value index. All the
    > other data can and will be removed [https://vitalik.ca/general/2021/12/06/endgame.html](https://vitalik.ca/general/2021/12/06/endgame.html) 
    > and everyone is okay with it.
@@ -353,7 +353,8 @@ of the DBMS-based approach using very typical, very usual DBMS features such as:
    > (it was Ethereum we were talking about) besides account-value data? It iS 
    > nOt a DaTaBaSe, what do you want?"
    >
-   > I never spoke to that fellow again since then.
+   > I never spoke to that fellow again since then. Don't let your children be 
+   > like that fellow.
    
    And, guess what? This is possible to be applied to Eth, Solana or whatever through I/O cluster as well.
 
