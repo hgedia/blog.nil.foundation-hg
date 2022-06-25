@@ -287,12 +287,6 @@ pre {
     margin-bottom: 2em
 }
 
-@media (max-width: 767px) {
-    .section-preview .image img {
-        width: 100%
-    }
-}
-
 .sponsor img {
     max-width: 100%
 }
@@ -315,6 +309,12 @@ pre {
 }
 
 @media (max-width: 767px) {
+    .section-preview .image img {
+        width: 100%
+    }
+    .navbar .container {
+        margin: 0px;
+    }
     .splash {
         padding-top: 8em
     }
