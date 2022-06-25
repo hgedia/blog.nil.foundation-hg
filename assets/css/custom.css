@@ -20,6 +20,10 @@ pre {
         transition: padding .3s;
     }
 
+    .navbar .container {
+        margin: 0px 55px 0px 55px;
+    }
+
     .navbar.fixed-top .navbar-brand {
         font-size: 1.5em;
         -webkit-transition: all .3s;
@@ -40,10 +44,6 @@ pre {
 
 .navbar {
     font-weight: 300;
-}
-
-.navbar .container {
-    margin: 0px 55px 0px 55px;
 }
 
 .navbar a:focus {
