@@ -3,7 +3,7 @@ title: =nil; Database Management System. Replication Protocol. Trustless I/O Ext
 layout: post
 date: 2022-05-31
 excerpt: What total trustless data accessibility leads to.
-author: Mikhail Komarov. Special thanks to Luke Pearson, Yuah Han Li and Ryan Sproule for discussion, adjustments and comments.
+author: Mikhail Komarov. <br> Special thanks to Luke Pearson, Yuah Han Li and Ryan Sproule for discussion, adjustments and comments.
 tags: dbms io
 comments: false
 ---
