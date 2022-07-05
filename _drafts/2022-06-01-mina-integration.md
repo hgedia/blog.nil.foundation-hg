@@ -157,4 +157,4 @@ To our best knowledge right now we plan to introduce a first working prototype
 of Ethereum's state/query proof generator compatible with Mina's proof system in
 Q4 2022.
 
-Stay tuned!
+## Stay tuned!
