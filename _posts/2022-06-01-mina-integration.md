@@ -3,7 +3,7 @@ title: Bridging Mina with =nil; 'DROP DATABASE *'s Replication Protocol Trustles
 layout: post
 date: 2022-06-28
 excerpt: How will a Mina Protocol's bridge become bi-directional?
-author: Mikhail Komarov, Aleksey Sofronov <br> Special thanks to Luke Pearson for discussion, adjustments and comments.
+author: Mikhail Komarov, Aleksey Sofronov <br> Special thanks to Luke Pearson for discussion, adjustments and comments. <br>
 tags: dbms io mina
 comments: false
 ---
