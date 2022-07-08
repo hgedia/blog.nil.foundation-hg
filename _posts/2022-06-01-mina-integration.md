@@ -3,17 +3,19 @@ title: Bridging Mina with =nil; 'DROP DATABASE *'s Replication Protocol Trustles
 layout: post
 date: 2022-06-28
 excerpt: How will a Mina Protocol's bridge become bi-directional?
-author: Mikhail Komarov, Alexey Sofronov
+author: Mikhail Komarov, Aleksey Sofronov <br> Special thanks to Luke Pearson for discussion, adjustments and comments.
 tags: dbms io mina
 comments: false
 ---
 
 ## What is this about?
 
-This post covers one of the applications of a [=nil; 'DROP DATABASE *](https://blog.nil.foundation/2021/12/01/database-management-system.html)'s replication protocol [trustless I/O extension](https://blog.nil.foundation/2022/05/31/dbms-replication-protocol.html) - trustless bridging. In particular, it covers an integration with [Mina Protocol](https://minaprotocol.com), which 
-single-directional Ethereum corner case integration was already described 
-([https://blog.nil.foundation/2021/09/30/mina-ethereum-bridge.html](https://blog.nil.foundation/2021/09/30/mina-ethereum-bridge.html)), developed ([https://blog.nil.foundation/2021/11/01/mina-ethereum-bridge-design.html](https://blog.nil.foundation/2021/11/01/mina-ethereum-bridge-design.html)) and demoed 
-([https://twitter.com/nil_foundation/status/1519217326679277569?s=21&t=cO_rYkedp2iIoekhh9DbQg](https://twitter.com/nil_foundation/status/1519217326679277569?s=21&t=cO_rYkedp2iIoekhh9DbQg)).
+This post covers one of the applications of a [=nil; 'DROP DATABASE *](https://blog.nil.foundation/2021/12/01/database-management-system.html)'s replication protocol [trustless I/O extension](https://blog.nil.foundation/2022/05/31/dbms-replication-protocol.html) - trustless bridging. In particular, it covers an integration with 
+[Mina Protocol](https://minaprotocol.com), for which we've already 
+[described](https://blog.nil.foundation/2021/09/30/mina-ethereum-bridge.html), 
+[developed](https://blog.nil.foundation/2021/11/01/mina-ethereum-bridge-design.html) 
+and [demoed](https://twitter.com/nil_foundation/status/1519217326679277569?s=21&t=cO_rYkedp2iIoekhh9DbQg) 
+a one-directional bridge.
 
 ## Alright. Let's read your story.
 
@@ -25,38 +27,39 @@ which is capable of providing trustless I/O to various databases through the DBM
 query language unified for all the databases (Bitcoin, Ethereum, Solana, Mina,
 others).
 
-## And how these things are relevant?
+## And how is this relevant?
 
 =nil; 'DROP DATABASE *'s replication protocol trustless I/O extension provides
 users (no matter what kind of users - applications or protocols) with state and
 query proofs for three different use cases:
-1. **Trustless Data Access.** In case a state/query proof consumer is an end-user application or a
-   frontend of any kind, this use case results into 
-2. **Trustless Bridging.** In case a state/query proof consumer is a protocol
-   (e.g. Mina) and a user of such a protocol requested a state/query proof of
-   another protocol of a different kind (e.g. Ethereum or Solana), this results 
-   into a trustless bridging of these two protocols involved (e.g. Mina and Ethereum).
-3. **Pluggable Scaling.** In case a state/query proof consumer is a protocol and its 
-   user (an application or anything) it is of the same kind a user has requested
-   a state/query proof from (e.g. some Avalanche user has requested a state/query
-   proof of another independent, application-speficfic Avalanche deployment), 
-   then it results into increasing the throughput of the original protocol
-   cluster deployment.
+1. **Trustless Data Access.** If a proof consumer is an end-user application or 
+   a frontend of any kind, it could be used for accessing data on the protocol 
+   that it lives on.
+2. **Trustless Bridging.** If a proof consumer is a protocol (e.g. Mina), and a 
+   user of this protocol requested a state/query proof of another protocol 
+   (e.g. Ethereum or Solana), it could be used for trustless bridging of these 
+   two protocols.
+3. **Pluggable Scaling.** If a proof consumer is a protocol and its user (an 
+   application or otherwise) it is of the same kind a user has requested a 
+   state/query proof from (e.g. some Avalanche user has requested a state/query 
+   proof of another independent, application-specific Avalanche deployment), then 
+   it results into increasing the throughput of the original protocol cluster 
+   deployment.
 
-So, what we're interested in describing this time is a second use case.
+In this article, we’ll be describing the second use case applied to Mina.
 
-## Okay. Isn't it a thing which you've done already? What is so new about it?
+## Okay. Haven’t you already done this? What’s so new about it?
 
-Ah, not that fast, fellow. What is being done right now is a single-directional
-Mina-Ethereum bridge core (which effectively an in-EVM Mina verification is).
+Not so fast. What we’ve accomplished so far is a one-directional Mina-Ethereum 
+bridge core (which is effectively an in-EVM Mina state transition verification).
 
-> We can briefly walk through the current implementation.
-> Since strainghtforward Kimchi proof verification on EVM is too expensive to be 
-> done, it was decided to wrap Kimchi proof verification with a Placeholder's 
-> (=nil;'s proof system) proof, create "proof of a successful proof verification" 
-> and verify such a wrapping proof in EVM.
+> Let’s briefly walk through the current design
+> Since strainghtforward Kimchi proof verification on EVM is too expensive, 
+> we basically have to to wrap Kimchi proof verification algorithm in another 
+> proof (using =nil;’s Placeholder proof system), and create a ‘proof of a 
+> successful verification’ - this can then be cheaply verified within the EVM.
 >
-> So the overall current process step by step is as follows:
+> So the current step by step process is as follows:
 > 1. Mina's native state proof gets retrieved
 > 2. Auxiliary proof in Placeholder proof system is being generated
 > 3. Auxiliary proof is being submitted to EVM for the verification to happen
@@ -72,66 +75,60 @@ More detailed overview of a currently existing solution can be found in previous
 relevant blog posts: [https://blog.nil.foundation/2021/11/01/mina-ethereum-bridge-design.html](https://blog.nil.foundation/2021/11/01/mina-ethereum-bridge-design.html), 
 [https://blog.nil.foundation/2021/09/30/mina-ethereum-bridge.html](https://blog.nil.foundation/2021/09/30/mina-ethereum-bridge.html).
 
-But! What a second use case of a =nil;'s trustless I/O extension brings is a
-state and DBMS query proofs of a various third-party protocol (e.g. Ethereum,
-Solana or Avalanche). And, since it is also possible to switch the proof system
-which is being used within the =nil;'s trustless I/O replication protocol
-extension for the proof generation, those query and state proofs are coming to 
-any proof system supported. In Mina's case described we're talking about generating 
-proofs in Kimchi.
+The most important thing that the trustless I/O extension brings is the 
+capability to fetch state and query proofs for various other protocols 
+(like Ethereum, Solana or Avalance). And, since we can switch the proof system 
+being used within =nil;’s trustless I/O replication protocol extension, those 
+query and state proofs can be bridged to any supported proof system. In Mina’s 
+case specifically, we generate the proofs in Kimchi.
 
 > To be more presice we have a couple of options how to arrange this:
-> 1. To generate state and query proofs right in Kimchi proof system right
->    inside the I/O cluster and provide a user with a choice which proof system
->    to use with something like
->    `_db["eth"].select("accounts").where("key").equals("name").and("value").equals("100")`
->    so that would return a Kimchi proof ready to be verified on Mina's side right away.
+> 1. Reconstruct the query/state proof directly in Kimchi, which would look 
+>    something like this: the user constructs a query (such as 
+>    _db["eth"].select("accounts").where("key").equals("name").and("value").equals("100")) 
+>    and this would return a Kimchi proof, ready to be verified on Mina right away.
 >
->    But! A downside of such an approach is that a proof generation will become
->    a more expensive operation for a user because of the need to duplicate a
->    third-party's protocol state proof originaly generated in in Placeholder in
->    Kimchi.
+>    The downside of this approach is that proof generation will become much more 
+>    expensive, because of the need to reconstruct the original proof in Kimchi - 
+>    essentially incurring a linear double cost for each query.
 >
-> 2. To wrap the state/query proof generated in Placeholder proof system with 
->    implementing its verification as a Kimchi circuit. This would result into 
->    having an additional wrapping proof generation for each query, but it would 
->    make a state proof generation cheaper.
+> 2. Wrap’ the state/query proof (generated with the Placeholder proof system) 
+>    by implementing the verification algorithm as a Kimchi circuit. This would 
+>    also incur an additional proof generation for each query, but will generally 
+>    be much cheaper as this circuit is constant-size, and avoids naively 
+>    duplicating the original proof.
 >
->    A second option seems to be more viable.
+>    At a glance, the second option seems to be more viable.
 
-So, such a specification of a proof system used for an output proof generation
-leads us to being able to verify these third-party protocol data proofs right 
-away with Mina's native verifier (used for its state proof), which leads us to...
+This specification allows us to verify third-party protocol data proofs directly 
+within Mina, which leads us to…
 
 ## Mina Bi-Directional Bridging!
 
 Yes!
 
-Let us consider such a process step-by-step.
+Let’s break this process down step-by-step.
 
-1. First of all, we need a state proof of a third-party protocol we want to
-   bridge to Mina generated in Placeholder proof system and wrapped into Kimchi 
-   proof system. Let us say it is going to be Ethereum (but actually in can be
-   any other protocol supported by =nil;). So a user or an application willing
-   to bridge Ethereum to Mina is supposed to retrieve such one from =nil; along 
-   with a proof of a piece of data (e.g. so-called "token" data).
-2. Next step is to submit a retrieved proof to Mina's native verifier, to the 
-   same one which is being used for native Mina's state proof verification.
-
-   From Mina's protocol perspective, such a =nil;-generated data proof will be
-   recognized in the same way as a native Snapp-generated one. A =nil;-flavored
-   Snapp.
-3. After a third-party protocol's data proof is submitted to Mina's verifier,  a
-   user (or a Mina-based application) receivese a third-party's protocol
-   actual data (not just a proof) from =nil; as well and voila! Ethereum's data
-   is being safely and trustlessly used in Mina.
+1. First of all, we need a state proof for the third-party protocol we want to 
+   bridge to from Mina, generated in the Placeholder proof system, and wrapped 
+   in a Kimchi proof. Let’s say this third-party protocol is Ethereum (but in 
+   reality, it could be any protocol supported by =nil;). So the user or 
+   application wanting to bridge Ethereum data to Mina has to retrieve this proof 
+   from =nil;.
+2. Next, submit the retrieved proof to the Mina verifier. From Mina’s perspective, 
+   a =nil;-generated data proof will be identical to a native Snapp-generated proof. 
+   A =nil;-flavored Snapp, if you will.
+3. After the proof is submitted to the Mina verifier, the user (or Mina-based 
+   application) receives the relevant Ethereum data - and voila! The Ethereum 
+   data is being safely and trustlessly used in Mina.
 
 ![](/assets/images/2022-06-01-mina-integration/case1.png)
 
 ## What about other protocols?
 
 Other protocols, supported by =nil; are also going to be available for Mina-compatible 
-state/query proof generation and retrieval. For example, Solana is on its way.
+state/query proof generation and retrieval. For example, Solana's integration is 
+on its way.
 
 Same process as for Ethereum from user story side:
 1. Retrieve a state/query proof with Solana's data generated with Placeholder 
@@ -151,10 +148,10 @@ c EQUALS d`. Then =nil; would return a proof of such a query generated in
 Placeholder proof system and wrapped with Kimchi, which will be okay for Mina's
 native verifier, so one can safely use other protocols data in Mina.
 
-## When?
+## Sold. When?
 
-To our best knowledge right now we plan to introduce a first working prototype
-of Ethereum's state/query proof generator compatible with Mina's proof system in
+According to our best estimates, we plan to introduce the first working prototype 
+of Ethereum’s state/query proof generator compatible with Mina’s proof system in 
 Q4 2022.
 
 ## Stay tuned!
