@@ -1,5 +1,5 @@
 ---
-title: =nil; Foundation's in-EVM Full Mina State Verification.
+title: <span style='font-family:Menlo, Courier, monospace'>=nil;</span> Foundation's in-EVM Full Mina State Verification.
 layout: post
 date: 2021-09-30
 excerpt: Paving the way to Ethereum-Mina bridge by full Mina state in-EVM verification made possible by Pickles SNARK (and some more SNARKs).

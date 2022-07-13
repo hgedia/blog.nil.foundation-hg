@@ -1,5 +1,5 @@
 ---
-title: =nil; Database Management System.
+title: <span style='font-family:Menlo, Courier, monospace'>=nil;</span> Database Management System.
 layout: post
 date: 2021-12-01
 excerpt: Data management done right.

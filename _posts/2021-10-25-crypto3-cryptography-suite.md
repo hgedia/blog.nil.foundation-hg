@@ -1,5 +1,5 @@
 ---
-title: =nil; Crypto3 Cryptography Suite.
+title: <span style='font-family:Menlo, Courier, monospace'>=nil;</span> Crypto3 Cryptography Suite.
 layout: post
 date: 2021-10-25
 excerpt: Cryptography Suite for zk-Rollups, zk-Bridges and much more.

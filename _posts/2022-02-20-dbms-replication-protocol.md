@@ -1,5 +1,5 @@
 ---
-title: =nil; Database Management System. Replication Protocol. Trustless I/O Extension.
+title: Trustless Data Management through <span style='font-family:Menlo, Courier, monospace'>=nil;</span> Foundation's Proof Market.
 layout: post
 date: 2022-05-31
 excerpt: What total trustless data accessibility leads to.
