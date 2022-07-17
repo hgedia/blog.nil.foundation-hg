@@ -21,15 +21,19 @@ a one-directional bridge.
 
 In the end of April 2022 Mina Protocol's in-EVM state verification finally saw
 the light of the day [https://verify.mina.nil.foundation](https://verify.mina.nil.foundation).
-Meanwhile, =nil; Foundation wasn't sitting idle and [announced](https://blog.nil.foundation/2021/12/01/database-management-system.html) a =nil; Database Management System called =nil; 'DROP DATABASE * and [its 
-replication protocol extension](https://blog.nil.foundation/2022/05/31/dbms-replication-protocol.html) 
+Meanwhile, <span style='font-family:Menlo, Courier, monospace'>=nil;</span> 
+Foundation wasn't sitting idle and 
+[announced](https://blog.nil.foundation/2021/12/01/database-management-system.html) 
+a <span style='font-family:Menlo, Courier, monospace'>=nil;</span> Database Management System 
+called <span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span> 
+and [its replication protocol extension](https://blog.nil.foundation/2022/05/31/dbms-replication-protocol.html) 
 which is capable of providing trustless I/O to various databases through the DBMS's 
 query language unified for all the databases (Bitcoin, Ethereum, Solana, Mina,
 others).
 
 ## And how is this relevant?
 
-=nil; Proof Market extension provides users (no matter what kind of users - 
+=nil; Proof Market provides users (no matter what kind of users - 
 applications or protocols) with on-demand state and query proofs for three different 
 use cases:
 1. **Trustless Data Access.** If a proof consumer is an end-user application or 
@@ -56,8 +60,9 @@ bridge core (which is effectively an in-EVM Mina state transition verification).
 > Let’s briefly walk through the current design
 > Since strainghtforward Kimchi proof verification on EVM is too expensive, 
 > we basically have to to wrap Kimchi proof verification algorithm in another 
-> proof (using =nil;’s Placeholder proof system), and create a ‘proof of a 
-> successful verification’ - this can then be cheaply verified within the EVM.
+> proof (using <span style='font-family:Menlo, Courier, monospace'>=nil;</span>’s 
+> Placeholder proof system), and create a ‘proof of a successful verification’ - this 
+> can then be cheaply verified within the EVM.
 >
 > So the current step by step process is as follows:
 > 1. Mina's native state proof gets retrieved
@@ -77,7 +82,8 @@ relevant blog posts: [https://blog.nil.foundation/2021/11/01/mina-ethereum-bridg
 
 The most important thing that the Proof Market brings is the capability to fetch 
 state and query proofs for various other protocols (like Ethereum, Solana or 
-Avalance). And, since we can switch the proof system being used within =nil;
+Avalance). And, since we can switch the proof system being used within 
+<span style='font-family:Menlo, Courier, monospace'>=nil;</span>
 Foundation's Proof Market, those query and state proofs can be bridged to any 
 supported proof system. In Mina’s case specifically, we generate the proofs in 
 Kimchi.
@@ -101,7 +107,7 @@ Kimchi.
 >    At a glance, the second option seems to be more viable.
 
 This specification allows us to verify third-party protocol data proofs directly 
-within Mina, which leads us to…
+within Mina, which leads us to...
 
 ## Mina Bi-Directional Bridging!
 
@@ -110,43 +116,48 @@ Yes!
 Let’s break this process down step-by-step.
 
 1. First of all, we need a state proof for the third-party protocol we want to 
-   bridge to from Mina, generated in the Placeholder proof system, and wrapped 
+   bridge to Mina, generated in the Placeholder proof system, and wrapped 
    in a Kimchi proof. Let’s say this third-party protocol is Ethereum (but in 
-   reality, it could be any protocol supported by =nil;). So the user or 
+   reality, it could be any protocol supported by 
+   <span style='font-family:Menlo, Courier, monospace'>=nil;</span>). So the user or 
    application wanting to bridge Ethereum data to Mina has to retrieve this proof 
-   from =nil;.
+   from <span style='font-family:Menlo, Courier, monospace'>=nil;</span>.
 2. Next, submit the retrieved proof to the Mina verifier. From Mina’s perspective, 
-   a =nil;-generated data proof will be identical to a native Snapp-generated proof. 
-   A =nil;-flavored Snapp, if you will.
+   a <span style='font-family:Menlo, Courier, monospace'>=nil;</span>-generated 
+   data proof will be identical to a native Snapp-generated proof. 
+   A <span style='font-family:Menlo, Courier, monospace'>=nil;</span>-flavored Snapp, if you will.
 3. After the proof is submitted to the Mina verifier, the user (or Mina-based 
-   application) receives the relevant Ethereum data - and voila! The Ethereum 
-   data is being safely and trustlessly used in Mina.
+   application) receives the relevant Ethereum data - and voila! Ethereum's data 
+   is being safely and trustlessly used in Mina.
 
 ![](/assets/images/2022-06-01-mina-integration/case1.png)
 
 ## What about other protocols?
 
-Other protocols, supported by =nil; are also going to be available for Mina-compatible 
-state/query proof generation and retrieval. For example, Solana's integration is 
-on its way.
+Other protocols, supported by <span style='font-family:Menlo, Courier, monospace'>=nil;</span> 
+are also going to be available for Mina-compatible state/query proof generation 
+and retrieval. For example, Solana's integration is on its way.
 
 Same process as for Ethereum from user story side:
 1. Retrieve a state/query proof with Solana's data generated with Placeholder 
-   and wrapped with Kimchi proof system from =nil;.
+   and wrapped with Kimchi proof system from <span style='font-family:Menlo, Courier, monospace'>=nil;</span>.
 2. Submit such a proof to Mina's native verifier just like you would do with a
    Snapp's proof.
 3. Feel free and safe to use Solana's data within the Snapp.
 
 ## And a data proof from a combination of protocols?
 
-Yes! It is a DBMS which supplies =nil; with data, remember?
+Yes! It is a DBMS which supplies <span style='font-family:Menlo, Courier, monospace'>=nil;</span> 
+with data, remember?
 
 So, in case a user wants to bridge Solana's and Ethereum, the only adjustment to
-the user story would be to retrieve a proof of a composite query from =nil; with
-something like: `SELECT FROM SOLANA WHERE a EQUALS b; SELECT FROM ETHEREUM WHERE
-c EQUALS d`. Then =nil; would return a proof of such a query generated in
-Placeholder proof system and wrapped with Kimchi, which will be okay for Mina's
-native verifier, so one can safely use other protocols data in Mina.
+the user story would be to retrieve a proof of a composite query from 
+<span style='font-family:Menlo, Courier, monospace'>=nil;</span> with something 
+like: `SELECT FROM SOLANA WHERE a EQUALS b; SELECT FROM ETHEREUM WHERE
+c EQUALS d`. Then <span style='font-family:Menlo, Courier, monospace'>=nil;</span> 
+would return a proof of such a query generated in Placeholder proof system and 
+wrapped with Kimchi, which will be okay for Mina's native verifier, so one can 
+safely use other protocols data in Mina.
 
 ## Sold. When?
 
