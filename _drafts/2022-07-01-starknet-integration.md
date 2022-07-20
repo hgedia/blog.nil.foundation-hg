@@ -58,8 +58,8 @@ It was called an "L3" concept. So-called "L3" concept supposes for independent
 StarkNet instances (any Cairo-generated logic to be precise) to bring their state 
 proofs to StarkNet, making it possible to verify themselves in StarkNet.
 
-> In particular this StarkWare supposes for Cairo/StarkNet to gain STARK
-> verification instruction so Cairo-generated STARK proofs could be verified
+> In particular StarkWare supposes for Cairo/StarkNet to gain STARK
+> verification Cairo-based logic, so Cairo-generated STARK proofs could be verified
 > within StarkNet. 
 >
 > And, of course, I gotta admit that Cairo postprocessing output have almost 
