@@ -3,7 +3,7 @@ title: Bridging to StarkNet through <span style='font-family:Menlo, Courier, mon
 layout: post
 date: 2022-07-01
 excerpt: Starting with bridging Solana to StarkNet through <span style='font-family:Menlo, Courier, monospace'>=nil;</span>.
-author: Mikhail Komarov
+author: Mikhail Komarov <br> Special thanks to Ohad Barta, Nitzan Grossman and StarkWare fellows in general for discussion, adjustments and comments.
 tags: dbms io starknet solana
 comments: false
 ---
