@@ -1,5 +1,5 @@
 ---
-title: Bridging Mina with <span style='font-family:Menlo, Courier, monospace'>=nil;</span> Foundation's Proof Market.
+title: Bridging Mina with <span style='font-family:Menlo, Courier, monospace'>=nil;</span>'s Proof Market.
 layout: post
 date: 2022-06-28
 excerpt: How will a Mina Protocol's bridge become bi-directional?
