@@ -1,5 +1,5 @@
 ---
-title: Trustless Data Management through <span style='font-family:Menlo, Courier, monospace'>=nil;</span> Foundation's Proof Market.
+title: <span style='font-family:Menlo, Courier, monospace'>=nil;</span>'s Proof Market and Trustless Data Management.
 layout: post
 date: 2022-05-31
 excerpt: What total trustless data accessibility leads to.
@@ -10,22 +10,40 @@ comments: false
 
 ## What is this about?
 
-This post describes a protocol bringing all the projects we're working on together 
-in a bigger picture. Including our 
-[Mina-Ethereum](https://blog.nil.foundation/2021/11/01/mina-ethereum-bridge-design.html) and
-[Solana-Ethereum](https://blog.nil.foundation/2021/11/01/solana-ethereum-bridge-design.html) 
-trustless bridges along with a 
-[=nil; Database Management System](https://blog.nil.foundation/2021/12/01/database-management-system.html).
+This post describes =nil;'s trustless data accessibility protocol bringing three 
+major Proof Market use cases together: 
+1. Trustless (non-optimisitic) data retrieval and insertion.
+2. Trustless bridging.
+3. Pluggable trustless scaling.
 
-## Introduction
+## Proof Market?
 
+=nil;'s Proof Market is a market of publicly-replicable databases' (e.g. Bitcoin,
+Ethereum, Solana, others) state and query proofs enabled by [<span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span>](https://blog.nil.foundation/2021/12/01/database-management-system.html).
+
+## <span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span>?
+
+[<span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span>](https://blog.nil.foundation/2021/12/01/database-management-system.html) is a database management system developed by <span style='font-family:Menlo, Courier, monospace'>=nil;</span> Foundation with a a purpose to handle publicly-replicable fault-tolerant 
+full-replica databases (e.g. Bitcoin or Ethereum) with a single piece of software - just 
+like it is being done with a proper DBMS (e.g. MySQL or PostgreSQL). 
+This allows to:
+
+1. Introduce a unified read AND write query language for such databases
+2. Reduce deployment and maintenance costs by managing multiple databases within
+   the single piece of software-based cluster or a standalone deployment.
+3. Increase deployments durability by 
+
+## But what does it have to do with data accessibility?
+
+Ah. Finally a proper question, not a burp.
+
+[<span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span>](https://blog.nil.foundation/2021/12/01/database-management-system.html) eliminates data accessibility and maintenance cost 
+problems as if they never existed. This is done by managing several publicly-replicable 
+fault-tolerant full-replica databases with the same piece of software and by 
+providing a read/write query language, same to all the databases, which replication 
+protocols are supported. Typical DBMS features. Another typical modern DBMS 
+feature is clusterization. Same thing 
 <span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span> 
-eliminates data accessibility and maintenance cost problems as if they never 
-existed. This is done by managing several public fault-tolerant replication-enabled 
-databases with the same piece of software and by providing a read/write query 
-language, same to all the databases, which replication protocols are supported. 
-Typical DBMS features. Another typical modern DBMS feature is clusterization. 
-Same thing <span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span> 
 provides as well.
 
 Having any public databases' (or protocol's if you really like that name) data 
@@ -363,4 +381,4 @@ of the DBMS-based approach using very typical, very usual DBMS features such as:
    OLAP-specific and OLTP-specific database load types require different storage 
    internals than simply using RocksDB for everything.
 
-## So, let's provide everyone with everyone's data in a trustless manner?
+## Let's provide everyone with everyone's data in a trustless manner, shall we?
