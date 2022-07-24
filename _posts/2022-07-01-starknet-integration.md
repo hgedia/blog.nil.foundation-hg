@@ -58,8 +58,8 @@ It was called an "L3" concept. So-called "L3" concept supposes for independent
 StarkNet instances (any Cairo-generated logic to be precise) to bring their state 
 proofs to StarkNet, making it possible to verify themselves in StarkNet.
 
-> In particular this StarkWare supposes for Cairo/StarkNet to gain STARK
-> verification instruction so Cairo-generated STARK proofs could be verified
+> In particular StarkWare supposes for Cairo/StarkNet to gain STARK
+> verification Cairo-based logic, so Cairo-generated STARK proofs could be verified
 > within StarkNet. 
 >
 > And, of course, I gotta admit that Cairo postprocessing output have almost 
@@ -132,7 +132,7 @@ actual L2 StarkNet.
 But, funny fact is, <span style='font-family:Menlo, Courier, monospace'>=nil;</span> binds this concept over by vanishing the difference 
 between L1s and L3s by litreally binding over various L1s to become L3s.
 
-**So funny thing is that every L1 now becomes an L3 throgh <span style='font-family:Menlo, Courier, monospace'>=nil;</span>**.
+**So funny thing is that every L1 now becomes an L3 through <span style='font-family:Menlo, Courier, monospace'>=nil;</span>**.
 
 ## What about other protocols?
 
