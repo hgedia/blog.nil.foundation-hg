@@ -31,7 +31,10 @@ This allows to:
 1. Introduce a unified read AND write query language for such databases
 2. Reduce deployment and maintenance costs by managing multiple databases within
    the single piece of software-based cluster or a standalone deployment.
-3. Increase deployments durability by 
+3. Increase deployments durability by using good old DBMS-specific techniques.
+
+More detailed information about <span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span> 
+can be found in a relevant blog post: [https://blog.nil.foundation/2021/12/01/database-management-system.html](https://blog.nil.foundation/2021/12/01/database-management-system.html).
 
 ## But what does it have to do with data accessibility?
 
