@@ -12,9 +12,9 @@ comments: false
 
 This post describes =nil;'s trustless data accessibility protocol bringing three 
 major Proof Market use cases together: 
-1. Trustless (non-optimisitic) data retrieval and insertion.
-2. Trustless bridging.
-3. Pluggable trustless scaling.
+1. **Trustless (non-optimisitic) data retrieval and insertion.**
+2. **Trustless bridging.**
+3. **Pluggable trustless scaling.**
 
 ## Proof Market?
 

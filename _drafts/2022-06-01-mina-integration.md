@@ -124,8 +124,9 @@ Let’s break this process down step-by-step.
    from <span style='font-family:Menlo, Courier, monospace'>=nil;</span>.
 2. Next, submit the retrieved proof to the Mina verifier. From Mina’s perspective, 
    a <span style='font-family:Menlo, Courier, monospace'>=nil;</span>-generated 
-   data proof will be identical to a native Snapp-generated proof. 
-   A <span style='font-family:Menlo, Courier, monospace'>=nil;</span>-flavored Snapp, if you will.
+   data proof will be identical to a native Mina's zkApp-generated proof. 
+   A <span style='font-family:Menlo, Courier, monospace'>=nil;</span>-flavored 
+   Mina's zkApp, if you will.
 3. After the proof is submitted to the Mina verifier, the user (or Mina-based 
    application) receives the relevant Ethereum data - and voila! Ethereum's data 
    is being safely and trustlessly used in Mina.
