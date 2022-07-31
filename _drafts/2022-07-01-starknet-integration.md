@@ -1,5 +1,5 @@
 ---
-title: Bridging to StarkNet through <span style='font-family:Menlo, Courier, monospace'>=nil;</span>'s Proof Market.
+title: Bridging to StarkNet through <span style='font-family:Menlo, Courier, monospace'>=nil;</span>.
 layout: post
 date: 2022-07-01
 excerpt: Starting with bridging Solana to StarkNet through <span style='font-family:Menlo, Courier, monospace'>=nil;</span>.
@@ -12,13 +12,13 @@ comments: false
 
 This post covers one of the applications of a 
 [<span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span>](https://blog.nil.foundation/2021/12/01/database-management-system.html)-based 
-[Proof Market](https://blog.nil.foundation/2022/05/31/dbms-replication-protocol.html) - 
+[Trustless Data Accessibility protocol](https://blog.nil.foundation/2022/05/31/dbms-replication-protocol.html) - 
 trustless bridging. In particular, it covers what [StarkNet](https://starknet.io) users 
 could gain from retrieving proofs of various protocols.
 
 ## Wait, what?
 
-That is right. Remember our [Proof Market-based Data Accessibility protocol](https://blog.nil.foundation/2022/05/31/dbms-replication-protocol.html) announcement? The one which is which supposed to be capable to provide 
+That is right. Remember our [Data Accessibility protocol](https://blog.nil.foundation/2022/05/31/dbms-replication-protocol.html) announcement? The one which is which supposed to be capable to provide 
 trustless I/O to various databases through the DBMS query language unified for all 
 the databases (Bitcoin, Ethereum, Solana, Mina, others).
 
@@ -41,11 +41,11 @@ the databases (Bitcoin, Ethereum, Solana, Mina, others).
 
 And! StarkNet integration leverages the second use case - trustless bridging.
 
-## Bridging to what? StarkNet is an Ethereum L2.
+## Bridging to what? StarkNet is so-called "L2" to Ethereum's database.
 
 That is true. And, this Ethereum L2 could use some data from other protocols in
 the same way as actual Ethereum's users - through 
-[<span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span>](https://blog.nil.foundation/2021/12/01/database-management-system.html) and [Proof Market-based Data Accessibility protocol](https://blog.nil.foundation/2022/05/31/dbms-replication-protocol.html).
+[<span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span>](https://blog.nil.foundation/2021/12/01/database-management-system.html) and [Data Accessibility protocol](https://blog.nil.foundation/2022/05/31/dbms-replication-protocol.html).
 
 That means, we're talking about bridging third-party protocols TO StarkNet.
 
@@ -94,7 +94,7 @@ introduced a trick with wrapping the proof verification in another proof.
 > [https://blog.nil.foundation/2021/09/30/mina-ethereum-bridge.html](https://blog.nil.foundation/2021/09/30/mina-ethereum-bridge.html).
 
 So, the same trick we apply to StarkNet. Whatever protocol's (like Solana's or
-Avalanche's) state/query proof is being generated with our [Proof Market-based Data Accessibility protocol](https://blog.nil.foundation/2022/05/31/dbms-replication-protocol.html), we can wrap its verification 
+Avalanche's) state/query proof is being generated with our [Data Accessibility protocol](https://blog.nil.foundation/2022/05/31/dbms-replication-protocol.html), we can wrap its verification 
 into Cairo-compatible STARK proof. 
 
 And that would result into...
@@ -120,7 +120,7 @@ Let’s break this process down step-by-step.
 
 ![](/assets/images/2022-07-01-starknet-integration/сase1.png)
 
-## But this mechanism was supposed to be used for L3s...
+## But this mechanism was supposed to be used for so-called "L3"s...
 
 Again. That is right. But! Who said we cannot exploit such a concept in a wrong
 way bringing some additional capabilities to StarkNet through <span style='font-family:Menlo, Courier, monospace'>=nil;</span>?

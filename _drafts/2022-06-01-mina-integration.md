@@ -1,5 +1,5 @@
 ---
-title: Bridging Mina with <span style='font-family:Menlo, Courier, monospace'>=nil;</span>'s Proof Market.
+title: Bridging Mina with <span style='font-family:Menlo, Courier, monospace'>=nil;</span>.
 layout: post
 date: 2022-06-28
 excerpt: How will a Mina Protocol's bridge become bi-directional?
@@ -10,7 +10,7 @@ comments: false
 
 ## What is this about?
 
-This post covers one of the applications of a [=nil; 'DROP DATABASE *](https://blog.nil.foundation/2021/12/01/database-management-system.html)-based [Proof Market](https://blog.nil.foundation/2022/05/31/dbms-replication-protocol.html) - trustless bridging. In particular, it covers an integration with 
+This post covers one of the applications of a [=nil; 'DROP DATABASE *](https://blog.nil.foundation/2021/12/01/database-management-system.html)-based [Trustless Data Accessibility protocol](https://blog.nil.foundation/2022/05/31/dbms-replication-protocol.html) - trustless bridging. In particular, it covers an integration with 
 [Mina Protocol](https://minaprotocol.com), for which we've already 
 [described](https://blog.nil.foundation/2021/09/30/mina-ethereum-bridge.html), 
 [developed](https://blog.nil.foundation/2021/11/01/mina-ethereum-bridge-design.html) 
@@ -33,7 +33,7 @@ others).
 
 ## And how is this relevant?
 
-=nil; Proof Market provides users (no matter what kind of users - 
+=nil; provides users (no matter what kind of users - 
 applications or protocols) with on-demand state and query proofs for three different 
 use cases:
 1. **Trustless Data Access.** If a proof consumer is an end-user application or 
@@ -80,13 +80,12 @@ More detailed overview of a currently existing solution can be found in previous
 relevant blog posts: [https://blog.nil.foundation/2021/11/01/mina-ethereum-bridge-design.html](https://blog.nil.foundation/2021/11/01/mina-ethereum-bridge-design.html), 
 [https://blog.nil.foundation/2021/09/30/mina-ethereum-bridge.html](https://blog.nil.foundation/2021/09/30/mina-ethereum-bridge.html).
 
-The most important thing that the Proof Market brings is the capability to fetch 
+The most important thing that the =nil; brings is the capability to fetch 
 state and query proofs for various other protocols (like Ethereum, Solana or 
 Avalance). And, since we can switch the proof system being used within 
-<span style='font-family:Menlo, Courier, monospace'>=nil;</span>
-Foundation's Proof Market, those query and state proofs can be bridged to any 
-supported proof system. In Mina’s case specifically, we generate the proofs in 
-Kimchi.
+<span style='font-family:Menlo, Courier, monospace'>=nil;</span>, those query 
+and state proofs can be bridged to any supported proof system. In Mina’s case 
+specifically, we generate the proofs in Kimchi.
 
 > To be more presice we have a couple of options how to arrange this:
 > 1. Reconstruct the query/state proof directly in Kimchi, which would look 

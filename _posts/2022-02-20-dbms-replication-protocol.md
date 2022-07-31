@@ -1,5 +1,5 @@
 ---
-title: <span style='font-family:Menlo, Courier, monospace'>=nil;</span>'s Proof Market and Trustless Data Management.
+title: <span style='font-family:Menlo, Courier, monospace'>=nil;</span> Trustless Data Management.
 layout: post
 date: 2022-05-31
 excerpt: What total trustless data accessibility leads to.
@@ -10,16 +10,20 @@ comments: false
 
 ## What is this about?
 
-This post describes =nil;'s trustless data accessibility protocol bringing three 
-major Proof Market use cases together: 
-1. **Trustless (non-optimisitic) data retrieval and insertion.**
-2. **Trustless bridging.**
-3. **Pluggable trustless scaling.**
-
-## Proof Market?
-
-=nil;'s Proof Market is a market of publicly-replicable databases' (e.g. Bitcoin,
-Ethereum, Solana, others) state and query proofs enabled by [<span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span>](https://blog.nil.foundation/2021/12/01/database-management-system.html).
+This post describes =nil;'s trustless data management protocol based upon 
+<span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span> 
+bringing three major use cases together: 
+1. **Trustless (non-optimisitic) data retrieval and insertion.** Retrieve and
+   insert the data from and to different databases (fault-tolerant full-replica 
+   included aka Bitcoin or Ethereum or whatever) through simple query language
+   (SQL or JS-based one) without any need to trust data providers becuase of
+   SNARK data correctness proofs.
+2. **Trustless bridging.** Use the data retrievied from the protocol and a 
+   SNARK correctness proof for putting the data from different protocols
+   databases to each other.
+3. **Pluggable trustless scaling.** Use the data retrieved from the protocol and
+   a SNARK correctness proof to increase the throughput of a particular protocol
+   by deploying several independent application-specific clusters.
 
 ## <span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span>?
 
@@ -36,9 +40,9 @@ This allows to:
 More detailed information about <span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span> 
 can be found in a relevant blog post: [https://blog.nil.foundation/2021/12/01/database-management-system.html](https://blog.nil.foundation/2021/12/01/database-management-system.html).
 
-## But what does it have to do with data accessibility?
+## But what does it have to do with data management?
 
-Ah. Finally a proper question, not a burp.
+Ah. Finally a proper question.
 
 [<span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span>](https://blog.nil.foundation/2021/12/01/database-management-system.html) eliminates data accessibility and maintenance cost 
 problems as if they never existed. This is done by managing several publicly-replicable 
