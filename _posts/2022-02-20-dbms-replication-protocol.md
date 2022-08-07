@@ -10,9 +10,23 @@ comments: false
 
 ## What is this about?
 
-This post describes =nil;'s trustless data management protocol based upon 
+Data management of any type (whatever OLAP or OLTP-alike load) requires having 
+some access to the data. Critical data management though requires having
+data on hand. A full replica in a trusted environment under full control. But
+what if no such a possibility exists (because of, for example, costs reasons)?
+A usual solution is - to trust the data provider. Just like they do with AWS 
+or Infura. Guess what this leads to? Here you go: [https://www.coindesk.com/policy/2022/03/03/metamask-infura-block-certain-areas-amid-crypto-sanctions-fury/](https://www.coindesk.com/policy/2022/03/03/metamask-infura-block-certain-areas-amid-crypto-sanctions-fury/).
+
+Now, what if such a trusted data source requires to be emplaced and used within 
+some other database (aka for a so-called "bridge")? Well, here what
+unfortunately happens: 
+[https://www.coindesk.com/business/2022/08/02/nomad-hacked-45m-stolen-so-far-report/](https://www.coindesk.com/business/2022/08/02/nomad-hacked-45m-stolen-so-far-report/), 
+[https://www.theverge.com/2022/2/3/22916111/wormhole-hack-github-error-325-million-theft-ethereum-solana](https://www.theverge.com/2022/2/3/22916111/wormhole-hack-github-error-325-million-theft-ethereum-solana).
+
+That is why this post =nil;'s trustless data management solution which is supposed 
+to solve those issues with state and query proofs based upon 
 <span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span> 
-bringing three major use cases together: 
+by bringing three major use cases together: 
 1. **Trustless (non-optimisitic) data retrieval and insertion.** Retrieve and
    insert the data from and to different databases (fault-tolerant full-replica 
    included aka Bitcoin or Ethereum or whatever) through simple query language
@@ -40,7 +54,7 @@ This allows to:
 More detailed information about <span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span> 
 can be found in a relevant blog post: [https://blog.nil.foundation/2021/12/01/database-management-system.html](https://blog.nil.foundation/2021/12/01/database-management-system.html).
 
-## But what does it have to do with data management?
+## But what does it have to do with trustless data management protocol?
 
 Ah. Finally a proper question.
 
