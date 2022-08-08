@@ -1,5 +1,5 @@
 ---
-title: <span style='font-family:Menlo, Courier, monospace'>=nil;</span> Trustless Data Management.
+title: <span style='font-family:Menlo, Courier, monospace'>=nil;</span>'s Trustless Data Management.
 layout: post
 date: 2022-05-31
 excerpt: What total trustless data accessibility leads to.
@@ -55,8 +55,6 @@ More detailed information about <span style='font-family:Menlo, Courier, monospa
 can be found in a relevant blog post: [https://blog.nil.foundation/2021/12/01/database-management-system.html](https://blog.nil.foundation/2021/12/01/database-management-system.html).
 
 ## But what does it have to do with trustless data management protocol?
-
-Ah. Finally a proper question.
 
 [<span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span>](https://blog.nil.foundation/2021/12/01/database-management-system.html) eliminates data accessibility and maintenance cost 
 problems as if they never existed. This is done by managing several publicly-replicable 
