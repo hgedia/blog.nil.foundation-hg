@@ -13,7 +13,7 @@ comments: false
 This post is about <span style='font-family:Menlo, Courier, monospace'>=nil;</span> Database Management System called <span style='font-family:Menlo, Courier, monospace'>=nil; 'DROP DATABASE *</span> - the second part of <span style='font-family:Menlo, Courier, monospace'>=nil;</span> Foundation mentioned within our [Twitter "About" section](https://twitter.com/nil_foundation) ("Home foundation for <span style='font-family:Menlo, Courier, monospace'>=nil;</span> Crypto3 and <span style='font-family:Menlo, Courier, monospace'>=nil;</span> DBMS projects").
 
 **Warning:** I don't really like to use marketing-purposed names, but this post
-is an explanatory one, so I have no other choice.
+is an explanatory one, so I have no other choice. Test
 
 ## Introduction
 
