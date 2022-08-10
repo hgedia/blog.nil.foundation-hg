@@ -153,7 +153,7 @@ algorithms to several data-storing DBMS slave-nodes.
 ## Query Language
 
 The struggle, with which this whole conversation was started, is already solved 
-within the DBMS industry for almost 30 years ago. Structured Query
+within the DBMS industry for almost 30 years. Structured Query
 Language-alike dialects (for RDBMS) and more custom query languages (for
 so-called "NoSQL" databases) provide extensive access to the reasonably-sized
 data chunks (in case DBMS node operator doesn't get nuts and starts to store
