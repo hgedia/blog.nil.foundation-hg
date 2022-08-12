@@ -42,12 +42,18 @@ proof system is implemented for a network, this allows a network to perform its 
 consistency checks before committing/implementing associated logic.
 
 # Clustering
-
 When users notice a slowdown in response times (or higher costs) in DBMS , it is first identified 
 what subset of the data is causing the spike and based on severity, it can be moved to its own partition or
 database. Similarly, when we see spikes in usage of a subset of data in blockchain networks, 
 the approach should be to move this to a different partition/db (network). 
-This implies your application data is stored and accessed across two or more partitions.
+
+This implies, your application data can reside in more than one cluster or can be wholly moved to a
+different cluster to ease the network.
+
+Below we define two models and the parameters which govern them.
+- Single Cluster:  We use ethereum as the base and create a model. This behaves as the current ethereum mainnet.
+- Multiple Clusters: We take 10 ethereum alike clusters. They are their own networks, these could be app chains
+or with a change of parameter can be extrapolated to any other networks.
 
 
 # Single cluster Model
@@ -108,4 +114,8 @@ Transaction flow & Block generation is simulated at every 15 seconds.
 
 ## Transaction Fees
 
-## 
+## Average wait time in mempool
+
+## Mempool Backlog 
+
+# Conclusion
