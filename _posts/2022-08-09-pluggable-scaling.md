@@ -55,24 +55,26 @@ different db cluster to ease the network.
 
 We define and compare two models and the parameters which govern them. Ethereum main-net is taken as a base for calculations,
 this can with a change of parameters can be extrapolated to any other network.
-- Single Cluster:  This behaves as the current ethereum mainnet.
+- Single Cluster:  This behaves as the current ethereum main-net.
 - Multiple Clusters: We take 10 ethereum alike clusters which run alongside a main ethereum cluster.They are their
   own networks, these could be app chains.
   
 The model simulates the transaction flows, transaction price & average gas consumed by a transaction. 
-It measures the outputs of transaction time,cost and price for current ethereum network
+It measures the outputs of transaction time,cost and price for current ethereum network.
 
 # Single cluster
 
+![](assets/images/2022-08-09-pluggable-scaling/single_cluster.png)
 
-Transaction flow : This model estimates, how many transactions are being queued on the network every 15 seconds interval
+Transaction flow : Estimates of how many transactions are being queued on the network every 15 seconds interval.
 
-1. Number of transactions = A Poisson distribution is used to map how many transactions enter the network based on a number of assumptions.
+1. *Number of transactions* : A Poisson distribution is used to map how many transactions enter the network based on a number of assumptions.
    We adjust this distribution with a flow rate & elasticity constant, implying if the rate is high , the number of 
-   new transactions  will reduce.
-2. Transaction Price = This is modeled based on current ETH gas price computation having components of base fee and priority fee.
+   new transactions added to the network will reduce.
+//TODO  : Verify these formulas
+2. *Transaction Price* :  This is modeled based on current ETH gas price computation having components of base fee and priority fee.
    Priority fees again are assumed to have a log-normal distribution to choose between (slow-normal-fast) speeds.
-3. Gas used per transaction = This is average gas consumed by transactions on the network.
+3. *Gas used per transaction* : This is average gas consumed by transactions on the network.
 
 This snapshot is created every 15 seconds simulating the mempool.
 
@@ -80,25 +82,27 @@ Block generation : Simulating creation of blocks adhering to current protocol ru
 
 1. Selecting transactions with best price. 
 2. Ensuring selected transactions do not violate the block limits.
-3. Removing these transactions from the mempool
-4. Re-calculating the gas price base fee for next iteration.
+3. Removing selected transactions from the mem-pool.
+4. Re-calculating the base fee for next iteration.
 
 Transaction flow & Block generation is simulated at every 15 seconds.
 
 # Multi cluster
 
-We now adapt the above model to simulate the same metrics of transaction flow , queue  time & cost , but having more than one ETH 
-ETH cluster running.
+![](assets/images/2022-08-09-pluggable-scaling/multi_cluster.png)
 
-Transaction flow : This model estimates, how many transactions are being queued on the network every 15 seconds interval in 
-a multi-cluster configuration. The assumed number of eth clusters is TODO : confirm then number 10 sub clusters & one main cluster.
+We modify the above parameters to simulate the same metrics of but instead of one , we have multiple  
+ETH sub-cluster's running.
+
+Transaction flow : Estimates of how many transactions are being queued on the network every 15 seconds interval in 
+multi-cluster configuration.
+
 Below we discuss the adjustments to the parameters outlined above.
 
-TODO : Check how load is distributed between main & sub-clusters
-
+//TODO  : Verify these formulas
 1. Number of transactions = rate adjustments for additional clusters.
-2. Transaction Price = price adjustments to take into account transaction has a proof generation 
-   & verification cost associated with it.  (Check how is this created? i.e sc1 proof verified in mc?)
+2. Transaction Price = price adjustments to take into account transaction price. This now has a proof generation 
+   & verification cost associated with it , computer per block. (TODO VERIFY)
 3. Gas used per transaction = adjustments for additional clusters.
 
 This snapshot is created every 15 seconds simulating the mempool for each of the clusters involved.
@@ -107,19 +111,28 @@ Block generation : Simulating creation of blocks adhering to current protocol ru
 
 1. Selecting transactions with best price.
 2. Ensuring selected transactions do not violate the block limits.
-3. Removing these transactions from the mempool
-4. Re-calculating the gas price base fee for next iteration.
+3. Removing selected transactions from the mem-pool.
+4. Re-calculating the base fee for next iteration.
 
 Transaction flow & Block generation is simulated at every 15 seconds.
+
+## Assumptions
+The following input variables/boundaries are assumed for the simulation.
+
 
 # Findings
 
 ## Gas Price
+![](assets/images/2022-08-09-pluggable-scaling/gas_price.png)
 
-## Transaction Fees
+## Average transaction Fees
+![](assets/images/2022-08-09-pluggable-scaling/avg_tx_price.png)
 
-## Average wait time in mempool
+## Average wait time 
+![](assets/images/2022-08-09-pluggable-scaling/avg_tx_price.png)
 
-## Mempool Backlog 
+## Transactions stuck in mempool 
+![](assets/images/2022-08-09-pluggable-scaling/tx_stuck_mempool.png)
+
 
 # Conclusion
