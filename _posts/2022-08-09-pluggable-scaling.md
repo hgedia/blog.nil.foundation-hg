@@ -117,22 +117,40 @@ Block generation : Simulating creation of blocks adhering to current protocol ru
 Transaction flow & Block generation is simulated at every 15 seconds.
 
 ## Assumptions
-The following input variables/boundaries are assumed for the simulation.
-
+The following is a subset of variables/boundaries are assumed for the simulation. For the full list please see the code
+```
+Base hourly flowRate l0 :=  Daily Transactions/24 = ~55,000
+Number of sub clusters := 10 (excluding 1 main cluster)
+Main cluster load := 0.5 (50% , rest of the transactions are simulated on subclusters)
+Gas consumed in average tx  := 80000
+CPU hours to generate proof  := 8.4
+Proof verification in gas for placeholer proof := 2,000,000
+```
 
 # Findings
 
 ## Gas Price
 ![](assets/images/2022-08-09-pluggable-scaling/gas_price.png)
+Gas price in single cluster configuration is higher and more volatile as the transaction flow registers more load.
+In multi cluster setup, we observe gas price is stable and low as expected as the load is shared amongst 11 clusters.
 
 ## Average transaction Fees
 ![](assets/images/2022-08-09-pluggable-scaling/avg_tx_price.png)
+Average price in single cluster setup is volatile with the gas price & load. In multi cluster configuration , 
+we notice more stable transaction costs. A fair observation is also the cost of transaction is higher when 
+low number of transactions are on the network as this cost is associated to proof generation/verification.
+On average, the cost is much lower in multi cluster setup.
 
 ## Average wait time 
 ![](assets/images/2022-08-09-pluggable-scaling/avg_tx_price.png)
+Average waiting time for a transaction to be cleared from mempool has more spikes under loads where 
+transactions can be waiting to be confirmed from few seconds (high gas price) to 20 minutes. Multi cluster
+configuration clears the mempools much quicker and there is no wait lag experienced by the user.
 
 ## Transactions stuck in mempool 
 ![](assets/images/2022-08-09-pluggable-scaling/tx_stuck_mempool.png)
-
+Any transaction which is in the mempool for over 1 hour is considered stuck for this conclusion. High variance
+is observed in a single cluster configuration, while multi cluster configuration show no signs of backlog. 
 
 # Conclusion
+
