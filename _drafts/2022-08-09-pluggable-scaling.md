@@ -70,18 +70,17 @@ using an exponential and log-normal distribution respectively. Further details c
 We observe outputs of transaction time,cost and price for current ethereum network.
 
 ## Single cluster
-
+![](/assets/images/2022-08-09-pluggable-scaling/single_cluster.png)
+Single cluster configuration is equivalent to the current ethereum main-net. All transactions go to 
+a single mempool and from there on are added to a block.
 
 
 ## Multi cluster
-
-We modify the above parameters to simulate the same metrics of but instead of one , we have multiple  
-ETH sub-cluster's running.
-
-
-//TODO  : Verify these formulas
- Transaction Price = price adjustments to take into account transaction price. This now has a proof generation 
-   & verification cost associated with it , computer per block. (TODO VERIFY)
+![](/assets/images/2022-08-09-pluggable-scaling/multi_cluster.png)
+Multi cluster configuration comprises a main cluster and one or more sub-clusters. The transaction load 
+is split between both main and sub-clusters. Each subcluster has its own mempool.
+For any blocks created on the subcluster , a state proof is created and posted to the 
+main cluster where it is verified in EVM.
 
 
 
@@ -99,24 +98,25 @@ Placehodler verifier gas consumption := 2,000,000
 # Findings
 
 ## Gas Price
-
+![](/assets/images/2022-08-09-pluggable-scaling/gas_price.png)
 Gas price in single cluster configuration is higher and more volatile as the transaction flow registers more load.
 In multi cluster setup, we observe gas price is stable and low as expected as the load is shared amongst 11 clusters.
 
 ## Average transaction Fees
+![](/assets/images/2022-08-09-pluggable-scaling/avg_tx_price.png)
 Average price in single cluster setup is volatile with the gas price & load. In multi cluster configuration , 
 we notice more stable transaction costs. A fair observation is also the cost of transaction is higher when 
 low number of transactions are on the network as this cost is associated to proof generation/verification.
 On average, the cost is much lower in multi cluster setup.
 
 ## Average wait time 
-
+![](/assets/images/2022-08-09-pluggable-scaling/avg_tx_wait_time.png)
 Average waiting time for a transaction to be cleared from mempool has more spikes under loads where 
 transactions can be waiting to be confirmed from few seconds (high gas price) to 20 minutes. Multi cluster
 configuration clears the mem-pools much quicker and there is no wait lag experienced by the user.
 
 ## Transactions stuck in mempool 
-
+![](/assets/images/2022-08-09-pluggable-scaling/tx_stuck_mempool.png)
 Any transaction which is in the mempool for over 1 hour is considered stuck for this conclusion. High variance
 is observed in a single cluster configuration, while multi cluster configuration show no signs of backlog. 
 
@@ -124,4 +124,4 @@ is observed in a single cluster configuration, while multi cluster configuration
 
 We conclude from the above findings that re-envisioning networks as clusters provides scalability benefits
 without having to adopt or maintain complex architectures. The security provided is on par with existing
-L2 solutions, with the ability to further fragment the application if the need be. 
+L2 solutions, with the ability to further fragment the application across different networks. 
