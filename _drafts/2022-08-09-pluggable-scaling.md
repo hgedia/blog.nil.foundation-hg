@@ -61,18 +61,13 @@ this can with a change of parameters can be extrapolated to any other network.
 - Single Cluster:  This behaves as the current ethereum main-net.
 - Multiple Clusters: We take multiple ethereum alike clusters which run alongside a main ethereum cluster.They are their
   own networks, these could be app chains.
+
+The model simulates transaction flows using a poisson distribution to map how many transactions enter 
+the network (flow). Adjustments include a flow rate & elasticity constant, implying if the rate is high , 
+the number of new transactions added to the network will reduce. Transaction fee & gas consumed are modelled 
+using an exponential and log-normal distribution respectively. Further details can be found in the repo here. (TODO)
   
-The model simulates the transaction flows, transaction price & average gas consumed by a transaction. 
-It measures the outputs of transaction time,cost and price for current ethereum network.
-
-A Poisson distribution is used to map how many transactions enter the network (flow). Adjustments include 
-a flow rate & elasticity constant, implying if the rate is high , the number of new transactions added 
-to the network will reduce. Transaction price & gas are modelled using an exponential and lognormal 
-distribution respectively. Further details can be found in the repo here. (TODO)
-
-Block creation is simulated adhering to the ethereum protocol rule (transaction & block gas limits) 
-with the aim to maximise a miners profit.
-
+We observe outputs of transaction time,cost and price for current ethereum network.
 
 ## Single cluster
 
@@ -98,7 +93,7 @@ Number of sub clusters := 10 (excluding 1 main cluster)
 Main cluster load := 0.5 (50% , rest of the transactions are simulated on subclusters)
 Gas consumed in average tx  := 80000
 CPU hours to generate proof  := 8.4
-Proof verification in gas for placeholer proof := 2,000,000
+Placehodler verifier gas consumption := 2,000,000
 ```
 
 # Findings
@@ -118,7 +113,7 @@ On average, the cost is much lower in multi cluster setup.
 
 Average waiting time for a transaction to be cleared from mempool has more spikes under loads where 
 transactions can be waiting to be confirmed from few seconds (high gas price) to 20 minutes. Multi cluster
-configuration clears the mempools much quicker and there is no wait lag experienced by the user.
+configuration clears the mem-pools much quicker and there is no wait lag experienced by the user.
 
 ## Transactions stuck in mempool 
 
@@ -127,3 +122,6 @@ is observed in a single cluster configuration, while multi cluster configuration
 
 # Conclusion
 
+We conclude from the above findings that re-envisioning networks as clusters provides scalability benefits
+without having to adopt or maintain complex architectures. The security provided is on par with existing
+L2 solutions, with the ability to further fragment the application if the need be. 
