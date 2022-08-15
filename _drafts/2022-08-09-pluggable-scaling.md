@@ -80,6 +80,7 @@ a single mempool and from there miners add them to a block.
 
 ## Multi cluster
 ![](/assets/images/2022-08-09-pluggable-scaling/multi_cluster.png)
+
 Multi cluster configuration comprises a main cluster and one or more sub-clusters. The transaction load 
 is split between both main and sub-clusters. Each subcluster has its own mempool.
 For any blocks created on the subcluster , a state proof is created and posted to the 
@@ -88,7 +89,7 @@ main cluster where it is verified in EVM.
 
 
 ## Assumptions
-The following is a subset of variables/boundaries are assumed for the simulation. For the full list please see the code
+The following is a subset of variables/boundaries are assumed for the simulation. For the full list please see the code(TODO)
 ```
 Base hourly flowRate l0 :=  Daily Transactions/24 = ~55,000
 Number of sub clusters := 10 (excluding 1 main cluster)
