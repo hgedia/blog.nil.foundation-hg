@@ -3,15 +3,19 @@ title: <span style='font-family:Menlo, Courier, monospace'>=nil;</span>'s Plugga
 layout: post
 date: 2022-08-09
 excerpt: What is Pluggable scaling?
-author: Haresh G.
+author: Aleksey S, Mikhail K, Haresh G.
 tags: dbms io
 comments: false
 ---
 # Introduction
-Monolithic blockchains have suffered throughput bottleneck in terms of transactions/sec during peak utilization. 
-This inability to meet demand results in higher transaction costs and wait times for users. 
-Solution to address this have resulted in newer chains adopting different architectures such as 
-subnets (Avalance) , supernets (Polygon) or hub-spoke architectures such as Cosmos IBC & Polkadot. 
+Monolithic blockchains have suffered throughput bottleneck in terms of transactions/sec during peak utilization.
+We saw gas prices on ethereum spike to 400+ gwei during a BAYC land sale event 
+pushing [nft transactions](https://web3isgoinggreat.com/?id=popular-nft-mint-spikes-ethereum-gas-prices-opensea-transaction-fees-exceed-3500) 
+as high as 3,500$. This inability to meet demand results in higher transaction costs and wait times for users. 
+For technology to embrace mass adoption, it is inherent stability/bounds be provided even in 
+high demand scenarios. Solution to address this have resulted in newer chains adopting different 
+architectures such as subnets (Avalanche) , supernets (Polygon) or hub-spoke architectures such 
+as Cosmos IBC & Polkadot. 
 
 Another branch of these solutions have taken form of Optimistic/zk-rollups which inherit security 
 from the base layer they are built on.The rollup centric solution is part of the ETH2 upgrade, 
@@ -37,11 +41,11 @@ has a cost associated with it (hardware/electricity) whilst for most use cases, 
 are to be expressed as transaction costs as the verifiers are deployed in smart contracts.
 
 **Placeholder proof system** :
-Placeholder is =nil's in-house proof system for which all proofs are generated. Once a
+Placeholder is =nil's in-house proof system for which validity proofs are generated. Once a
 proof system is implemented for a network, this allows a network to perform its local
 consistency checks before committing/implementing associated logic.
 
-# Clustering
+**Clustering**:
 When users notice a slowdown in response times (or higher costs) in DBMS , it is first identified 
 what subset of the data is causing the spike and based on severity, it can be moved to its own partition or
 database. Similarly, when we see spikes in usage of a subset of data in blockchain networks, 
@@ -50,71 +54,41 @@ the proposed approach is to move this to a different partition/db (network).
 This implies, your application data can reside in more than one db or can be wholly moved to a
 different db cluster to ease the network.
 
-
 # Model 
 
 We define and compare two models and the parameters which govern them. Ethereum main-net is taken as a base for calculations,
 this can with a change of parameters can be extrapolated to any other network.
 - Single Cluster:  This behaves as the current ethereum main-net.
-- Multiple Clusters: We take 10 ethereum alike clusters which run alongside a main ethereum cluster.They are their
+- Multiple Clusters: We take multiple ethereum alike clusters which run alongside a main ethereum cluster.They are their
   own networks, these could be app chains.
   
 The model simulates the transaction flows, transaction price & average gas consumed by a transaction. 
 It measures the outputs of transaction time,cost and price for current ethereum network.
 
-# Single cluster
+A Poisson distribution is used to map how many transactions enter the network (flow). Adjustments include 
+a flow rate & elasticity constant, implying if the rate is high , the number of new transactions added 
+to the network will reduce. Transaction price & gas are modelled using an exponential and lognormal 
+distribution respectively. Further details can be found in the repo here. (TODO)
 
-![](assets/images/2022-08-09-pluggable-scaling/single_cluster.png)
+Block creation is simulated adhering to the ethereum protocol rule (transaction & block gas limits) 
+with the aim to maximise a miners profit.
 
-Transaction flow : Estimates of how many transactions are being queued on the network every 15 seconds interval.
 
-1. *Number of transactions* : A Poisson distribution is used to map how many transactions enter the network based on a number of assumptions.
-   We adjust this distribution with a flow rate & elasticity constant, implying if the rate is high , the number of 
-   new transactions added to the network will reduce.
-//TODO  : Verify these formulas
-2. *Transaction Price* :  This is modeled based on current ETH gas price computation having components of base fee and priority fee.
-   Priority fees again are assumed to have a log-normal distribution to choose between (slow-normal-fast) speeds.
-3. *Gas used per transaction* : This is average gas consumed by transactions on the network.
+## Single cluster
 
-This snapshot is created every 15 seconds simulating the mempool.
 
-Block generation : Simulating creation of blocks adhering to current protocol rules on ethereum.
 
-1. Selecting transactions with best price. 
-2. Ensuring selected transactions do not violate the block limits.
-3. Removing selected transactions from the mem-pool.
-4. Re-calculating the base fee for next iteration.
-
-Transaction flow & Block generation is simulated at every 15 seconds.
-
-# Multi cluster
-
-![](assets/images/2022-08-09-pluggable-scaling/multi_cluster.png)
+## Multi cluster
 
 We modify the above parameters to simulate the same metrics of but instead of one , we have multiple  
 ETH sub-cluster's running.
 
-Transaction flow : Estimates of how many transactions are being queued on the network every 15 seconds interval in 
-multi-cluster configuration.
-
-Below we discuss the adjustments to the parameters outlined above.
 
 //TODO  : Verify these formulas
-1. Number of transactions = rate adjustments for additional clusters.
-2. Transaction Price = price adjustments to take into account transaction price. This now has a proof generation 
+ Transaction Price = price adjustments to take into account transaction price. This now has a proof generation 
    & verification cost associated with it , computer per block. (TODO VERIFY)
-3. Gas used per transaction = adjustments for additional clusters.
 
-This snapshot is created every 15 seconds simulating the mempool for each of the clusters involved.
 
-Block generation : Simulating creation of blocks adhering to current protocol rules on ethereum local to each sub-cluster.
-
-1. Selecting transactions with best price.
-2. Ensuring selected transactions do not violate the block limits.
-3. Removing selected transactions from the mem-pool.
-4. Re-calculating the base fee for next iteration.
-
-Transaction flow & Block generation is simulated at every 15 seconds.
 
 ## Assumptions
 The following is a subset of variables/boundaries are assumed for the simulation. For the full list please see the code
@@ -130,25 +104,24 @@ Proof verification in gas for placeholer proof := 2,000,000
 # Findings
 
 ## Gas Price
-![](assets/images/2022-08-09-pluggable-scaling/gas_price.png)
+
 Gas price in single cluster configuration is higher and more volatile as the transaction flow registers more load.
 In multi cluster setup, we observe gas price is stable and low as expected as the load is shared amongst 11 clusters.
 
 ## Average transaction Fees
-![](assets/images/2022-08-09-pluggable-scaling/avg_tx_price.png)
 Average price in single cluster setup is volatile with the gas price & load. In multi cluster configuration , 
 we notice more stable transaction costs. A fair observation is also the cost of transaction is higher when 
 low number of transactions are on the network as this cost is associated to proof generation/verification.
 On average, the cost is much lower in multi cluster setup.
 
 ## Average wait time 
-![](assets/images/2022-08-09-pluggable-scaling/avg_tx_price.png)
+
 Average waiting time for a transaction to be cleared from mempool has more spikes under loads where 
 transactions can be waiting to be confirmed from few seconds (high gas price) to 20 minutes. Multi cluster
 configuration clears the mempools much quicker and there is no wait lag experienced by the user.
 
 ## Transactions stuck in mempool 
-![](assets/images/2022-08-09-pluggable-scaling/tx_stuck_mempool.png)
+
 Any transaction which is in the mempool for over 1 hour is considered stuck for this conclusion. High variance
 is observed in a single cluster configuration, while multi cluster configuration show no signs of backlog. 
 
