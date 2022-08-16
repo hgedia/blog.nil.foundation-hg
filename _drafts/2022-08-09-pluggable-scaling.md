@@ -3,33 +3,32 @@ title: <span style='font-family:Menlo, Courier, monospace'>=nil;</span>'s Plugga
 layout: post
 date: 2022-08-09
 excerpt: What is Pluggable scaling?
-author: Aleksey S, Mikhail K, Haresh G.
+author: Aleksey Sofronov, Haresh Gedia, Mikhail Komarov
 tags: dbms io
 comments: false
 ---
 # Introduction
-Monolithic blockchains have suffered throughput bottleneck in terms of transactions/sec during peak utilization.
+Monolithic protocols have suffered throughput bottleneck in terms of transactions/sec during peak utilization.
 We saw gas prices on ethereum spike to 400+ gwei during a BAYC land sale event 
-pushing [nft transactions](https://web3isgoinggreat.com/?id=popular-nft-mint-spikes-ethereum-gas-prices-opensea-transaction-fees-exceed-3500) 
+pushing [transactions](https://web3isgoinggreat.com/?id=popular-nft-mint-spikes-ethereum-gas-prices-opensea-transaction-fees-exceed-3500) 
 as high as 3,500$ and a normal asset transfer to 200$. This inability to meet demand 
 results in higher transaction costs and wait times for users.  
 For technology to embrace mass adoption, it is inherent stability/bounds be provided even in 
 high demand scenarios. Solution to address this have resulted in newer chains adopting different 
-architectures such as subnets (Avalanche) , supernets (Polygon) or hub-spoke architectures such 
+architectures such as subnets (Avalanche), supernets (Polygon) or hub-spoke architectures such 
 as Cosmos IBC & Polkadot. 
 
 Another branch of these solutions have taken form of Optimistic/zk-rollups which inherit security 
-from the base layer they are built on.The rollup centric solution is part of the ETH 2.0 upgrade, 
+from the base layer they are built on. The rollup centric solution is part of the ETH 2.0 upgrade, 
 which eventually plans to move to sharding to provide data availability to the rollups, with
 the possibility of having data shards execute smart contracts in the future. Application specific 
 chains are proposed to be built on top of rollups moving another degree away from the base layer.
 
-Both approaches above silo the application on to a single network.
+Both approaches above silo the application on to a single database.
 
 In this post we propose an alternative scaling mechanism comprising<span style='font-family:Menlo, Courier, monospace'> =nil;Foundation DBMS</span> nodes 
 which help scale a base layer using validity proofs for state and query by running a number of clusters 
 in parallel to load balance the transaction load.
-
 
 # Concepts
 
@@ -58,7 +57,7 @@ different db cluster to ease the network.
 
 # Model 
 
-We define and compare two models and the parameters which govern them. Ethereum main-net is taken as a base for calculations,
+We define and compare two models and the parameters which govern them. Ethereum's production cluster is taken as a base for calculations,
 this can with a change of parameters can be extrapolated to any other network.
 - Single Cluster:  This behaves as the current ethereum main-net.
 - Multiple Clusters: We take multiple ethereum alike clusters which run alongside a main ethereum cluster.They are their
