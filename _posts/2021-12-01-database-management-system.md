@@ -76,8 +76,8 @@ nodes up and running)? And what about `INSERT INTO`?
 ## The Approach
 
 To answer these questions we need to change the approach applied to the data
-management from what it currently is, to what it is within more mature, educated,
-less childish, and more experienced industries. The proposal is to take a 
+management from what it currently is, to what it is within more mature, educated, 
+experienced and less childish industries. The proposal is to take a 
 look at Database Management Systems industry. Yes the one, where Amazon DynamoDB 
 and Google BigTable along with PostgreSQL, MySQL/MariaDB or Apache Cassandra are 
 already in play. The one, where people know something about data management.
@@ -87,7 +87,7 @@ already in play. The one, where people know something about data management.
 Yeah. By someone like [Michael Stonebraker](https://en.wikipedia.org/wiki/Michael_Stonebraker) 
 (don't you dare to Google the name) or [Michael Widenius](https://en.wikipedia.org/wiki/Michael_Widenius) (really, are you going to Google this name as well?). How would it look like?
 
-Well, first of all, there would be no such amount of new terminology.
+Well, first of all, there would be no such amount of newborn bullshit terminology.
 
 1. "Bl*ckch*in Netw*rk" would've simply been a "Fault-tolerant full-replica
    database cluster with authenticated cluster commit log data structure" 
