@@ -89,13 +89,13 @@ Yeah. By someone like [Michael Stonebraker](https://en.wikipedia.org/wiki/Michae
 
 Well, first of all, there would be no such amount of new terminology.
 
-1. "Blockchain Network" would've simply been a "Fault-tolerant full-replica
+1. "Bl*ckch*in Netw*rk" would've simply been a "Fault-tolerant full-replica
    database cluster with authenticated cluster commit log data structure" 
    (or something like that).
 2. "Mempool" would've been a "Cluster commit log head section".
 3. "Bitcoin", "Ethereum" and all the others would've simply been "Database 
    replication protocols".
-4. "ProofOfWork" consensus algorithms would've been just some different "data-driven consensus" 
+4. "ProofOfShit" consensus algorithms would've been just some different "data-driven consensus" 
    algorithms family.
 5. No "Blocks". Fault-tolerant replicating databases work perfectly with
    per-transactional replication. 
