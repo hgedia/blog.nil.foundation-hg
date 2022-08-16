@@ -76,8 +76,8 @@ nodes up and running)? And what about `INSERT INTO`?
 ## The Approach
 
 To answer these questions we need to change the approach applied to the data
-management from what it currently is, to what it is within more mature,
-battle-tested, and experienced industries. The proposal is to take a 
+management from what it currently is, to what it is within more mature, educated,
+less childish, and more experienced industries. The proposal is to take a 
 look at Database Management Systems industry. Yes the one, where Amazon DynamoDB 
 and Google BigTable along with PostgreSQL, MySQL/MariaDB or Apache Cassandra are 
 already in play. The one, where people know something about data management.
