@@ -66,7 +66,7 @@ this can with a change of parameters can be extrapolated to any other network.
 The model simulates transaction flows using poisson distribution to map how many transactions enter 
 the network. Adjustments include a flow rate & elasticity constant; implying if the rate is high , 
 the number of new transactions added to the network will reduce. Transaction fee & gas consumed are modelled 
-using an exponential and log-normal distribution respectively. Further details can be found in the repo here. (TODO)
+using an exponential and log-normal distribution respectively. Further details can be found in the repo [here](https://github.com/NilFoundation/pluggable-scaling-model).
   
 We observe outputs of transaction time,cost and price for current ethereum network.
 
@@ -88,7 +88,7 @@ main cluster where it is verified in EVM.
 
 
 ## Assumptions
-The following is a subset of variables/boundaries are assumed for the simulation. For the full list please see the code(TODO)
+The following is a subset of variables/boundaries are assumed for the simulation. For the full list please see the [code](https://github.com/NilFoundation/pluggable-scaling-model)
 ```
 Base hourly flowRate l0 :=  Daily Transactions/24 = ~55,000
 Number of sub clusters := 10 (excluding 1 main cluster)
